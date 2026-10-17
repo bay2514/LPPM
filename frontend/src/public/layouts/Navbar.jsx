@@ -93,11 +93,11 @@ export default function Navbar() {
             Login Admin
           </Link>
           <button
-            className="rounded-md p-2 text-ink-700 hover:bg-canvas lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink-700 hover:bg-canvas lg:hidden"
             aria-label="Buka menu"
             onClick={() => setOpen(true)}
           >
-            <Menu size={20} />
+            <Menu size={24} />
           </button>
         </div>
       </div>
@@ -111,8 +111,8 @@ export default function Navbar() {
           >
             <div className="flex items-center justify-between pb-4">
               <span className="text-sm font-extrabold text-navy-800">Menu</span>
-              <button className="rounded-md p-1 text-ink-500 hover:bg-canvas" onClick={() => setOpen(false)}>
-                <X size={20} />
+              <button className="inline-flex h-9 w-9 items-center justify-center rounded-md text-ink-500 hover:bg-canvas" onClick={() => setOpen(false)}>
+                <X size={24} />
               </button>
             </div>
             <div className="flex flex-col gap-1">
