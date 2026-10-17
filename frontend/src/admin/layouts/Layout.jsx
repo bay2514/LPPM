@@ -34,7 +34,8 @@ const navItems = [
 export default function AdminLayout({ children }) {
   const navigate = useNavigate();
   const location = useLocation();
-  const user = useAdminAuth();
+  const auth = useAdminAuth();
+  const user = auth?.user;
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const handleLogout = async () => {

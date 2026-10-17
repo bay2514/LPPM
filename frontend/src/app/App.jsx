@@ -14,34 +14,37 @@ import Penelitian from "@public/pages/Penelitian.jsx";
 import Pengabdian from "@public/pages/Pengabdian.jsx";
 import Publikasi from "@public/pages/Publikasi.jsx";
 import HKI from "@public/pages/HKI.jsx";
+import { ErrorBoundary } from "@components/ErrorBoundary.jsx";
 
 const AdminRoutes = lazy(() => import("@admin/routes/index.jsx"));
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Home />} />
-          <Route path="/profil" element={<Home />} />
-          <Route path="/penelitian" element={<Penelitian />} />
-          <Route path="/pengabdian" element={<Pengabdian />} />
-          <Route path="/publikasi" element={<Publikasi />} />
-          <Route path="/hki" element={<HKI />} />
-          <Route path="/dokumen" element={<Documents />} />
-          <Route path="/dokumen/:slug" element={<DocumentDetail />} />
-          <Route path="/capaian" element={<Capaian />} />
-          <Route path="/pengajuan" element={<Pengajuan />} />
-          <Route path="/berita" element={<Berita />} />
-          <Route path="/kegiatan" element={<Kegiatan />} />
-          <Route path="/kerjasama" element={<Kerjasama />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
+      <ErrorBoundary>
+        <Routes>
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/profil" element={<Home />} />
+            <Route path="/penelitian" element={<Penelitian />} />
+            <Route path="/pengabdian" element={<Pengabdian />} />
+            <Route path="/publikasi" element={<Publikasi />} />
+            <Route path="/hki" element={<HKI />} />
+            <Route path="/dokumen" element={<Documents />} />
+            <Route path="/dokumen/:slug" element={<DocumentDetail />} />
+            <Route path="/capaian" element={<Capaian />} />
+            <Route path="/pengajuan" element={<Pengajuan />} />
+            <Route path="/berita" element={<Berita />} />
+            <Route path="/kegiatan" element={<Kegiatan />} />
+            <Route path="/kerjasama" element={<Kerjasama />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
 
-        {/* Admin area */}
-        <Route path="/admin/*" element={<AdminRoutes />} />
-        <Route path="/login" element={<Navigate to="/admin/login" replace />} />
-      </Routes>
+          {/* Admin area */}
+          <Route path="/admin/*" element={<AdminRoutes />} />
+          <Route path="/login" element={<Navigate to="/admin/login" replace />} />
+        </Routes>
+      </ErrorBoundary>
     </BrowserRouter>
   );
 }

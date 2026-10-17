@@ -12,6 +12,7 @@ export default defineConfig({
       '@admin': path.resolve(import.meta.dirname, './src/admin'),
       '@shared': path.resolve(import.meta.dirname, './src/shared'),
       '@assets': path.resolve(import.meta.dirname, './src/assets'),
+      '@components': path.resolve(import.meta.dirname, './src/components'),
     },
   },
 })

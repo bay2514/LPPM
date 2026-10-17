@@ -117,14 +117,17 @@ export async function login(email, password) {
     );
   }
 
-  if (email.trim().toLowerCase() !== MOCK_EMAIL.toLowerCase() || password !== MOCK_PASSWORD) {
+  const normalizedEmail = email.trim().toLowerCase();
+  const normalizedPassword = password.trim();
+
+  if (normalizedEmail !== MOCK_EMAIL.trim().toLowerCase() || normalizedPassword !== MOCK_PASSWORD.trim()) {
     // Pesan sengaja umum: tidak membocorkan bagian mana yang salah.
     throw laravelError(401, "Email atau kata sandi salah.", {
       email: ["Email atau kata sandi salah."],
     });
   }
 
-  const user = { ...MOCK_USER, email: MOCK_EMAIL };
+  const user = { ...MOCK_USER, email: MOCK_EMAIL.trim().toLowerCase() };
   writeStoredUser(user);
   return { user };
 }
