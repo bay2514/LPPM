@@ -1,6 +1,8 @@
 import { useMemo, useState } from "react";
+import { Link } from "react-router-dom";
 import { documents } from "../data/mock.js";
-import { Search, Download, FileText, Inbox } from "../components/ui/Icons.jsx";
+import { Search, Download, FileText, Inbox, ChevronRight } from "../components/ui/Icons.jsx";
+import HeroSection from "../components/sections/HeroSection.jsx";
 
 const CATEGORIES = ["Semua", "Panduan", "Template", "SOP", "SK", "LPJ"];
 const YEARS = ["Semua Tahun", "2025", "2024", "2023"];
@@ -24,28 +26,17 @@ export default function Documents() {
 
   return (
     <>
-      {/* Page header */}
-      <section className="border-b border-line bg-white py-10">
-        <div className="mx-auto max-w-container px-4 md:px-6 lg:px-8">
-          <nav aria-label="Breadcrumb" className="mb-3 text-xs text-ink-500">
-            <ol className="flex items-center gap-1">
-              <li><a href="/" className="hover:text-orange-500">Beranda</a></li>
-              <li aria-hidden="true">/</li>
-              <li className="font-semibold text-ink-700">Pusat Unduhan</li>
-            </ol>
-          </nav>
-          <h1 className="text-3xl font-extrabold text-navy-800 md:text-4xl">Pusat Unduhan</h1>
-          <p className="mt-2 max-w-2xl text-sm text-ink-500 md:text-base">
-            Kumpulan dokumen resmi LPPM: panduan, template, SOP, surat keputusan, dan laporan
-            pertanggungjawaban yang dapat diunduh oleh seluruh civitas akademika.
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        badge="Pusat Unduhan"
+        title="Panduan, SOP, Template, SK, RAB, dan LPJ"
+        description="Kumpulan dokumen resmi LPPM yang dapat diunduh oleh seluruh civitas akademika."
+        secondaryAction={{ label: "Semua Dokumen", to: "#" }}
+        dark
+      />
 
       <section className="bg-canvas py-10">
         <div className="mx-auto max-w-container px-4 md:px-6 lg:px-8">
           <div className="grid gap-8 lg:grid-cols-[240px_1fr]">
-            {/* Sidebar filter */}
             <aside className="space-y-6">
               <div>
                 <label htmlFor="doc-search" className="mb-2 block text-xs font-bold uppercase tracking-wider text-ink-500">
@@ -98,7 +89,6 @@ export default function Documents() {
               </div>
             </aside>
 
-            {/* List */}
             <div>
               <div className="mb-4 flex items-center justify-between">
                 <p className="text-sm text-ink-500">
@@ -132,7 +122,9 @@ export default function Documents() {
                               {doc.fileType} • {doc.size} • {doc.year}
                             </span>
                           </div>
-                          <h3 className="text-base font-bold leading-snug text-navy-800">{doc.title}</h3>
+                          <Link to={`/dokumen/${doc.slug}`} className="text-base font-bold leading-snug text-navy-800 hover:text-orange-500">
+                            {doc.title}
+                          </Link>
                           <p className="mt-1 text-sm text-ink-500">{doc.description}</p>
                         </div>
                       </div>

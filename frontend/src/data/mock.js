@@ -185,6 +185,17 @@ export const capaianKPI = [
   { id: "kpi6", label: "Dosen Terlibat", value: 12, sublabel: "Aktif meneliti" },
 ];
 
+export const analytics = {
+  quarters: [
+    { quarter: "Q1", penelitian: 12, pengabdian: 8 },
+    { quarter: "Q2", penelitian: 18, pengabdian: 14 },
+    { quarter: "Q3", penelitian: 24, pengabdian: 20 },
+    { quarter: "Q4", penelitian: 30, pengabdian: 26 },
+  ],
+  totalFunding: "Rp 1,84 M",
+  totalProposals: 70,
+};
+
 export const latestOutputs = [
   {
     id: "lo1",

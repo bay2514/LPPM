@@ -1,8 +1,11 @@
-import { capaianKPI, latestOutputs } from "../data/mock.js";
+import { capaianKPI, latestOutputs, analytics } from "../data/mock.js";
 import { TrendingUp, Award, BookOpen, Flask } from "../components/ui/Icons.jsx";
 
 export default function Capaian() {
   const maxValue = Math.max(...capaianKPI.map((k) => k.value));
+  const maxQuarterValue = Math.max(
+    ...analytics.quarters.flatMap((q) => [q.penelitian, q.pengabdian])
+  );
 
   return (
     <>
@@ -37,6 +40,60 @@ export default function Capaian() {
                 <div className="mt-1 text-xs text-ink-500">{k.sublabel}</div>
               </div>
             ))}
+          </div>
+
+          {/* PULSE Analytics dark section */}
+          <div className="rounded-xl bg-navy-800 p-6 text-white shadow-lift md:p-8">
+            <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <span className="mb-1 block text-xs font-bold uppercase tracking-wider text-orange-400">PULSE LPPM</span>
+                <h2 className="text-xl font-extrabold text-white md:text-2xl">Ringkasan Tahunan</h2>
+              </div>
+              <div className="flex gap-3">
+                <div className="rounded-lg bg-white/10 px-4 py-3">
+                  <div className="text-xs text-white/70">Total Pendanaan</div>
+                  <div className="text-2xl font-extrabold text-white">{analytics.totalFunding}</div>
+                </div>
+                <div className="rounded-lg bg-white/10 px-4 py-3">
+                  <div className="text-xs text-white/70">Usulan Diterima</div>
+                  <div className="text-2xl font-extrabold text-white">{analytics.totalProposals}</div>
+                </div>
+              </div>
+            </div>
+
+            <div className="rounded-lg bg-white/5 p-4">
+              <div className="mb-4 flex items-center gap-4 text-xs font-medium text-white/80">
+                <span className="inline-flex items-center gap-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-orange-500" />
+                  Penelitian
+                </span>
+                <span className="inline-flex items-center gap-2">
+                  <span className="inline-block h-2 w-2 rounded-full bg-teal-400" />
+                  Pengabdian
+                </span>
+              </div>
+              <div className="grid grid-cols-4 gap-4">
+                {analytics.quarters.map((q) => (
+                  <div key={q.quarter} className="flex flex-col items-center gap-2">
+                    <div className="flex w-full items-end gap-1" style={{ height: 160 }}>
+                      <div
+                        className="w-full rounded-t bg-orange-500"
+                        style={{ height: `${(q.penelitian / maxQuarterValue) * 100}%` }}
+                        aria-label={`Penelitian ${q.quarter}: ${q.penelitian}`}
+                        title={`Penelitian ${q.quarter}: ${q.penelitian}`}
+                      />
+                      <div
+                        className="w-full rounded-t bg-teal-400"
+                        style={{ height: `${(q.pengabdian / maxQuarterValue) * 100}%` }}
+                        aria-label={`Pengabdian ${q.quarter}: ${q.pengabdian}`}
+                        title={`Pengabdian ${q.quarter}: ${q.pengabdian}`}
+                      />
+                    </div>
+                    <span className="text-xs font-bold text-white/90">{q.quarter}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
           {/* Bar chart */}
