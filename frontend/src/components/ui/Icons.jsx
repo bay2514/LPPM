@@ -1,49 +1,41 @@
-/**
- * Inline SVG icon set (Lucide/Feather style, 1.5px stroke).
- * Tidak memakai library eksternal agar bundle tetap ringan.
- */
-const base = {
-  fill: "none",
-  stroke: "currentColor",
-  strokeWidth: 1.5,
-  strokeLinecap: "round",
-  strokeLinejoin: "round",
-  "aria-hidden": "true",
-  focusable: "false",
-};
+import React from "react";
 
-function Svg({ size = 24, children, className = "" }) {
-  return (
-    <svg width={size} height={size} viewBox="0 0 24 24" className={className} {...base}>
-      {children}
-    </svg>
-  );
-}
+export const Svg = (p) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    {...p}
+  />
+);
 
 export const MapPin = (p) => (
   <Svg {...p}>
-    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0Z" />
+    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
     <circle cx="12" cy="10" r="3" />
   </Svg>
 );
 
 export const Mail = (p) => (
   <Svg {...p}>
-    <rect x="2" y="4" width="20" height="16" rx="2" />
-    <path d="m2 7 10 6 10-6" />
+    <rect width="20" height="16" x="2" y="4" rx="2" />
+    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
   </Svg>
 );
 
 export const Phone = (p) => (
   <Svg {...p}>
-    <path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z" />
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
   </Svg>
 );
 
 export const Search = (p) => (
   <Svg {...p}>
-    <circle cx="11" cy="11" r="7" />
-    <path d="m20 20-3.5-3.5" />
+    <circle cx="11" cy="11" r="8" />
+    <path d="m21 21-4.3-4.3" />
   </Svg>
 );
 
@@ -74,24 +66,27 @@ export const ArrowRight = (p) => (
 
 export const Download = (p) => (
   <Svg {...p}>
-    <path d="M12 3v12" />
-    <path d="m7 11 5 5 5-5" />
-    <path d="M4 21h16" />
+    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+    <polyline points="7 10 12 15 17 10" />
+    <line x1="12" x2="12" y1="15" y2="3" />
   </Svg>
 );
 
 export const FileText = (p) => (
   <Svg {...p}>
-    <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7Z" />
-    <path d="M14 2v5h5" />
-    <path d="M9 13h6M9 17h6" />
+    <path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z" />
+    <path d="M14 2v4a2 2 0 0 0 2 2h4" />
+    <path d="M10 9H8" />
+    <path d="M16 13H8" />
+    <path d="M16 17H8" />
   </Svg>
 );
 
 export const Flask = (p) => (
   <Svg {...p}>
-    <path d="M9 3h6M10 3v6.5L4.6 18a2 2 0 0 0 1.7 3h11.4a2 2 0 0 0 1.7-3L14 9.5V3" />
-    <path d="M7 15h10" />
+    <path d="M10 2v7.31L4.35 19.1A2 2 0 0 0 6.07 22h11.86a2 2 0 0 0 1.72-2.9L14 9.31V2" />
+    <path d="M8.5 2h7" />
+    <path d="M14 9.3 17 14H7l3-4.7" />
   </Svg>
 );
 
@@ -99,103 +94,114 @@ export const Users = (p) => (
   <Svg {...p}>
     <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
     <circle cx="9" cy="7" r="4" />
-    <path d="M22 21v-2a4 4 0 0 0-3-3.9" />
-    <path d="M16 3.1a4 4 0 0 1 0 7.8" />
+    <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
+    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
   </Svg>
 );
 
 export const BookOpen = (p) => (
   <Svg {...p}>
-    <path d="M12 7v14" />
-    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3Z" />
+    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
   </Svg>
 );
 
 export const Award = (p) => (
   <Svg {...p}>
     <circle cx="12" cy="8" r="6" />
-    <path d="m8.2 13.4-1.4 7.1 5.2-3 5.2 3-1.4-7.1" />
+    <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
   </Svg>
 );
 
 export const Handshake = (p) => (
   <Svg {...p}>
-    <path d="m11 17 2 2a1 1 0 1 0 3-3" />
-    <path d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.9-3.9a2 2 0 0 0-2.8 0l-1.3 1.3a1 1 0 1 1-3-3l2.2-2.2a4 4 0 0 1 5.7 0l4.3 4.3" />
-    <path d="M2 12h3l3 3-2 2-4-4Z" />
+    <path d="m11 17 2 2a1 1 0 0 0 1.4 0l6.6-6.6a2 2 0 0 0 0-2.8l-3.2-3.2a2 2 0 0 0-2.8 0L11 10.4" />
+    <path d="m18 10 3-3" />
+    <path d="m14 6 3-3" />
+    <path d="M9 13.6 5.8 16.8a2 2 0 0 1-2.8 0l-.8-.8a2 2 0 0 1 0-2.8L8.8 6.6a2 2 0 0 1 2.8 0l3.2 3.2" />
   </Svg>
 );
 
 export const Lightbulb = (p) => (
   <Svg {...p}>
-    <path d="M9 18h6M10 22h4" />
-    <path d="M12 2a7 7 0 0 0-4 12.7V18h8v-3.3A7 7 0 0 0 12 2Z" />
+    <path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5" />
+    <path d="M9 18h6" />
+    <path d="M10 22h4" />
   </Svg>
 );
 
 export const Calendar = (p) => (
   <Svg {...p}>
-    <rect x="3" y="5" width="18" height="16" rx="2" />
-    <path d="M16 3v4M8 3v4M3 11h18" />
+    <rect width="18" height="18" x="3" y="4" rx="2" ry="2" />
+    <line x1="16" x2="16" y1="2" y2="6" />
+    <line x1="8" x2="8" y1="2" y2="6" />
+    <line x1="3" x2="21" y1="10" y2="10" />
   </Svg>
 );
 
 export const Menu = (p) => (
   <Svg {...p}>
-    <path d="M3 6h18M3 12h18M3 18h18" />
+    <line x1="4" x2="20" y1="12" y2="12" />
+    <line x1="4" x2="20" y1="6" y2="6" />
+    <line x1="4" x2="20" y1="18" y2="18" />
   </Svg>
 );
 
 export const X = (p) => (
   <Svg {...p}>
-    <path d="M18 6 6 18M6 6l12 12" />
+    <path d="M18 6 6 18" />
+    <path d="m6 6 12 12" />
   </Svg>
 );
 
 export const AlertCircle = (p) => (
   <Svg {...p}>
     <circle cx="12" cy="12" r="10" />
-    <path d="M12 8v4M12 16h.01" />
+    <line x1="12" x2="12" y1="8" y2="12" />
+    <line x1="12" x2="12.01" y1="16" y2="16" />
   </Svg>
 );
 
 export const Inbox = (p) => (
   <Svg {...p}>
-    <path d="M22 12h-6l-2 3h-4l-2-3H2" />
-    <path d="M5.5 5h13l3.5 7v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6Z" />
+    <polyline points="22 12 16 12 14 15 10 15 8 12 2 12" />
+    <path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z" />
   </Svg>
 );
 
 export const Shield = (p) => (
   <Svg {...p}>
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10" />
   </Svg>
 );
 
 export const TrendingUp = (p) => (
   <Svg {...p}>
-    <path d="m22 7-8.5 8.5-5-5L2 17" />
-    <path d="M16 7h6v6" />
+    <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+    <polyline points="16 7 22 7 22 13" />
   </Svg>
 );
 
 export const GraduationCap = (p) => (
   <Svg {...p}>
-    <path d="M22 9 12 4 2 9l10 5 10-5Z" />
-    <path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5" />
+    <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />
+    <path d="M22 10v6" />
+    <path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5" />
   </Svg>
 );
 
 export const ExternalLink = (p) => (
   <Svg {...p}>
+    <path d="M15 3h6v6" />
+    <path d="M10 14 21 3" />
     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-    <path d="M15 3h6v6M10 14 21 3" />
   </Svg>
 );
 
 export const LogIn = (p) => (
   <Svg {...p}>
     <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-    <path d="m10 17 5-5-5-5M15 12H3" />
+    <polyline points="10 17 15 12 10 7" />
+    <line x1="15" x2="3" y1="12" y2="12" />
   </Svg>
 );

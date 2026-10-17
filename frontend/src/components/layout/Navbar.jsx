@@ -16,6 +16,8 @@ const links = [
   { label: "Dokumen", to: "/dokumen" },
   { label: "Capaian", to: "/capaian" },
   { label: "Kegiatan", to: "/kegiatan" },
+  { label: "Berita", to: "/berita" },
+  { label: "Pengajuan", to: "/pengajuan" },
 ];
 
 export default function Navbar() {
