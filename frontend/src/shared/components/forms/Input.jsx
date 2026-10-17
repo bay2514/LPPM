@@ -26,3 +26,5 @@ export default function Input({ id, label, error, helper, className = "", ...pro
     </div>
   );
 }
+
+export { Input };

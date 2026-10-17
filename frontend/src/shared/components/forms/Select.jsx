@@ -39,3 +39,5 @@ export default function Select({ id, label, error, helper, children, className =
     </div>
   );
 }
+
+export { Select };

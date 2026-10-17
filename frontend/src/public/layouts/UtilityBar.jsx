@@ -15,7 +15,7 @@ export default function UtilityBar() {
             lppm@tsu.ac.id
           </a>
         </div>
-        <Link to="/login" className="font-medium hover:text-orange-300">
+        <Link to="/admin/login" className="font-medium hover:text-orange-300">
           Login Admin
         </Link>
       </div>

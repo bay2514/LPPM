@@ -14,3 +14,5 @@ export default function Badge({ children, variant = "solid", className = "" }) {
     </span>
   );
 }
+
+export { Badge };

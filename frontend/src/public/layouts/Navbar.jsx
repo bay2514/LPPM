@@ -87,7 +87,7 @@ export default function Navbar() {
 
         <div className="flex items-center gap-3">
           <Link
-            to="/login"
+            to="/admin/login"
             className="hidden rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas min-[900px]:block"
           >
             Login Admin

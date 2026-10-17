@@ -1,87 +1,141 @@
 /**
- * Layer Auth Admin.
- * Menggunakan state in-memory / session-based cookie simulation.
- * Menghindari penyimpanan kata sandi/token di localStorage secara permanen.
- * Menyiapkan transisi ke Laravel Sanctum (POST /api/login, POST /api/logout, GET /api/user).
+ * Lapisan autentikasi admin (mock).
+ *
+ * Kontrak fungsi ini sengaja dibuat mirip Laravel Sanctum supaya mudah diganti:
+ *   POST /api/login   -> login(email, password)
+ *   POST /api/logout  -> logout()
+ *   GET  /api/user    -> getCurrentUser()
+ *
+ * Lihat docs/api-contract.md untuk bentuk request/response sebenarnya.
  */
 
-const DEFAULT_ADMIN = {
+import { useState, useEffect } from "react";
+
+const STORAGE_KEY = "lppm_admin_session";
+
+// Kredensial demo dibaca dari environment Vite (bukan process.env).
+const MOCK_EMAIL = import.meta.env.VITE_MOCK_ADMIN_EMAIL;
+const MOCK_PASSWORD = import.meta.env.VITE_MOCK_ADMIN_PASSWORD;
+
+const MOCK_USER = {
   id: 1,
   name: "Administrator LPPM",
-  email: import.meta.env.VITE_MOCK_ADMIN_EMAIL || "admin@lppm-tsu.ac.id",
   role: "superadmin",
 };
 
-const DEFAULT_PASSWORD = import.meta.env.VITE_MOCK_ADMIN_PASSWORD || "admin123";
+/**
+ * Hook untuk memantau status autentikasi di seluruh aplikasi.
+ */
+export function useAdminAuth() {
+  const [user, setUser] = useState(undefined);
 
-// In-memory session state (tidak disimpan di localStorage demi keamanan)
-let currentSessionUser = null;
-const sessionListeners = [];
+  useEffect(() => {
+    const checkAuth = async () => {
+      const currentUser = await getCurrentUser();
+      setUser(currentUser || null);
+    };
 
-function notifySession() {
-  sessionListeners.forEach((fn) => fn(currentSessionUser));
-}
+    checkAuth();
+    return subscribeAuth((u) => setUser(u || null));
+  }, []);
 
-export function subscribeAuth(listener) {
-  sessionListeners.push(listener);
-  return () => {
-    const idx = sessionListeners.indexOf(listener);
-    if (idx !== -1) sessionListeners.splice(idx, 1);
+  return {
+    user,
+    isAuthenticated: !!user,
+    isLoading: user === undefined,
   };
 }
 
-export async function login({ email, password }) {
-  // Simulasi latency jaringan
-  await new Promise((r) => setTimeout(r, 450));
-
-  // Validasi format email dasar
-  if (!email || !email.includes("@")) {
-    const error = new Error("Format email tidak valid");
-    error.status = 422;
-    error.errors = { email: ["Format email tidak valid"] };
-    throw error;
-  }
-
-  if (!password || password.length < 6) {
-    const error = new Error("Kata sandi minimal 6 karakter");
-    error.status = 422;
-    error.errors = { password: ["Kata sandi harus memiliki minimal 6 karakter"] };
-    throw error;
-  }
-
-  const expectedEmail = import.meta.env.VITE_MOCK_ADMIN_EMAIL || DEFAULT_ADMIN.email;
-  const expectedPassword = import.meta.env.VITE_MOCK_ADMIN_PASSWORD || DEFAULT_PASSWORD;
-
-  if (email !== expectedEmail || password !== expectedPassword) {
-    // Pesan error umum: tidak membedakan email atau password salah
-    const error = new Error("Email atau kata sandi salah");
-    error.status = 401;
-    throw error;
-  }
-
-  // Login berhasil: simpan user di session in-memory
-  currentSessionUser = {
-    ...DEFAULT_ADMIN,
-    email,
-    loggedInAt: new Date().toISOString(),
-  };
-
-  notifySession();
-  return { user: currentSessionUser };
+/** Apakah kredensial demo sudah dikonfigurasi di .env */
+export function isMockConfigured() {
+  return Boolean(MOCK_EMAIL && MOCK_PASSWORD);
 }
 
+function readStoredUser() {
+  try {
+    const raw = sessionStorage.getItem(STORAGE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    // Hanya terima objek user non-sensitif.
+    if (!parsed || typeof parsed !== "object" || !parsed.id) return null;
+    return {
+      id: parsed.id,
+      name: parsed.name,
+      email: parsed.email,
+      role: parsed.role,
+    };
+  } catch {
+    return null;
+  }
+}
+
+function writeStoredUser(user) {
+  // Tidak pernah menyimpan kata sandi atau token.
+  sessionStorage.setItem(
+    STORAGE_KEY,
+    JSON.stringify({
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+    })
+  );
+}
+
+/** Membuat error dengan bentuk menyerupai respons Laravel. */
+function laravelError(status, message, errors) {
+  const error = new Error(message);
+  error.status = status;
+  error.errors = errors || {};
+  return error;
+}
+
+/**
+ * Login admin.
+ * @param {string} email
+ * @param {string} password
+ * @returns {Promise<{user: object}>}
+ * @throws {Error & {status:number, errors:object}} status 422/401
+ */
+export async function login(email, password) {
+  // Simulasi jeda jaringan.
+  await new Promise((resolve) => setTimeout(resolve, 400));
+
+  const errors = {};
+  if (!email) errors.email = ["Email wajib diisi."];
+  if (!password) errors.password = ["Kata sandi wajib diisi."];
+
+  if (Object.keys(errors).length > 0) {
+    throw laravelError(422, "Data yang diberikan tidak valid.", errors);
+  }
+
+  if (!isMockConfigured()) {
+    throw laravelError(
+      422,
+      "Akun demo belum dikonfigurasi di server.",
+      { email: ["Kredensial demo belum diatur."] }
+    );
+  }
+
+  if (email.trim().toLowerCase() !== MOCK_EMAIL.toLowerCase() || password !== MOCK_PASSWORD) {
+    // Pesan sengaja umum: tidak membocorkan bagian mana yang salah.
+    throw laravelError(401, "Email atau kata sandi salah.", {
+      email: ["Email atau kata sandi salah."],
+    });
+  }
+
+  const user = { ...MOCK_USER, email: MOCK_EMAIL };
+  writeStoredUser(user);
+  return { user };
+}
+
+/** Logout: hapus sesi mock. */
 export async function logout() {
-  await new Promise((r) => setTimeout(r, 200));
-  currentSessionUser = null;
-  notifySession();
+  sessionStorage.removeItem(STORAGE_KEY);
   return { success: true };
 }
 
+/** Ambil user yang sedang login, atau null. */
 export async function getCurrentUser() {
-  // Untuk simulasi Sanctum GET /api/user
-  return currentSessionUser;
-}
-
-export function isAuthenticated() {
-  return currentSessionUser !== null;
+  return readStoredUser();
 }

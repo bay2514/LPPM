@@ -6,7 +6,7 @@
 
 import { lazy, Suspense } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { ProtectedRoute } from "@admin/auth/ProtectedRoute.jsx";
+import { ProtectedRoute, PublicOnlyRoute } from "@admin/auth/ProtectedRoute.jsx";
 
 // Import lazy admin components
 const Login = lazy(() => import("@admin/pages/auth/Login.jsx"));
@@ -28,22 +28,29 @@ export default function AdminRoutes() {
   return (
     <Suspense fallback={<Loading />}>
       <Routes>
-        {/* Rute tanpa proteksi */}
-        <Route path="/login" element={<Login />} />
+        {/* Rute tanpa proteksi: halaman login */}
+        <Route
+          path="login"
+          element={
+            <PublicOnlyRoute>
+              <Login />
+            </PublicOnlyRoute>
+          }
+        />
 
         {/* Rute yang diproteksi */}
         <Route
-          path="/*"
+          path="*"
           element={
             <ProtectedRoute>
               <Layout>
                 <Routes>
-                  <Route path="/" element={<Dashboard />} />
-                  <Route path="/berita" element={<News />} />
-                  <Route path="/kegiatan" element={<Events />} />
-                  <Route path="/dokumen" element={<Documents />} />
-                  <Route path="/mitra" element={<Collaborators />} />
-                  <Route path="/profil" element={<Profile />} />
+                  <Route index element={<Dashboard />} />
+                  <Route path="berita" element={<News />} />
+                  <Route path="kegiatan" element={<Events />} />
+                  <Route path="dokumen" element={<Documents />} />
+                  <Route path="mitra" element={<Collaborators />} />
+                  <Route path="profil" element={<Profile />} />
                   <Route path="*" element={<Navigate to="/admin" replace />} />
                 </Routes>
               </Layout>

@@ -39,7 +39,6 @@ export default function AdminLayout({ children }) {
 
   const handleLogout = async () => {
     await logout();
-    localStorage.removeItem("lppm_admin_session");
     navigate("/admin/login", { replace: true });
   };
 

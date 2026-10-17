@@ -27,3 +27,5 @@ export default function Textarea({ id, label, error, helper, className = "", ...
     </div>
   );
 }
+
+export { Textarea };

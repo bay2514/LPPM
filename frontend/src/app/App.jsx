@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { lazy } from "react";
 import Layout from "@public/layouts/Layout.jsx";
 import Home from "@public/pages/Home.jsx";
 import Documents from "@public/pages/Documents.jsx";
@@ -13,6 +14,8 @@ import Penelitian from "@public/pages/Penelitian.jsx";
 import Pengabdian from "@public/pages/Pengabdian.jsx";
 import Publikasi from "@public/pages/Publikasi.jsx";
 import HKI from "@public/pages/HKI.jsx";
+
+const AdminRoutes = lazy(() => import("@admin/routes/index.jsx"));
 
 export default function App() {
   return (
@@ -34,6 +37,10 @@ export default function App() {
           <Route path="/kerjasama" element={<Kerjasama />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+
+        {/* Admin area */}
+        <Route path="/admin/*" element={<AdminRoutes />} />
+        <Route path="/login" element={<Navigate to="/admin/login" replace />} />
       </Routes>
     </BrowserRouter>
   );
