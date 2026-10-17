@@ -9,6 +9,10 @@ import Berita from "@public/pages/Berita.jsx";
 import Kegiatan from "@public/pages/Kegiatan.jsx";
 import Kerjasama from "@public/pages/Kerjasama.jsx";
 import NotFound from "@public/pages/NotFound.jsx";
+import Penelitian from "@public/pages/Penelitian.jsx";
+import Pengabdian from "@public/pages/Pengabdian.jsx";
+import Publikasi from "@public/pages/Publikasi.jsx";
+import HKI from "@public/pages/HKI.jsx";
 
 export default function App() {
   return (
@@ -16,6 +20,11 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/profil" element={<Home />} />
+          <Route path="/penelitian" element={<Penelitian />} />
+          <Route path="/pengabdian" element={<Pengabdian />} />
+          <Route path="/publikasi" element={<Publikasi />} />
+          <Route path="/hki" element={<HKI />} />
           <Route path="/dokumen" element={<Documents />} />
           <Route path="/dokumen/:slug" element={<DocumentDetail />} />
           <Route path="/capaian" element={<Capaian />} />
