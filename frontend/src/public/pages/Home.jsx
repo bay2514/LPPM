@@ -5,7 +5,7 @@ import StatCard from "@public/components/sections/StatCard.jsx";
 import ServiceCard from "@public/components/sections/ServiceCard.jsx";
 import NewsCard from "@public/components/sections/NewsCard.jsx";
 import EventItem from "@public/components/sections/EventItem.jsx";
-import { stats, services, news, events, collaborators } from "@shared/lib/mock.js";
+import { useContent } from "@public/hooks/useContent.js";
 
 function QuickAccessCard({ title, link }) {
   return (
@@ -20,6 +20,15 @@ function QuickAccessCard({ title, link }) {
 }
 
 export default function Home() {
+  const stats = useContent("stats");
+  const services = useContent("services");
+  const news = useContent("news");
+  const events = useContent("events");
+  const collaborators = useContent("collaborators");
+
+  const displayedNews = news.slice(0, 3);
+  const featured = displayedNews[2];
+
   return (
     <>
       <HeroSection
@@ -77,16 +86,18 @@ export default function Home() {
             </h2>
           </div>
           <div className="grid gap-6 lg:grid-cols-3">
-            {news.slice(0, 2).map((n) => (
+            {displayedNews.slice(0, 2).map((n) => (
               <NewsCard key={n.id} {...n} />
             ))}
-            <NewsCard
-              tag="Workshop"
-              date={`${events[2].day} ${events[2].month} • ${events[2].meta}`}
-              title={news[2].title}
-              excerpt={news[2].excerpt}
-              variant="featured"
-            />
+            {featured && (
+              <NewsCard
+                tag={featured.tag || "Berita"}
+                date={featured.date}
+                title={featured.title}
+                excerpt={featured.excerpt}
+                variant="featured"
+              />
+            )}
           </div>
         </div>
       </section>
@@ -118,7 +129,7 @@ export default function Home() {
                 {collaborators.map((c) => (
                   <div key={c.id} className="flex flex-col items-center rounded-lg bg-surface p-6 shadow-card">
                     <div className="mb-3 flex h-16 w-16 items-center justify-center rounded-full border-4 border-navy-50 bg-white">
-                      <span className="text-2xl font-bold text-ink-700">{c.name.charAt(0)}</span>
+                      <span className="text-2xl font-bold text-ink-700">{c.name?.charAt(0) || "?"}</span>
                     </div>
                     <h3 className="text-center text-base font-bold text-navy-800">{c.name}</h3>
                     <div className="text-xs text-ink-500">{c.role}</div>

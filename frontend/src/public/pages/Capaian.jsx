@@ -1,7 +1,10 @@
-import { capaianKPI, latestOutputs, analytics } from "@shared/lib/mock.js";
+import { useContent } from "@public/hooks/useContent.js";
 import { TrendingUp, Award, BookOpen, Flask } from "@shared/components/ui/Icons.jsx";
 
 export default function Capaian() {
+  const capaianKPI = useContent("capaianKPI");
+  const latestOutputs = useContent("latestOutputs");
+  const analytics = useContent("analytics");
   const maxValue = Math.max(...capaianKPI.map((k) => k.value));
   const maxQuarterValue = Math.max(
     ...analytics.quarters.flatMap((q) => [q.penelitian, q.pengabdian])

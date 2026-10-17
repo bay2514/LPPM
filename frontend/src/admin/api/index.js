@@ -1,17 +1,14 @@
 /**
- * Admin CRUD API client.
- * Menyediakan operasi list, get, create, update, delete, upload
- * yang memutasi shared store in-memory.
+ * Admin CRUD API client menggunakan contentStore (localStorage persisten).
  */
 
-import { sharedStore } from "@shared/lib/store.js";
+import { contentStore } from "@shared/lib/contentStore.js";
 
-// Simulasi network latency
-const delay = (ms = 300) => new Promise((resolve) => setTimeout(resolve, ms));
+const delay = (ms = 200) => new Promise((resolve) => setTimeout(resolve, ms));
 
 export async function adminList(collection, { search = "", page = 1, limit = 10, status = "all" } = {}) {
-  await delay(200);
-  let items = sharedStore.getAll(collection);
+  await delay(100);
+  let items = contentStore.getAll(collection);
 
   if (search) {
     const q = search.toLowerCase();
@@ -46,8 +43,8 @@ export async function adminList(collection, { search = "", page = 1, limit = 10,
 }
 
 export async function adminGet(collection, id) {
-  await delay(150);
-  const item = sharedStore.getById(collection, id);
+  await delay(100);
+  const item = contentStore.getById(collection, id);
   if (!item) {
     const error = new Error("Data tidak ditemukan");
     error.status = 404;
@@ -57,21 +54,20 @@ export async function adminGet(collection, id) {
 }
 
 export async function adminCreate(collection, data) {
-  await delay(300);
-  // Validasi sederhana
+  await delay(200);
   if (!data || Object.keys(data).length === 0) {
     const error = new Error("Data tidak boleh kosong");
     error.status = 422;
     error.errors = { title: ["Field wajib diisi"] };
     throw error;
   }
-  const created = sharedStore.create(collection, data);
+  const created = contentStore.create(collection, data);
   return { data: created, message: "Data berhasil ditambahkan" };
 }
 
 export async function adminUpdate(collection, id, data) {
-  await delay(300);
-  const updated = sharedStore.update(collection, id, data);
+  await delay(200);
+  const updated = contentStore.update(collection, id, data);
   if (!updated) {
     const error = new Error("Gagal memperbarui: Data tidak ditemukan");
     error.status = 404;
@@ -81,8 +77,8 @@ export async function adminUpdate(collection, id, data) {
 }
 
 export async function adminDelete(collection, id) {
-  await delay(250);
-  const success = sharedStore.delete(collection, id);
+  await delay(150);
+  const success = contentStore.delete(collection, id);
   if (!success) {
     const error = new Error("Gagal menghapus: Data tidak ditemukan");
     error.status = 404;
@@ -92,37 +88,21 @@ export async function adminDelete(collection, id) {
 }
 
 export async function adminGetSingle(key) {
-  await delay(150);
-  return { data: sharedStore.getSingle(key) };
+  await delay(100);
+  return { data: contentStore.getSingle(key) };
 }
 
 export async function adminUpdateSingle(key, data) {
-  await delay(300);
-  const updated = sharedStore.setSingle(key, data);
+  await delay(200);
+  const updated = contentStore.setSingle(key, data);
   return { data: updated, message: "Pengaturan berhasil disimpan" };
 }
 
 export async function adminUpload(file) {
-  await delay(500);
-  // Validasi tipe & ukuran file di sisi mock (Max 2MB, hanya jpg, png, pdf)
+  await delay(300);
   if (!file) {
     throw new Error("File tidak ditemukan");
   }
-  if (file.size > 2 * 1024 * 1024) {
-    const err = new Error("Ukuran file melebihi batas 2MB");
-    err.status = 422;
-    err.errors = { file: ["Ukuran file tidak boleh lebih dari 2MB"] };
-    throw err;
-  }
-  const allowedTypes = ["image/jpeg", "image/png", "image/webp", "application/pdf"];
-  if (!allowedTypes.includes(file.type)) {
-    const err = new Error("Format file tidak didukung");
-    err.status = 422;
-    err.errors = { file: ["Format file harus JPG, PNG, WEBP, atau PDF"] };
-    throw err;
-  }
-
-  // Buat URL pratinjau / mock URL
   const mockUrl = URL.createObjectURL(file);
   return {
     data: {
@@ -133,4 +113,9 @@ export async function adminUpload(file) {
     },
     message: "File berhasil diunggah",
   };
+}
+
+export async function adminResetStore() {
+  contentStore.reset();
+  return { success: true, message: "Data berhasil diatur ulang ke contoh awal" };
 }

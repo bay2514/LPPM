@@ -1,10 +1,11 @@
 import { useParams, Link } from "react-router-dom";
-import { documents } from "@shared/lib/mock.js";
+import { useContent } from "@public/hooks/useContent.js";
 import { Search, Download, FileText, ChevronLeft, Calendar, AlertCircle } from "@shared/components/ui/Icons.jsx";
 
 export default function DocumentDetail() {
   const { slug } = useParams();
-  const doc = documents.find((d) => d.slug === slug);
+  const documents = useContent("documents");
+  const doc = documents.find((d) => d.slug === slug || String(d.id) === String(slug));
 
   if (!doc) {
     return (

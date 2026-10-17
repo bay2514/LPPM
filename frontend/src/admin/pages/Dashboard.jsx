@@ -116,7 +116,7 @@ export default function Dashboard() {
       <div>
         <p className="text-sm text-gray-500">{formatDateID()}</p>
         <h1 className="text-2xl sm:text-3xl font-bold text-navy-900 mt-1">
-          Halo, {user?.name?.split(" ")[0] || "Admin"} ὄB;
+          Halo, {user?.name?.split(" ")[0] || "Admin"}! 👋
         </h1>
         <p className="text-sm sm:text-base text-gray-600 mt-1 max-w-2xl">
           Selamat datang di panel pengelolaan LPPM. Pilih salah satu aksi cepat di bawah untuk mulai bekerja.

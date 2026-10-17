@@ -1,7 +1,8 @@
 import HeroSection from "@public/components/sections/HeroSection.jsx";
-import { collaborators } from "@shared/lib/mock.js";
+import { useContent } from "@public/hooks/useContent.js";
 
 export default function Kerjasama() {
+  const collaborators = useContent("collaborators");
   return (
     <>
       <HeroSection

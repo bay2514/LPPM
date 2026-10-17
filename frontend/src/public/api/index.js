@@ -1,13 +1,12 @@
 /**
  * Public Read-Only API client.
- * Membaca data terkini dari shared in-memory store.
- * Siap dialihkan ke endpoint Laravel publik (GET /api/...).
+ * Membaca data terkini dari contentStore (persisten, reaktif).
  */
 
-import { sharedStore } from "@shared/lib/store.js";
+import { contentStore } from "@shared/lib/contentStore.js";
 
 export async function getDocuments({ q, category, year } = {}) {
-  let result = sharedStore.getAll("documents");
+  let result = contentStore.getAll("documents");
   if (q) {
     const qq = q.toLowerCase();
     result = result.filter(
@@ -24,44 +23,44 @@ export async function getDocuments({ q, category, year } = {}) {
 }
 
 export async function getDocumentBySlug(slug) {
-  const docs = sharedStore.getAll("documents");
-  const doc = docs.find((d) => d.slug === slug);
+  const docs = contentStore.getAll("documents");
+  const doc = docs.find((d) => d.slug === slug || String(d.id) === String(slug));
   return { data: doc || null };
 }
 
 export async function getNews() {
-  return { data: sharedStore.getAll("news") };
+  return { data: contentStore.getAll("news") };
 }
 
 export async function getEvents() {
-  return { data: sharedStore.getAll("events") };
+  return { data: contentStore.getAll("events") };
 }
 
 export async function getServices() {
-  return { data: sharedStore.getAll("services") };
+  return { data: contentStore.getAll("services") };
 }
 
 export async function getStats() {
   return {
     data: {
-      stats: sharedStore.getAll("stats"),
-      kpis: sharedStore.getAll("capaianKPI"),
-      outputs: sharedStore.getAll("latestOutputs"),
-      analytics: sharedStore.getSingle("analytics"),
+      stats: contentStore.getAll("stats"),
+      kpis: contentStore.getAll("capaianKPI"),
+      outputs: contentStore.getAll("latestOutputs"),
+      analytics: contentStore.getSingle("analytics"),
     },
   };
 }
 
 export async function getCollaborators() {
-  return { data: sharedStore.getAll("collaborators") };
+  return { data: contentStore.getAll("collaborators") };
 }
 
 export async function getBanner() {
-  return { data: sharedStore.getSingle("banner") };
+  return { data: contentStore.getSingle("banner") };
 }
 
 export async function getProfile() {
-  return { data: sharedStore.getSingle("profile") };
+  return { data: contentStore.getSingle("profile") };
 }
 
 export async function submitProposal(body) {

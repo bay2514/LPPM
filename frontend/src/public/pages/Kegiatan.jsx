@@ -1,7 +1,7 @@
 import { useState } from "react";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 import EventItem from "@public/components/sections/EventItem.jsx";
-import { usePublicData } from "@public/hooks/useStore.js";
+import { useContent } from "@public/hooks/useContent.js";
 
 const TABS = ["Semua", "Mendatang", "Selesai"];
 

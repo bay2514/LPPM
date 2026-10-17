@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Menu, X, ChevronDown } from "@shared/components/ui/Icons.jsx";
+import { useAdminAuth, logout as logoutAdmin } from "@admin/auth/auth.js";
 import logo from "@assets/logo-lppm-tsu.png";
 
 const links = [
@@ -20,6 +21,48 @@ const links = [
   { label: "Berita", to: "/berita" },
   { label: "Pengajuan", to: "/pengajuan" },
 ];
+
+function AuthLink({ onNavigate }) {
+  const { isAuthenticated } = useAdminAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    await logoutAdmin();
+    navigate("/admin/login", { replace: true });
+    if (onNavigate) onNavigate();
+  };
+
+  if (isAuthenticated) {
+    return (
+      <div className="flex items-center gap-2">
+        <Link
+          to="/admin"
+          onClick={onNavigate}
+          className="rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas min-h-[44px] flex items-center"
+        >
+          Dasbor Admin
+        </Link>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="rounded-md border border-red-200 px-3 py-2 text-sm font-semibold text-red-600 hover:bg-red-50 min-h-[44px]"
+        >
+          Keluar
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <Link
+      to="/admin/login"
+      onClick={onNavigate}
+      className="rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas min-h-[44px] flex items-center"
+    >
+      Login Admin
+    </Link>
+  );
+}
 
 export default function Navbar() {
   const { pathname } = useLocation();
@@ -86,12 +129,9 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-          <Link
-            to="/admin/login"
-            className="hidden rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas min-[900px]:block"
-          >
-            Login Admin
-          </Link>
+          <div className="hidden min-[900px]:block">
+            <AuthLink />
+          </div>
           <button
             className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink-700 hover:bg-canvas min-[900px]:hidden"
             aria-label="Buka menu"
@@ -146,13 +186,9 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <Link
-                to="/login"
-                onClick={() => setOpen(false)}
-                className="mt-2 rounded-md border border-line px-2 py-2 text-center text-sm font-semibold text-navy-800 hover:bg-canvas"
-              >
-                Login Admin
-              </Link>
+              <div className="mt-2">
+                <AuthLink onNavigate={() => setOpen(false)} />
+              </div>
             </div>
           </div>
         </div>
