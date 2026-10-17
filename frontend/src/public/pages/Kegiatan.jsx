@@ -1,7 +1,7 @@
 import { useState } from "react";
-import HeroSection from "../components/sections/HeroSection.jsx";
-import EventItem from "../components/sections/EventItem.jsx";
-import { events } from "../data/mock.js";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
+import EventItem from "@public/components/sections/EventItem.jsx";
+import { events } from "@shared/lib/mock.js";
 
 const TABS = ["Semua", "Mendatang", "Selesai"];
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Search } from "../components/ui/Icons.jsx";
+import { Search } from "@shared/components/ui/Icons.jsx";
 
 export default function NotFound() {
   return (

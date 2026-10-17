@@ -1,4 +1,4 @@
-import { MapPin, Mail } from "../ui/Icons.jsx";
+import { MapPin, Mail } from "@shared/components/ui/Icons.jsx";
 import { Link } from "react-router-dom";
 
 export default function UtilityBar() {

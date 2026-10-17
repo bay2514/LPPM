@@ -1,5 +1,5 @@
-import HeroSection from "../components/sections/HeroSection.jsx";
-import { collaborators } from "../data/mock.js";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
+import { collaborators } from "@shared/lib/mock.js";
 
 export default function Kerjasama() {
   return (

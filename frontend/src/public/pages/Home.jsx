@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "../components/ui/Icons.jsx";
-import HeroSection from "../components/sections/HeroSection.jsx";
-import StatCard from "../components/sections/StatCard.jsx";
-import ServiceCard from "../components/sections/ServiceCard.jsx";
-import NewsCard from "../components/sections/NewsCard.jsx";
-import EventItem from "../components/sections/EventItem.jsx";
-import { stats, services, news, events, collaborators } from "../data/mock.js";
+import { ChevronRight } from "@shared/components/ui/Icons.jsx";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
+import StatCard from "@public/components/sections/StatCard.jsx";
+import ServiceCard from "@public/components/sections/ServiceCard.jsx";
+import NewsCard from "@public/components/sections/NewsCard.jsx";
+import EventItem from "@public/components/sections/EventItem.jsx";
+import { stats, services, news, events, collaborators } from "@shared/lib/mock.js";
 
 function QuickAccessCard({ title, link }) {
   return (

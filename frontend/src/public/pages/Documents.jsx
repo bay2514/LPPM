@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { documents } from "../data/mock.js";
-import { Search, Download, FileText, Inbox, ChevronRight } from "../components/ui/Icons.jsx";
-import HeroSection from "../components/sections/HeroSection.jsx";
+import { documents } from "@shared/lib/mock.js";
+import { Search, Download, FileText, Inbox, ChevronRight } from "@shared/components/ui/Icons.jsx";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
 
 const CATEGORIES = ["Semua", "Panduan", "Template", "SOP", "SK", "LPJ"];
 const YEARS = ["Semua Tahun", "2025", "2024", "2023"];

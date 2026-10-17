@@ -1,4 +1,4 @@
-import { MapPin, Mail, Phone } from "../ui/Icons.jsx";
+import { MapPin, Mail, Phone } from "@shared/components/ui/Icons.jsx";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

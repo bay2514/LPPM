@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Flask, Award, BookOpen, Users, Handshake, Lightbulb, Shield, ExternalLink, ChevronRight } from "../ui/Icons.jsx";
+import { Flask, Award, BookOpen, Users, Handshake, Lightbulb, Shield, ExternalLink, ChevronRight } from "@shared/components/ui/Icons.jsx";
 
 const map = {
   flask: Flask, award: Award, bookOpen: BookOpen, users: Users, handshake: Handshake, lightbulb: Lightbulb,

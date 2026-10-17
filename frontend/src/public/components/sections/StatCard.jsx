@@ -1,4 +1,4 @@
-import { Flask, Award, BookOpen, Users, Handshake, Lightbulb } from "../ui/Icons.jsx";
+import { Flask, Award, BookOpen, Users, Handshake, Lightbulb } from "@shared/components/ui/Icons.jsx";
 
 const map = { flask: Flask, award: Award, bookOpen: BookOpen, users: Users, handshake: Handshake, lightbulb: Lightbulb };
 

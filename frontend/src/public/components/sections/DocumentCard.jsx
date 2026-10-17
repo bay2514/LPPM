@@ -1,4 +1,4 @@
-import { FileText, Download } from "../ui/Icons.jsx";
+import { FileText, Download } from "@shared/components/ui/Icons.jsx";
 
 export default function DocumentCard({ title, description, category, fileType, size, year, slug }) {
   return (

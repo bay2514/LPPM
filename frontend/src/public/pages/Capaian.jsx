@@ -1,5 +1,5 @@
-import { capaianKPI, latestOutputs, analytics } from "../data/mock.js";
-import { TrendingUp, Award, BookOpen, Flask } from "../components/ui/Icons.jsx";
+import { capaianKPI, latestOutputs, analytics } from "@shared/lib/mock.js";
+import { TrendingUp, Award, BookOpen, Flask } from "@shared/components/ui/Icons.jsx";
 
 export default function Capaian() {
   const maxValue = Math.max(...capaianKPI.map((k) => k.value));

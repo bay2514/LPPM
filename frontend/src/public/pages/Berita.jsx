@@ -1,8 +1,8 @@
 import { useMemo, useState } from "react";
-import HeroSection from "../components/sections/HeroSection.jsx";
-import NewsCard from "../components/sections/NewsCard.jsx";
-import { news, events } from "../data/mock.js";
-import { Search } from "../components/ui/Icons.jsx";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
+import NewsCard from "@public/components/sections/NewsCard.jsx";
+import { news, events } from "@shared/lib/mock.js";
+import { Search } from "@shared/components/ui/Icons.jsx";
 
 const CATEGORIES = ["Semua", "Pengumuman", "Penelitian", "Pengabdian", "Kegiatan"];
 

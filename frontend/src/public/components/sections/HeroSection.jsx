@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "../ui/Icons.jsx";
+import { ChevronRight } from "@shared/components/ui/Icons.jsx";
 
 export default function HeroSection({
   eyebrow,

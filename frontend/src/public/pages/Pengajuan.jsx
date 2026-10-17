@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import HeroSection from "../components/sections/HeroSection.jsx";
-import { FileText, AlertCircle, Calendar, ChevronRight } from "../components/ui/Icons.jsx";
+import HeroSection from "@public/components/sections/HeroSection.jsx";
+import { FileText, AlertCircle, Calendar, ChevronRight } from "@shared/components/ui/Icons.jsx";
 
 const STEPS = [
   { id: 1, label: "Informasi Dasar", icon: "FileText" },

@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { documents } from "../data/mock.js";
-import { Search, Download, FileText, ChevronLeft, Calendar, AlertCircle } from "../components/ui/Icons.jsx";
+import { documents } from "@shared/lib/mock.js";
+import { Search, Download, FileText, ChevronLeft, Calendar, AlertCircle } from "@shared/components/ui/Icons.jsx";
 
 export default function DocumentDetail() {
   const { slug } = useParams();

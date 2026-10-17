@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./components/layout/Layout.jsx";
-import Home from "./pages/Home.jsx";
-import Documents from "./pages/Documents.jsx";
-import DocumentDetail from "./pages/DocumentDetail.jsx";
-import Capaian from "./pages/Capaian.jsx";
-import Pengajuan from "./pages/Pengajuan.jsx";
-import Berita from "./pages/Berita.jsx";
-import Kegiatan from "./pages/Kegiatan.jsx";
-import Kerjasama from "./pages/Kerjasama.jsx";
-import NotFound from "./pages/NotFound.jsx";
+import Layout from "@public/layouts/Layout.jsx";
+import Home from "@public/pages/Home.jsx";
+import Documents from "@public/pages/Documents.jsx";
+import DocumentDetail from "@public/pages/DocumentDetail.jsx";
+import Capaian from "@public/pages/Capaian.jsx";
+import Pengajuan from "@public/pages/Pengajuan.jsx";
+import Berita from "@public/pages/Berita.jsx";
+import Kegiatan from "@public/pages/Kegiatan.jsx";
+import Kerjasama from "@public/pages/Kerjasama.jsx";
+import NotFound from "@public/pages/NotFound.jsx";
 
 export default function App() {
   return (
