@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { documents } from "@shared/lib/mock.js";
+import { usePublicData } from "@public/hooks/useStore.js";
 import { Search, Download, FileText, Inbox, ChevronRight } from "@shared/components/ui/Icons.jsx";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 
@@ -11,6 +11,7 @@ export default function Documents() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Semua");
   const [year, setYear] = useState("Semua Tahun");
+  const documents = usePublicData("documents");
 
   const filtered = useMemo(() => {
     return documents.filter((doc) => {

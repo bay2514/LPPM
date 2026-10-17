@@ -1,12 +1,13 @@
 import { useState } from "react";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 import EventItem from "@public/components/sections/EventItem.jsx";
-import { events } from "@shared/lib/mock.js";
+import { usePublicData } from "@public/hooks/useStore.js";
 
 const TABS = ["Semua", "Mendatang", "Selesai"];
 
 export default function Kegiatan() {
   const [tab, setTab] = useState("Semua");
+  const events = usePublicData("events");
 
   return (
     <>

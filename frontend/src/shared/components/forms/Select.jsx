@@ -1,4 +1,4 @@
-export default function Select({ id, label, error, helper, children, className = "", ...props }) {
+export default function Select({ id, label, error, helper, children, options, className = "", ...props }) {
   return (
     <div className={`flex flex-col gap-1.5 ${className}`}>
       {label && (
@@ -14,7 +14,13 @@ export default function Select({ id, label, error, helper, children, className =
           aria-describedby={error ? `${id}-error` : helper ? `${id}-helper` : undefined}
           {...props}
         >
-          {children}
+          {options
+            ? options.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))
+            : children}
         </select>
         <svg
           className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-ink-500"

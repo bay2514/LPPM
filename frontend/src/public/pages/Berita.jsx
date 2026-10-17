@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 import NewsCard from "@public/components/sections/NewsCard.jsx";
-import { news, events } from "@shared/lib/mock.js";
+import { usePublicData } from "@public/hooks/useStore.js";
 import { Search } from "@shared/components/ui/Icons.jsx";
 
 const CATEGORIES = ["Semua", "Pengumuman", "Penelitian", "Pengabdian", "Kegiatan"];
@@ -9,6 +9,7 @@ const CATEGORIES = ["Semua", "Pengumuman", "Penelitian", "Pengabdian", "Kegiatan
 export default function Berita() {
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState("Semua");
+  const news = usePublicData("news");
 
   const filteredNews = useMemo(() => {
     return news.filter((n) => {
