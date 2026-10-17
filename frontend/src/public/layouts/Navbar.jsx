@@ -27,7 +27,7 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-line bg-surface/95 backdrop-blur">
+    <nav className="sticky top-0 z-50 border-b border-line bg-surface">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-3 md:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="Logo LPPM TSU" className="h-10 w-auto" />
@@ -42,7 +42,7 @@ export default function Navbar() {
         </Link>
 
         {/* desktop */}
-        <div className="hidden items-center gap-1 lg:flex">
+        <div className="hidden items-center gap-1 min-[900px]:flex">
           {links.map((item) =>
             item.children ? (
               <div key={item.label} className="relative">
@@ -88,12 +88,12 @@ export default function Navbar() {
         <div className="flex items-center gap-3">
           <Link
             to="/login"
-            className="hidden rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas lg:block"
+            className="hidden rounded-md border border-line bg-surface px-3 py-2 text-sm font-semibold text-navy-800 hover:bg-canvas min-[900px]:block"
           >
             Login Admin
           </Link>
           <button
-            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink-700 hover:bg-canvas lg:hidden"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-md text-ink-700 hover:bg-canvas min-[900px]:hidden"
             aria-label="Buka menu"
             onClick={() => setOpen(true)}
           >
@@ -104,7 +104,7 @@ export default function Navbar() {
 
       {/* mobile drawer */}
       {open && (
-        <div className="fixed inset-0 z-50 bg-black/40 lg:hidden" onClick={() => setOpen(false)}>
+        <div className="fixed inset-0 z-50 bg-black/40 min-[900px]:hidden" onClick={() => setOpen(false)}>
           <div
             className="absolute right-0 top-0 h-full w-72 bg-surface p-6 shadow-lift"
             onClick={(e) => e.stopPropagation()}

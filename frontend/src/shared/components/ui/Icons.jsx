@@ -2,14 +2,15 @@ import React from "react";
 
 export const Svg = ({ size = 20, ...p }) => (
   <svg
-    viewBox="0 0 24 24"
     width={size}
     height={size}
+    viewBox="0 0 24 24"
     fill="none"
     stroke="currentColor"
     strokeWidth="2"
     strokeLinecap="round"
     strokeLinejoin="round"
+    aria-hidden="true"
     {...p}
   />
 );
