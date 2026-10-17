@@ -95,7 +95,12 @@ export default function Footer() {
         </div>
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-6 text-sm text-ink-500 md:flex-row">
           <p>© {currentYear} LPPM Universitas Tiga Serangkai. All Rights Reserved.</p>
-          <p>Developed by IT Div TSU</p>
+          <div className="flex items-center gap-4">
+            <p>Developed by IT Div TSU</p>
+            <a href="/admin/login" className="text-xs text-white/30 hover:text-white/60 transition-colors" title="Masuk Portal Admin">
+              [Admin]
+            </a>
+          </div>
         </div>
       </div>
     </footer>
