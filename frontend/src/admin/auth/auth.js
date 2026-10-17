@@ -9,7 +9,7 @@
  * Lihat docs/api-contract.md untuk bentuk request/response sebenarnya.
  */
 
-import { useState, useEffect } from "react";
+import { useSyncExternalStore } from "react";
 
 const STORAGE_KEY = "lppm_admin_session";
 
@@ -23,21 +23,38 @@ const MOCK_USER = {
   role: "superadmin",
 };
 
+// Listener untuk subscribe perubahan auth
+let listeners = [];
+
+export function subscribeAuth(listener) {
+  listeners.push(listener);
+  return () => {
+    listeners = listeners.filter((l) => l !== listener);
+  };
+}
+
+function notifyAuth(user) {
+  listeners.forEach((listener) => listener(user));
+}
+
+// Store external untuk useSyncExternalStore
+let cachedUser = undefined;
+function getSnapshot() {
+  if (cachedUser === undefined) {
+    cachedUser = readStoredUser();
+  }
+  return cachedUser;
+}
+
+function getServerSnapshot() {
+  return null;
+}
+
 /**
  * Hook untuk memantau status autentikasi di seluruh aplikasi.
  */
 export function useAdminAuth() {
-  const [user, setUser] = useState(undefined);
-
-  useEffect(() => {
-    const checkAuth = async () => {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser || null);
-    };
-
-    checkAuth();
-    return subscribeAuth((u) => setUser(u || null));
-  }, []);
+  const user = useSyncExternalStore(subscribeAuth, getSnapshot, getServerSnapshot);
 
   return {
     user,
@@ -71,15 +88,15 @@ function readStoredUser() {
 
 function writeStoredUser(user) {
   // Tidak pernah menyimpan kata sandi atau token.
-  sessionStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      role: user.role,
-    })
-  );
+  const userData = {
+    id: user.id,
+    name: user.name,
+    email: user.email,
+    role: user.role,
+  };
+  sessionStorage.setItem(STORAGE_KEY, JSON.stringify(userData));
+  cachedUser = userData;
+  notifyAuth(userData);
 }
 
 /** Membuat error dengan bentuk menyerupai respons Laravel. */
@@ -135,10 +152,14 @@ export async function login(email, password) {
 /** Logout: hapus sesi mock. */
 export async function logout() {
   sessionStorage.removeItem(STORAGE_KEY);
+  cachedUser = null;
+  notifyAuth(null);
   return { success: true };
 }
 
 /** Ambil user yang sedang login, atau null. */
 export async function getCurrentUser() {
-  return readStoredUser();
+  const user = readStoredUser();
+  cachedUser = user;
+  return user;
 }
