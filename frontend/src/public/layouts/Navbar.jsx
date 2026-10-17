@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "@shared/components/ui/Icons.jsx";
+import logo from "@assets/logo-lppm-tsu.png";
 
 const links = [
   { label: "Beranda", to: "/" },
@@ -29,9 +30,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 border-b border-line bg-surface/95 backdrop-blur">
       <div className="mx-auto flex max-w-container items-center justify-between px-4 py-3 md:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-navy-800 text-gold-400 font-bold text-lg">
-            L
-          </div>
+          <img src={logo} alt="Logo LPPM TSU" className="h-10 w-auto" />
           <div className="hidden leading-tight sm:block">
             <div className="text-sm font-extrabold tracking-tight text-navy-800">
               LPPM
@@ -74,7 +73,11 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 to={item.to}
-                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${pathname === item.to ? "bg-navy-50 text-navy-800" : "text-ink-700 hover:bg-canvas"}`}
+                className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  pathname === item.to
+                    ? "bg-navy-50 text-navy-800"
+                    : "text-ink-700 hover:bg-canvas"
+                }`}
               >
                 {item.label}
               </Link>
@@ -133,7 +136,11 @@ export default function Navbar() {
                     key={item.label}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className={`rounded-md px-2 py-2 text-sm font-medium ${pathname === item.to ? "bg-navy-50 text-navy-800" : "text-ink-700 hover:bg-canvas"}`}
+                    className={`rounded-md px-2 py-2 text-sm font-medium ${
+                      pathname === item.to
+                        ? "bg-navy-50 text-navy-800"
+                        : "text-ink-700 hover:bg-canvas"
+                    }`}
                   >
                     {item.label}
                   </Link>

@@ -1,51 +1,40 @@
-# Design Diff Analysis
+# Perbedaan Desain (Design Diff) — LPPM TSU
 
-## General
-- **Logo**: Current app uses a text "L" logo; Design uses a graphic teal/orange logo.
-- **Color Palette**: Current app colors (navy-900: `#081F38`) are slightly darker/different than design estimates.
-- **Icons**: Current app uses custom SVG wrappers; Design allows Lucide-React.
+## 1. Global / Design Tokens
+- **Saat ini:** Menggunakan warna default Tailwind (slate/indigo/blue) dan font bawaan.
+- **Desain:** Menggunakan skema warna khusus LPPM TSU (Navy `#0B2C4D`, Orange `#F58220`, Teal `#2B7C8C`, Gold `#F2B01E`), font Inter, border radius `12px` untuk kartu, shadow halus `0 1px 3px rgba(0,0,0,0.1)`.
+- **Tingkat Menolok:** Tinggi.
 
-## Layout & Sections
+## 2. Top Utility Bar
+- **Saat ini:** Belum ada top utility bar di atas navbar.
+- **Desain:** Bar hitam/navy gelap di paling atas dengan info lokasi (Surakarta, Indonesia), email (`lppm@tsu.ac.id`), dan tautan "Login Admin".
+- **Tingkat Menolok:** Sedang.
 
-### Top Bar & Navbar
-- **Top Bar**: Current has "Login Admin" on right; Design has it too. Location dot is orange in current, matches design.
-- **Navbar**: 
-  - Current: Beranda, Layanan (Penelitian, Pengabdian, Kerjasama), Dokumen, Capaian, Kegiatan, Berita, Pengajuan.
-  - Design: Beranda, Profil, Penelitian, PKM, Publikasi, HKI, Dokumen, Agenda, Luaran, Mitra.
-  - **Action**: Update navbar links to match design.
+## 3. Navbar & Dropdown Layanan
+- **Saat ini:** Navbar standar tanpa dropdown yang lengkap dan styling kurang sesuai.
+- **Desain:** Logo LPPM TSU di kiri, menu navigasi (Beranda, Profil, Layanan dengan dropdown [Penelitian, Pengabdian, Kerjasama], Dokumen, Capaian, Kegiatan), tombol "Login Admin" atau "Layanan".
+- **Tingkat Menolok:** Tinggi.
 
-### Home Page
-- **Hero**: 
-  - Current: Split layout with text on left and Quick Access on right.
-  - Design: Split layout with text on left and Quick Access on right. Titles match.
-- **Stats**:
-  - Current: 6 cards. Icons and labels need alignment with mockup (Penelitian Aktif, PKM Aktif, Publikasi Ilmiah, HKI Terdaftar, Mitra Strategis, Desa Binaan).
-- **Layanan (Services)**:
-  - Current: ServiceCard layout is similar. Labels/titles need adjustment.
-- **News**: 
-  - Current: Grid of 3 cards.
-  - Design: Grid of 4 cards (3 upper, 1 lower wide). Highlighted card has orange border.
-- **Events & Collaborators**:
-  - Current: Events on left, Collaborators on right.
-  - Design: Events on left, Partnerships/Villages on right.
+## 4. Beranda (Homepage)
+- **Saat ini:** Layout beranda masih sederhana/placeholder.
+- **Desain:**
+    - Hero section dengan background navy, eyebrow orange, judul besar, 2 tombol CTA, dan Quick Access Portal di sisi kanan.
+    - Statistik section dengan 6 kartu angka capaian (42 Penelitian, 28 PKM, 86 Publikasi, 19 HKI, 34 Mitra, 12 Desa Binaan).
+    - Layanan Utama section dengan grid kartu program prioritas.
+    - Berita, Agenda, dan Kolaborasi section.
+- **Tingkat Menolok:** Tinggi.
 
-### Footer
-- **Layout**: 3 columns.
-- **Content**: 
-  - Column 1: Identity/Description.
-  - Column 2: "Menu Cepat" (Quick links).
-  - Column 3: "Kontak" (Map, Mail, Phone).
-- **Bottom**: Copyright line + Admin login link.
+## 5. Pusat Dokumen (Unduhan)
+- **Saat ini:** Belum ada atau belum sesuai struktur `image-4.png`.
+- **Desain:** Hero navy dengan badge "POSTINGAN UNGGULAN", search & filter bar menumpuk, grid kartu dokumen dengan metadata format file, tahun, dan tombol download.
+- **Tingkat Menolok:** Tinggi.
 
-### Documents Page
-- **Search**: Needs "Semua Kategori" dropdown filter.
-- **Cards**: Format (`PDF • 2026`) and Download button style need sync.
+## 6. Dashboard Capaian & Analitik
+- **Saat ini:** Belum ada atau belum sesuai `attachment-2.png` & `image-9.png`.
+- **Desain:** 6 kartu KPI capaian, luaran terbaru grid, dan section analitik gelap (PULSE LPPM) dengan chart batang.
+- **Tingkat Menolok:** Tinggi.
 
-## Summary of Changes Needed
-1. Update `tailwind.config.js` with precise colors.
-2. Replace logo with `logo-lppm-tsu.png`.
-3. Update `UtilityBar` and `Navbar` links.
-4. Refactor `Home.jsx` sections (Stats labels, News grid, Partnerships).
-5. Update `Footer.jsx` content.
-6. Update `Documents.jsx` filters and card layout.
-7. Implement `Dashboard` kinerja prodi analytics.
+## 7. Footer
+- **Saat ini:** Footer sederhana.
+- **Desain:** Background navy 3 kolom (Brand info, Menu Cepat, Kontak), garis pembatas tipis, dan bar copyright.
+- **Tingkat Menolok:** Sedang.

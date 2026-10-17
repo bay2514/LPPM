@@ -1,4 +1,5 @@
 import { MapPin, Mail, Phone } from "@shared/components/ui/Icons.jsx";
+import logo from "@assets/logo-lppm-tsu.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -9,9 +10,7 @@ export default function Footer() {
         <div className="grid gap-10 md:grid-cols-3">
           <div>
             <div className="mb-6 flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gold-400 text-navy-800 font-bold text-lg">
-                L
-              </div>
+              <img src={logo} alt="Logo LPPM TSU" className="h-10 w-auto bg-white rounded-lg p-1" />
               <div className="text-lg font-extrabold tracking-tight">LPPM</div>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-ink-500">
@@ -20,7 +19,6 @@ export default function Footer() {
               berbasis dampak bagi masyarakat luas.
             </p>
             <div className="flex gap-4">
-              {/* Social placeholders */}
               <a href="#" className="rounded-md bg-navy-700 p-2 hover:bg-navy-600">
                 <span className="sr-only">Facebook</span>
                 <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
