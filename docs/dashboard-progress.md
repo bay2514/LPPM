@@ -1,0 +1,4 @@
+- [x] Tahap 1 - Data, rute, menu, kartu KPI
+- [x] Tahap 2 - Grafik (SVG dan CSS sendiri, TANPA dependensi baru)
+- [ ] Tahap 3 - Filter, tabel, unduh CSV
+- [ ] Tahap 4 - Bisa diedit admin
