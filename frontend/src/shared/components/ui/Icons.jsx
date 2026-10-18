@@ -78,6 +78,12 @@ export const ChevronDown = (p) => (
   </Svg>
 );
 
+export const ChevronUp = (p) => (
+  <Svg {...p}>
+    <path d="m6 15 6-6 6 6" />
+  </Svg>
+);
+
 export const ChevronRight = (p) => (
   <Svg {...p}>
     <path d="m9 6 6 6-6 6" />

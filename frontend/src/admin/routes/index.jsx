@@ -16,6 +16,7 @@ const Events = lazy(() => import("@admin/pages/events/EventList.jsx"));
 const Documents = lazy(() => import("@admin/pages/documents/DocumentList.jsx"));
 const Collaborators = lazy(() => import("@admin/pages/collaborators/CollaboratorList.jsx"));
 const Profile = lazy(() => import("@admin/pages/profile/ProfileEdit.jsx"));
+const ContentManagerPage = lazy(() => import("@admin/pages/content/ContentManagerPage.jsx"));
 
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-surface">
@@ -46,10 +47,10 @@ export default function AdminRoutes() {
           }
         >
           <Route index element={<Dashboard />} />
-          <Route path="berita" element={<News />} />
+          <Route path="berita" element={<ContentManagerPage />} />
+          <Route path="mitra" element={<ContentManagerPage />} />
           <Route path="kegiatan" element={<Events />} />
           <Route path="dokumen" element={<Documents />} />
-          <Route path="mitra" element={<Collaborators />} />
           <Route path="profil" element={<Profile />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Route>
