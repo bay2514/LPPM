@@ -370,6 +370,38 @@ export const Image = (p) => (
   </Svg>
 );
 
+export const Edit3 = (p) => (
+  <Svg {...p}>
+    <path d="M12 20h9" />
+    <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+  </Svg>
+);
+
+export const RotateCcw = (p) => (
+  <Svg {...p}>
+    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+    <path d="M3 3v5h5" />
+  </Svg>
+);
+
+export const BarChart3 = (p) => (
+  <Svg {...p}>
+    <path d="M3 3v18h18" />
+    <path d="M7 16v-4" />
+    <path d="M11 16V8" />
+    <path d="M15 16v-6" />
+    <path d="M19 16v-2" />
+  </Svg>
+);
+
+export const Save = (p) => (
+  <Svg {...p}>
+    <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z" />
+    <polyline points="17 21 17 13 7 13 7 21" />
+    <polyline points="7 3 7 8 15 8" />
+  </Svg>
+);
+
 export const Bell = (p) => (
   <Svg {...p}>
     <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />

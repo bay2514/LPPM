@@ -14,6 +14,8 @@ const Dashboard = lazy(() => import("@admin/pages/Dashboard.jsx"));
 const Profile = lazy(() => import("@admin/pages/profile/ProfileEdit.jsx"));
 const ContentManagerPage = lazy(() => import("@admin/pages/content/ContentManagerPage.jsx"));
 
+const DashboardSettingsPage = lazy(() => import("@admin/pages/dashboard/DashboardSettingsPage.jsx"));
+
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-surface">
     <div className="w-8 h-8 border-4 border-navy-600 border-t-transparent rounded-full animate-spin" />
@@ -48,6 +50,7 @@ export default function AdminRoutes() {
           <Route path="kegiatan" element={<ContentManagerPage />} />
           <Route path="dokumen" element={<ContentManagerPage />} />
           <Route path="profil" element={<Profile />} />
+          <Route path="dashboard-config" element={<DashboardSettingsPage />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Route>
       </Routes>
