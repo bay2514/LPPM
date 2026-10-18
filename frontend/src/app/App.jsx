@@ -4,7 +4,8 @@ import Layout from "@public/layouts/Layout.jsx";
 import Home from "@public/pages/Home.jsx";
 import Documents from "@public/pages/Documents.jsx";
 import DocumentDetail from "@public/pages/DocumentDetail.jsx";
-import DashboardCapaian from "@public/pages/DashboardCapaian.jsx";
+import Dashboard from "@public/pages/Dashboard.jsx";
+import Luaran from "@public/pages/Luaran.jsx";
 import Pengajuan from "@public/pages/Pengajuan.jsx";
 import Berita from "@public/pages/Berita.jsx";
 import Kegiatan from "@public/pages/Kegiatan.jsx";
@@ -32,8 +33,8 @@ export default function App() {
             <Route path="/hki" element={<HKI />} />
             <Route path="/dokumen" element={<Documents />} />
             <Route path="/dokumen/:slug" element={<DocumentDetail />} />
-            <Route path="/dashboard" element={<DashboardCapaian />} />
-            <Route path="/capaian" element={<Navigate to="/dashboard" replace />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/luaran" element={<Luaran />} />
             <Route path="/berita" element={<Berita />} />
             <Route path="/kegiatan" element={<Kegiatan />} />
             <Route path="/kerjasama" element={<Kerjasama />} />
