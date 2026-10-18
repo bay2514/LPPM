@@ -148,13 +148,13 @@ export default function Dashboard() {
                   </div>
                   <Link
                     to={card.link}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg hover:bg-canvas text-gray-400 hover:text-navy-900"
+                    className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg hover:bg-canvas text-ink-500 hover:text-navy-900"
                     title="Buka Menu"
                   >
                     <ChevronRight size={18} />
                   </Link>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-500">{card.title}</p>
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-700">{card.title}</p>
                 <div className="flex items-baseline gap-2 mt-1">
                   <h3 className="text-3xl font-extrabold text-navy-950 tracking-tight">{card.value}</h3>
                   <span className="text-[10px] font-bold text-success flex items-center">
@@ -163,7 +163,7 @@ export default function Dashboard() {
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-line/60 flex items-center justify-between text-xs text-gray-500">
+              <div className="mt-4 pt-3 border-t border-line/60 flex items-center justify-between text-xs text-ink-700">
                 <span className="truncate">{card.description}</span>
                 <Link to={card.link} className="font-semibold text-orange-600 hover:underline shrink-0 ml-2">
                   Kelola
@@ -186,7 +186,7 @@ export default function Dashboard() {
                 </div>
                 <div>
                   <h3 className="text-base font-bold text-navy-900">Pembaruan Berita Terakhir</h3>
-                  <p className="text-xs text-gray-500">Daftar artikel dan publikasi terkini</p>
+                  <p className="text-xs text-ink-700">Daftar artikel dan publikasi terkini</p>
                 </div>
               </div>
               <Link
@@ -207,7 +207,7 @@ export default function Dashboard() {
                         <span className="inline-block px-2 py-0.5 text-[10px] font-bold rounded bg-navy-50 text-navy-700 border border-navy-100">
                           {item.tag || "Berita"}
                         </span>
-                        <span className="text-[11px] text-gray-400">
+                        <span className="text-[11px] text-ink-500">
                           {item.date || "Baru saja"}
                         </span>
                       </div>
@@ -226,7 +226,7 @@ export default function Dashboard() {
                       </span>
                       <Link
                         to="/admin/berita"
-                        className="text-xs font-semibold text-gray-400 hover:text-navy-900 p-1"
+                        className="text-xs font-semibold text-ink-500 hover:text-navy-900 p-1"
                       >
                         Edit
                       </Link>
@@ -234,7 +234,7 @@ export default function Dashboard() {
                   </div>
                 ))
               ) : (
-                <div className="p-8 text-center text-gray-400 text-sm">
+                <div className="p-8 text-center text-ink-500 text-sm">
                   Belum ada data berita. Mulai dengan membuat artikel baru.
                 </div>
               )}
@@ -312,12 +312,12 @@ export default function Dashboard() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <h4 className="text-xs font-bold text-navy-900 truncate">{evt.title}</h4>
-                      <p className="text-[11px] text-gray-500 mt-0.5 truncate">{evt.location || "Kampus TSU / Daring"}</p>
+                      <p className="text-[11px] text-ink-700 mt-0.5 truncate">{evt.location || "Kampus TSU / Daring"}</p>
                     </div>
                   </div>
                 ))
               ) : (
-                <div className="text-center py-6 text-xs text-gray-400">
+                <div className="text-center py-6 text-xs text-ink-500">
                   Tidak ada agenda mendatang terdaftar.
                 </div>
               )}
@@ -329,15 +329,15 @@ export default function Dashboard() {
             <h3 className="text-xs font-bold uppercase tracking-widest text-orange-400 mb-3">Status Arsitektur</h3>
             <div className="space-y-3 text-xs">
               <div className="flex items-center justify-between pb-2 border-b border-navy-800">
-                <span className="text-gray-400">Mode Penyimpanan</span>
+                <span className="text-ink-500">Mode Penyimpanan</span>
                 <span className="font-semibold text-white bg-navy-800 px-2 py-0.5 rounded">Mock Storage (Local)</span>
               </div>
               <div className="flex items-center justify-between pb-2 border-b border-navy-800">
-                <span className="text-gray-400">Pola Arsitektur</span>
+                <span className="text-ink-500">Pola Arsitektur</span>
                 <span className="font-semibold text-white bg-navy-800 px-2 py-0.5 rounded">Schema-Driven v1</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-gray-400">Kesiapan API</span>
+                <span className="text-ink-500">Kesiapan API</span>
                 <span className="font-semibold text-success flex items-center gap-1">
                   <CheckCircle2 size={12} /> REST Compliant
                 </span>

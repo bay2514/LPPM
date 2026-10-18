@@ -48,10 +48,10 @@ function NavList({ onNavigate }) {
             className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 min-h-[44px] ${
               active
                 ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
-                : "text-gray-400 hover:bg-navy-800 hover:text-white"
+                : "text-ink-500 hover:bg-navy-800 hover:text-white"
             }`}
           >
-            <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-white" : "text-gray-500 group-hover:text-white"}`} />
+            <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-white" : "text-ink-700 group-hover:text-white"}`} />
             <span className="whitespace-nowrap">{item.label}</span>
             {active && (
               <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
@@ -70,14 +70,14 @@ function SidebarFooter() {
         href="/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-gray-400 hover:bg-navy-800 hover:text-white transition-colors group"
+        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-ink-500 hover:bg-navy-800 hover:text-white transition-colors group"
       >
         <div className="w-8 h-8 rounded bg-navy-800 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
           <ExternalLink size={16} />
         </div>
         <div className="flex flex-col">
           <span>Website Publik</span>
-          <span className="text-[10px] font-normal text-gray-500">Buka di tab baru</span>
+          <span className="text-[10px] font-normal text-ink-700">Buka di tab baru</span>
         </div>
       </a>
     </div>
@@ -134,7 +134,7 @@ export default function AdminLayout() {
             </button>
             
             <div className="hidden md:flex items-center bg-canvas rounded-lg px-3 py-1.5 w-64 border border-line focus-within:border-orange-500 transition-colors">
-              <Search size={16} className="text-gray-400 mr-2" />
+              <Search size={16} className="text-ink-500 mr-2" />
               <input 
                 type="text" 
                 placeholder="Cari fitur..." 
@@ -145,7 +145,7 @@ export default function AdminLayout() {
 
           <div className="flex items-center gap-4 shrink-0">
             <div className="hidden sm:flex items-center gap-2">
-              <button className="w-10 h-10 rounded-lg border border-line flex items-center justify-center text-gray-500 hover:bg-canvas transition-colors relative">
+              <button className="w-10 h-10 rounded-lg border border-line flex items-center justify-center text-ink-700 hover:bg-canvas transition-colors relative">
                 <Bell size={20} />
                 <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-orange-500 rounded-full border-2 border-white"></span>
               </button>
@@ -157,7 +157,7 @@ export default function AdminLayout() {
               <div className="flex items-center gap-3 py-1.5 px-2 rounded-lg hover:bg-canvas transition-colors cursor-pointer group">
                 <div className="text-right hidden sm:block">
                   <p className="text-sm font-bold text-navy-900 leading-none">{user?.name || "Administrator"}</p>
-                  <p className="text-[10px] text-gray-500 mt-1 leading-none font-medium uppercase tracking-wider">{user?.role || "Super Admin"}</p>
+                  <p className="text-[10px] text-ink-700 mt-1 leading-none font-medium uppercase tracking-wider">{user?.role || "Super Admin"}</p>
                 </div>
                 <div className="w-10 h-10 rounded-xl bg-navy-50 text-navy-700 flex items-center justify-center font-bold text-sm border border-navy-100 group-hover:border-navy-300 transition-colors">
                   {user?.name?.[0] || <User size={20} />}
@@ -182,7 +182,7 @@ export default function AdminLayout() {
         </main>
 
         <footer className="py-4 px-8 bg-white border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-xs text-gray-500 font-medium">
+          <p className="text-xs text-ink-700 font-medium">
             &copy; 2026 LPPM Universitas Tiga Serangkai. All rights reserved.
           </p>
           <div className="flex items-center gap-4">

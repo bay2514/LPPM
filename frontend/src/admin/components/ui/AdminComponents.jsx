@@ -19,8 +19,8 @@ export const StatCard = ({ title, value, icon, linkText, onClick, color }) => {
         </button>
       </div>
       <div>
-        <p className="text-sm text-gray-500 font-medium">{title}</p>
-        <p className="text-2xl font-bold text-navy-900 mt-1">{value}</p>
+        <p className="text-sm text-ink-700 font-semibold">{title}</p>
+        <p className="text-3xl font-extrabold text-navy-950 mt-1">{value}</p>
       </div>
     </div>
   );

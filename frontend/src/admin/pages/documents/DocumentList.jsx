@@ -210,8 +210,8 @@ export default function AdminDokumen() {
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Kelola Dokumen & SOP</h2>
-          <p className="text-sm text-gray-500">Total {meta.total} dokumen terdaftar</p>
+          <h2 className="text-xl font-bold text-navy-950">Kelola Dokumen & SOP</h2>
+          <p className="text-sm text-ink-700">Total {meta.total} dokumen terdaftar</p>
         </div>
         <Button onClick={handleOpenCreate}>
           <Plus className="w-4 h-4 mr-1.5" />
@@ -225,7 +225,7 @@ export default function AdminDokumen() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Cari dokumen..."
-            icon={<Search className="w-4 h-4 text-gray-400" />}
+            icon={<Search className="w-4 h-4 text-ink-500" />}
           />
         </div>
         <div className="flex flex-wrap gap-2">
@@ -260,7 +260,7 @@ export default function AdminDokumen() {
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 text-left text-sm">
-            <thead className="bg-gray-50 text-gray-600 font-semibold">
+            <thead className="bg-gray-50 text-ink-700 font-semibold">
               <tr>
                 <th className="px-6 py-3.5">Dokumen</th>
                 <th className="px-6 py-3.5">Kategori</th>
@@ -272,13 +272,13 @@ export default function AdminDokumen() {
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-8 text-center text-ink-500">
                     Memuat data...
                   </td>
                 </tr>
               ) : items.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-8 text-center text-ink-500">
                     Tidak ada dokumen ditemukan.
                   </td>
                 </tr>
@@ -291,15 +291,15 @@ export default function AdminDokumen() {
                           <FileIcon className="w-6 h-6" />
                         </div>
                         <div className="min-w-0">
-                          <p className="font-semibold text-gray-900 line-clamp-1">{item.title}</p>
-                          <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{item.description}</p>
+                          <p className="font-semibold text-navy-950 line-clamp-1">{item.title}</p>
+                          <p className="text-xs text-ink-700 line-clamp-1 mt-0.5">{item.description}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-ink-700">
                       <Badge variant="neutral">{item.category || "Umum"}</Badge>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-500 text-xs">
+                    <td className="px-6 py-4 whitespace-nowrap text-ink-700 text-xs">
                       {item.year || "-"}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -343,7 +343,7 @@ export default function AdminDokumen() {
 
         {meta.lastPage > 1 && (
           <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 bg-gray-50/50">
-            <span className="text-xs text-gray-500">
+            <span className="text-xs text-ink-700">
               Halaman {meta.currentPage} dari {meta.lastPage}
             </span>
             <div className="flex items-center gap-2">
@@ -383,7 +383,7 @@ export default function AdminDokumen() {
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Judul Dokumen *</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Judul Dokumen *</label>
             <Input
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
@@ -394,7 +394,7 @@ export default function AdminDokumen() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Kategori *</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Kategori *</label>
               <Select
                 value={formData.category}
                 onChange={(e) => handleInputChange("category", e.target.value)}
@@ -409,7 +409,7 @@ export default function AdminDokumen() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Tahun *</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Tahun *</label>
               <Input
                 type="number"
                 value={formData.year}
@@ -420,7 +420,7 @@ export default function AdminDokumen() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Status</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Status</label>
             <Select
               value={formData.status}
               onChange={(e) => handleInputChange("status", e.target.value)}
@@ -432,7 +432,7 @@ export default function AdminDokumen() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
+            <label className="block text-xs font-semibold text-navy-900 mb-1">
               Upload File Dokumen (PDF, JPG, PNG, WEBP - Maks. 2MB) *
             </label>
             <div className="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-300 border-dashed rounded-lg hover:bg-gray-50 transition-colors">
@@ -470,10 +470,10 @@ export default function AdminDokumen() {
                   </div>
                 ) : (
                   <>
-                    <div className="mx-auto w-12 h-12 text-gray-400">
+                    <div className="mx-auto w-12 h-12 text-ink-500">
                       <FileIcon className="w-12 h-12" />
                     </div>
-                    <div className="flex text-sm text-gray-600 justify-center">
+                    <div className="flex text-sm text-ink-700 justify-center">
                       <label className="relative cursor-pointer rounded-md font-medium text-blue-600 hover:text-blue-500 focus-within:outline-none">
                         <span>Unggah file</span>
                         <input
@@ -485,7 +485,7 @@ export default function AdminDokumen() {
                       </label>
                       <p className="pl-1">atau tarik dan lepas</p>
                     </div>
-                    <p className="text-xs text-gray-500">PDF, JPG, PNG, WEBP hingga 2MB</p>
+                    <p className="text-xs text-ink-700">PDF, JPG, PNG, WEBP hingga 2MB</p>
                   </>
                 )}
               </div>
@@ -494,7 +494,7 @@ export default function AdminDokumen() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Deskripsi (Opsional)</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Deskripsi (Opsional)</label>
             <Textarea
               rows={3}
               value={formData.description}

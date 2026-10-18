@@ -192,8 +192,8 @@ export default function AdminKegiatan() {
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Kelola Kegiatan & Agenda</h2>
-          <p className="text-sm text-gray-500">Total {meta.total} kegiatan terdaftar</p>
+          <h2 className="text-xl font-bold text-navy-950">Kelola Kegiatan & Agenda</h2>
+          <p className="text-sm text-ink-700">Total {meta.total} kegiatan terdaftar</p>
         </div>
         <Button onClick={handleOpenCreate}>
           <Plus className="w-4 h-4 mr-1.5" />
@@ -208,7 +208,7 @@ export default function AdminKegiatan() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Cari kegiatan..."
-            icon={<Search className="w-4 h-4 text-gray-400" />}
+            icon={<Search className="w-4 h-4 text-ink-500" />}
           />
         </div>
         <div className="w-full sm:w-48">
@@ -228,7 +228,7 @@ export default function AdminKegiatan() {
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 text-left text-sm">
-            <thead className="bg-gray-50 text-gray-600 font-semibold">
+            <thead className="bg-canvas text-ink-700 font-semibold">
               <tr>
                 <th className="px-6 py-3.5">Kegiatan</th>
                 <th className="px-6 py-3.5">Tanggal & Waktu</th>
@@ -239,39 +239,39 @@ export default function AdminKegiatan() {
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={4} className="px-6 py-8 text-center text-ink-500">
                     Memuat data...
                   </td>
                 </tr>
               ) : items.length === 0 ? (
                 <tr>
-                  <td colSpan={4} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={4} className="px-6 py-8 text-center text-ink-500">
                     Tidak ada kegiatan ditemukan.
                   </td>
                 </tr>
               ) : (
                 items.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/80 transition-colors">
+                  <tr key={item.id} className="hover:bg-canvas/80 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {item.image ? (
                           <img
                             src={item.image}
                             alt=""
-                            className="w-12 h-12 rounded object-cover flex-shrink-0 bg-gray-100"
+                            className="w-12 h-12 rounded object-cover flex-shrink-0 bg-navy-50"
                           />
                         ) : (
-                          <div className="w-12 h-12 rounded bg-gray-100 flex items-center justify-center text-gray-400 flex-shrink-0">
+                          <div className="w-12 h-12 rounded bg-navy-50 flex items-center justify-center text-ink-500 flex-shrink-0">
                             <ImageIcon className="w-5 h-5" />
                           </div>
                         )}
                         <div className="min-w-0">
-                          <p className="font-semibold text-gray-900 line-clamp-1">{item.title}</p>
-                          <p className="text-xs text-gray-500 line-clamp-1 mt-0.5">{item.location}</p>
+                          <p className="font-semibold text-navy-950 line-clamp-1">{item.title}</p>
+                          <p className="text-xs text-ink-700 line-clamp-1 mt-0.5">{item.location}</p>
                         </div>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-600 text-xs">
+                    <td className="px-6 py-4 whitespace-nowrap text-ink-700 text-xs">
                       {item.date} {item.time ? `| ${item.time}` : ""}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -307,8 +307,8 @@ export default function AdminKegiatan() {
 
         {/* Pagination */}
         {meta.lastPage > 1 && (
-          <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 bg-gray-50/50">
-            <span className="text-xs text-gray-500">
+          <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 bg-canvas/50">
+            <span className="text-xs text-ink-700">
               Halaman {meta.currentPage} dari {meta.lastPage}
             </span>
             <div className="flex items-center gap-2">
@@ -349,7 +349,7 @@ export default function AdminKegiatan() {
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Judul Kegiatan *</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Judul Kegiatan *</label>
             <Input
               value={formData.title}
               onChange={(e) => handleInputChange("title", e.target.value)}
@@ -360,7 +360,7 @@ export default function AdminKegiatan() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Tanggal *</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Tanggal *</label>
               <Input
                 type="date"
                 value={formData.date}
@@ -369,7 +369,7 @@ export default function AdminKegiatan() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Waktu</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Waktu</label>
               <Input
                 type="time"
                 value={formData.time}
@@ -379,7 +379,7 @@ export default function AdminKegiatan() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Lokasi *</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Lokasi *</label>
             <Input
               value={formData.location}
               onChange={(e) => handleInputChange("location", e.target.value)}
@@ -389,7 +389,7 @@ export default function AdminKegiatan() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Narasumber / Pembicara</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Narasumber / Pembicara</label>
             <Input
               value={formData.speaker}
               onChange={(e) => handleInputChange("speaker", e.target.value)}
@@ -398,7 +398,7 @@ export default function AdminKegiatan() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Status</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Status</label>
             <Select
               value={formData.status}
               onChange={(e) => handleInputChange("status", e.target.value)}
@@ -411,10 +411,10 @@ export default function AdminKegiatan() {
 
           {/* Gambar */}
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Poster (Maks. 2MB, JPG/PNG)</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Poster (Maks. 2MB, JPG/PNG)</label>
             <div className="flex items-center gap-4">
               {formData.image ? (
-                <div className="relative w-24 h-16 rounded border overflow-hidden bg-gray-50 flex-shrink-0">
+                <div className="relative w-24 h-16 rounded border overflow-hidden bg-canvas flex-shrink-0">
                   <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                   <button
                     type="button"
@@ -425,7 +425,7 @@ export default function AdminKegiatan() {
                   </button>
                 </div>
               ) : (
-                <div className="w-24 h-16 rounded border border-dashed border-gray-300 flex items-center justify-center text-gray-400 flex-shrink-0 bg-gray-50">
+                <div className="w-24 h-16 rounded border border-dashed border-gray-300 flex items-center justify-center text-ink-500 flex-shrink-0 bg-canvas">
                   <ImageIcon className="w-6 h-6" />
                 </div>
               )}
@@ -434,7 +434,7 @@ export default function AdminKegiatan() {
                   type="file"
                   accept="image/jpeg,image/png,image/webp"
                   onChange={handleImageUpload}
-                  className="text-xs text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                  className="text-xs text-ink-700 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
                 />
                 {formErrors.image && <p className="text-xs text-red-500 mt-1">{formErrors.image}</p>}
               </div>
@@ -442,7 +442,7 @@ export default function AdminKegiatan() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Deskripsi</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Deskripsi</label>
             <Textarea
               rows={4}
               value={formData.description}

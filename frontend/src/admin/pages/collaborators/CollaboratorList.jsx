@@ -189,8 +189,8 @@ export default function AdminCollaborators() {
 
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Kelola Mitra & Kerjasama</h2>
-          <p className="text-sm text-gray-500">Total {meta.total} mitra terdaftar</p>
+          <h2 className="text-xl font-bold text-navy-950">Kelola Mitra & Kerjasama</h2>
+          <p className="text-sm text-ink-700">Total {meta.total} mitra terdaftar</p>
         </div>
         <Button onClick={handleOpenCreate}>
           <Plus className="w-4 h-4 mr-1.5" />
@@ -204,7 +204,7 @@ export default function AdminCollaborators() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Cari mitra berdasarkan nama..."
-            icon={<Search className="w-4 h-4 text-gray-400" />}
+            icon={<Search className="w-4 h-4 text-ink-500" />}
           />
         </div>
         <div className="w-full sm:w-48">
@@ -225,7 +225,7 @@ export default function AdminCollaborators() {
       <div className="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
           <table className="min-w-full divide-y divide-gray-200 text-left text-sm">
-            <thead className="bg-gray-50 text-gray-600 font-semibold">
+            <thead className="bg-canvas text-ink-700 font-semibold">
               <tr>
                 <th className="px-6 py-3.5">Nama Mitra</th>
                 <th className="px-6 py-3.5">Kategori</th>
@@ -237,19 +237,19 @@ export default function AdminCollaborators() {
             <tbody className="divide-y divide-gray-100">
               {loading ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-8 text-center text-ink-500">
                     Memuat data...
                   </td>
                 </tr>
               ) : items.length === 0 ? (
                 <tr>
-                  <td colSpan={5} className="px-6 py-8 text-center text-gray-400">
+                  <td colSpan={5} className="px-6 py-8 text-center text-ink-500">
                     Tidak ada mitra ditemukan.
                   </td>
                 </tr>
               ) : (
                 items.map((item) => (
-                  <tr key={item.id} className="hover:bg-gray-50/80 transition-colors">
+                  <tr key={item.id} className="hover:bg-canvas/80 transition-colors">
                     <td className="px-6 py-4">
                       <div className="flex items-center gap-3">
                         {item.logo ? (
@@ -259,14 +259,14 @@ export default function AdminCollaborators() {
                             className="w-10 h-10 rounded-lg object-contain p-1 border bg-white flex-shrink-0"
                           />
                         ) : (
-                          <div className="w-10 h-10 rounded-lg bg-gray-100 flex items-center justify-center text-gray-400 flex-shrink-0">
+                          <div className="w-10 h-10 rounded-lg bg-navy-50 flex items-center justify-center text-ink-500 flex-shrink-0">
                             <Building2 className="w-5 h-5" />
                           </div>
                         )}
-                        <span className="font-semibold text-gray-900">{item.name}</span>
+                        <span className="font-semibold text-navy-950">{item.name}</span>
                       </div>
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-gray-600">
+                    <td className="px-6 py-4 whitespace-nowrap text-ink-700">
                       <Badge variant="neutral">{item.category}</Badge>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-blue-600 hover:underline text-xs">
@@ -275,7 +275,7 @@ export default function AdminCollaborators() {
                           {item.website}
                         </a>
                       ) : (
-                        <span className="text-gray-400 font-normal">-</span>
+                        <span className="text-ink-500 font-normal">-</span>
                       )}
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap">
@@ -310,8 +310,8 @@ export default function AdminCollaborators() {
         </div>
 
         {meta.lastPage > 1 && (
-          <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 bg-gray-50/50">
-            <span className="text-xs text-gray-500">
+          <div className="flex items-center justify-between px-6 py-3 border-t border-gray-100 bg-canvas/50">
+            <span className="text-xs text-ink-700">
               Halaman {meta.currentPage} dari {meta.lastPage}
             </span>
             <div className="flex items-center gap-2">
@@ -351,7 +351,7 @@ export default function AdminCollaborators() {
           )}
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Nama Instansi / Mitra *</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Nama Instansi / Mitra *</label>
             <Input
               value={formData.name}
               onChange={(e) => handleInputChange("name", e.target.value)}
@@ -362,7 +362,7 @@ export default function AdminCollaborators() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Kategori *</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Kategori *</label>
               <Select
                 value={formData.category}
                 onChange={(e) => handleInputChange("category", e.target.value)}
@@ -376,7 +376,7 @@ export default function AdminCollaborators() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Status</label>
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Status</label>
               <Select
                 value={formData.status}
                 onChange={(e) => handleInputChange("status", e.target.value)}
@@ -389,7 +389,7 @@ export default function AdminCollaborators() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Tautan Website (URL)</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Tautan Website (URL)</label>
             <Input
               value={formData.website}
               onChange={(e) => handleInputChange("website", e.target.value)}
@@ -398,7 +398,7 @@ export default function AdminCollaborators() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Logo Instansi (Maks. 2MB)</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Logo Instansi (Maks. 2MB)</label>
             <div className="flex items-center gap-4">
               {formData.logo ? (
                 <div className="relative w-20 h-20 rounded border overflow-hidden bg-white p-1 flex-shrink-0 flex items-center justify-center">
@@ -412,7 +412,7 @@ export default function AdminCollaborators() {
                   </button>
                 </div>
               ) : (
-                <div className="w-20 h-20 rounded border border-dashed border-gray-300 flex items-center justify-center text-gray-400 flex-shrink-0 bg-gray-50">
+                <div className="w-20 h-20 rounded border border-dashed border-gray-300 flex items-center justify-center text-ink-500 flex-shrink-0 bg-canvas">
                   <ImageIcon className="w-6 h-6" />
                 </div>
               )}
@@ -421,7 +421,7 @@ export default function AdminCollaborators() {
                   type="file"
                   accept="image/jpeg,image/png,image/webp,image/svg+xml"
                   onChange={handleLogoUpload}
-                  className="text-xs text-gray-500 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
+                  className="text-xs text-ink-700 file:mr-2 file:py-1.5 file:px-3 file:rounded-md file:border-0 file:text-xs file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 cursor-pointer"
                 />
                 {formErrors.logo && <p className="text-xs text-red-500 mt-1">{formErrors.logo}</p>}
               </div>

@@ -109,7 +109,7 @@ export default function AdminProfile() {
 
   if (loading) {
     return (
-      <div className="bg-white p-8 rounded-xl border border-gray-200 text-center text-gray-400">
+      <div className="bg-white p-8 rounded-xl border border-gray-200 text-center text-ink-500">
         Memuat data profil...
       </div>
     );
@@ -130,8 +130,8 @@ export default function AdminProfile() {
 
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-gray-900">Kelola Profil Lembaga & Kontak</h2>
-          <p className="text-sm text-gray-500">
+          <h2 className="text-xl font-bold text-navy-950">Kelola Profil Lembaga & Kontak</h2>
+          <p className="text-sm text-ink-700">
             Perbarui deskripsi, visi-misi, serta informasi kontak yang tampil di website publik
           </p>
         </div>
@@ -147,10 +147,10 @@ export default function AdminProfile() {
 
         {/* Informasi Utama */}
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-gray-900 border-b pb-2">Informasi Umum</h3>
+          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Informasi Umum</h3>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
+            <label className="block text-xs font-semibold text-navy-900 mb-1">
               Nama Lembaga / Unit *
             </label>
             <Input
@@ -161,7 +161,7 @@ export default function AdminProfile() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
+            <label className="block text-xs font-semibold text-navy-900 mb-1">
               Deskripsi Singkat LPPM *
             </label>
             <Textarea
@@ -176,10 +176,10 @@ export default function AdminProfile() {
 
         {/* Visi & Misi */}
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-gray-900 border-b pb-2">Visi & Misi</h3>
+          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Visi & Misi</h3>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
+            <label className="block text-xs font-semibold text-navy-900 mb-1">
               Visi LPPM *
             </label>
             <Textarea
@@ -192,7 +192,7 @@ export default function AdminProfile() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">
+            <label className="block text-xs font-semibold text-navy-900 mb-1">
               Misi LPPM (Satu poin per baris)
             </label>
             <Textarea
@@ -206,11 +206,11 @@ export default function AdminProfile() {
 
         {/* Informasi Kontak & Alamat */}
         <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-gray-900 border-b pb-2">Kontak & Lokasi</h3>
+          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Kontak & Lokasi</h3>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">
+              <label className="block text-xs font-semibold text-navy-900 mb-1">
                 Email Resmi *
               </label>
               <Input
@@ -221,7 +221,7 @@ export default function AdminProfile() {
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">
+              <label className="block text-xs font-semibold text-navy-900 mb-1">
                 Nomor Telepon / WhatsApp
               </label>
               <Input
@@ -232,7 +232,7 @@ export default function AdminProfile() {
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Alamat Lengkap</label>
+            <label className="block text-xs font-semibold text-navy-900 mb-1">Alamat Lengkap</label>
             <Textarea
               rows={3}
               value={profile.address}
