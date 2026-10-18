@@ -6,6 +6,7 @@ import logo from "@assets/logo-lppm-tsu.png";
 
 const links = [
   { label: "Beranda", to: "/" },
+  { label: "Dashboard", to: "/dashboard" },
   {
     label: "Layanan",
     to: "#",
