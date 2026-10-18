@@ -1,6 +1,11 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { newsSchema, collaboratorSchema } from "@admin/content/schema.js";
+import { useLocation } from "react-router-dom";
+import {
+  newsSchema,
+  collaboratorSchema,
+  eventsSchema,
+  documentsSchema,
+} from "@admin/content/schema.js";
 import { useAdminContent } from "@admin/hooks/useAdminContent.js";
 import ContentList from "@admin/components/content/ContentList.jsx";
 import ContentForm from "@admin/components/content/ContentForm.jsx";
@@ -8,14 +13,21 @@ import ContentForm from "@admin/components/content/ContentForm.jsx";
 const schemaMap = {
   news: newsSchema,
   collaborators: collaboratorSchema,
+  events: eventsSchema,
+  documents: documentsSchema,
+};
+
+const pathToKey = {
+  berita: "news",
+  mitra: "collaborators",
+  kegiatan: "events",
+  dokumen: "documents",
 };
 
 export default function ContentManagerPage() {
-  const { schemaKey: rawKey } = useParams();
-  const navigate = useNavigate();
-  
-  // Normalisasi key (berita -> news, mitra -> collaborators)
-  const schemaKey = rawKey === "berita" ? "news" : rawKey === "mitra" ? "collaborators" : rawKey;
+  const location = useLocation();
+  const pathSegment = location.pathname.split("/").filter(Boolean)[1] || "";
+  const schemaKey = pathToKey[pathSegment] || pathSegment;
   const schema = schemaMap[schemaKey];
 
   const {
@@ -35,7 +47,7 @@ export default function ContentManagerPage() {
   if (!schema) {
     return (
       <div className="p-8 text-center text-ink-500">
-        Skema tidak ditemukan untuk key: <strong>{schemaKey}</strong>
+        Skema tidak ditemukan untuk path: <strong>{pathSegment}</strong>
       </div>
     );
   }
@@ -52,7 +64,6 @@ export default function ContentManagerPage() {
 
   const handleDelete = (id) => {
     deleteItem(id);
-    // Kembali ke list jika sedang edit
     if (view === "edit" && editingItem?.id === id) {
       setView("list");
       setEditingItem(null);
@@ -86,6 +97,7 @@ export default function ContentManagerPage() {
         <ContentList
           schema={schema}
           items={items}
+          loading={loading}
           onAdd={handleAdd}
           onEdit={handleEdit}
           onDelete={handleDelete}

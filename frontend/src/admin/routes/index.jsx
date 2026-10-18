@@ -11,10 +11,6 @@ import { ProtectedRoute, PublicOnlyRoute } from "@admin/auth/ProtectedRoute.jsx"
 const Login = lazy(() => import("@admin/pages/auth/Login.jsx"));
 const Layout = lazy(() => import("@admin/layouts/Layout.jsx"));
 const Dashboard = lazy(() => import("@admin/pages/Dashboard.jsx"));
-const News = lazy(() => import("@admin/pages/news/NewsList.jsx"));
-const Events = lazy(() => import("@admin/pages/events/EventList.jsx"));
-const Documents = lazy(() => import("@admin/pages/documents/DocumentList.jsx"));
-const Collaborators = lazy(() => import("@admin/pages/collaborators/CollaboratorList.jsx"));
 const Profile = lazy(() => import("@admin/pages/profile/ProfileEdit.jsx"));
 const ContentManagerPage = lazy(() => import("@admin/pages/content/ContentManagerPage.jsx"));
 
@@ -49,8 +45,8 @@ export default function AdminRoutes() {
           <Route index element={<Dashboard />} />
           <Route path="berita" element={<ContentManagerPage />} />
           <Route path="mitra" element={<ContentManagerPage />} />
-          <Route path="kegiatan" element={<Events />} />
-          <Route path="dokumen" element={<Documents />} />
+          <Route path="kegiatan" element={<ContentManagerPage />} />
+          <Route path="dokumen" element={<ContentManagerPage />} />
           <Route path="profil" element={<Profile />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Route>
