@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { rowsFor, totals, delta } from "@shared/lib/analytics.js";
 import { UPDATED, PRODI } from "@shared/lib/dashboardData.js";
-import { FileText, Award, BookOpen, ShieldCheck, Users, MapPin, TrendingUp, TrendingDown, Download, Search } from "@shared/components/ui/Icons.jsx";
+import { latestOutputs } from "@shared/lib/mock.js";
+import { FileText, Award, BookOpen, Shield, Users, MapPin, TrendingUp, TrendingDown, Download, Search, ArrowRight } from "@shared/components/ui/Icons.jsx";
 
 // Komponen Grafik (SVG Internal)
 const BarChart = ({ data, title, color = "#3b82f6" }) => {
@@ -46,7 +48,7 @@ export default function DashboardCapaian() {
     { title: "Penelitian Aktif", value: currentTotals.penelitian, delta: delta(currentYear, selectedProdi, "penelitian"), icon: FileText, color: "text-blue-600 bg-blue-50 border-blue-100" },
     { title: "PKM Aktif", value: currentTotals.pkm, delta: delta(currentYear, selectedProdi, "pkm"), icon: Award, color: "text-orange-600 bg-orange-50 border-orange-100" },
     { title: "Publikasi Ilmiah", value: currentTotals.publikasi, delta: delta(currentYear, selectedProdi, "publikasi"), icon: BookOpen, color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
-    { title: "HKI Terdaftar", value: currentTotals.hki, delta: delta(currentYear, selectedProdi, "hki"), icon: ShieldCheck, color: "text-purple-600 bg-purple-50 border-purple-100" },
+    { title: "HKI Terdaftar", value: currentTotals.hki, delta: delta(currentYear, selectedProdi, "hki"), icon: Shield, color: "text-purple-600 bg-purple-50 border-purple-100" },
     { title: "Mitra Strategis", value: currentTotals.mitra, delta: delta(currentYear, selectedProdi, "mitra"), icon: Users, color: "text-indigo-600 bg-indigo-50 border-indigo-100" },
     { title: "Desa Binaan", value: currentTotals.desa, delta: delta(currentYear, selectedProdi, "desa"), icon: MapPin, color: "text-teal-600 bg-teal-50 border-teal-100" },
   ];
@@ -180,6 +182,7 @@ export default function DashboardCapaian() {
       <section className="mx-auto max-w-container px-4 md:px-8 mt-12">
         <h2 className="text-2xl font-bold text-navy-950 mb-6">Rincian Data Kinerja</h2>
         <div className="bg-surface rounded-xl border border-line shadow-card overflow-hidden">
+
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse">
               <thead>
@@ -218,6 +221,25 @@ export default function DashboardCapaian() {
               </tbody>
             </table>
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-container px-4 md:px-8 mt-12 mb-16">
+        <h2 className="text-2xl font-bold text-navy-950 mb-6">Daftar Luaran Terbaru</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          {latestOutputs.map((output) => (
+            <div key={output.id} className="bg-surface p-6 rounded-xl border border-line shadow-card flex flex-col gap-3">
+              <div className="flex items-center justify-between">
+                <span className="inline-block px-3 py-1 rounded-full bg-orange-100 text-orange-700 text-xs font-bold">{output.tag} • {output.year}</span>
+              </div>
+              <h3 className="text-lg font-bold text-navy-950 leading-tight">{output.title}</h3>
+              <p className="text-sm text-ink-600 flex-1">{output.description}</p>
+              <Link to="/dokumen" className="inline-flex items-center gap-2 text-orange-600 hover:text-orange-700 text-sm font-semibold mt-2">
+                Lihat Detail Dokumen
+                <ArrowRight size={16} />
+              </Link>
+            </div>
+          ))}
         </div>
       </section>
     </div>

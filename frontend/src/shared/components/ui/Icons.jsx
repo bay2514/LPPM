@@ -206,6 +206,13 @@ export const TrendingUp = (p) => (
   </Svg>
 );
 
+export const TrendingDown = (p) => (
+  <Svg {...p}>
+    <polyline points="22 17 13.5 8.5 8.5 13.5 2 7" />
+    <polyline points="16 17 22 17 22 11" />
+  </Svg>
+);
+
 export const GraduationCap = (p) => (
   <Svg {...p}>
     <path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z" />

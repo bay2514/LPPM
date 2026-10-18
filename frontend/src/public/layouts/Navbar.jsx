@@ -17,7 +17,7 @@ const links = [
     ],
   },
   { label: "Dokumen", to: "/dokumen" },
-  { label: "Capaian", to: "/capaian" },
+  { label: "Capaian & Luaran", to: "/dashboard" },
   { label: "Kegiatan", to: "/kegiatan" },
   { label: "Berita", to: "/berita" },
   { label: "Pengajuan", to: "/pengajuan" },

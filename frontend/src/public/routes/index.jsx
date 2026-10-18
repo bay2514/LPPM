@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 const Home = lazy(() => import("@public/pages/Home.jsx"));
 const Documents = lazy(() => import("@public/pages/Documents.jsx"));
 const DocumentDetail = lazy(() => import("@public/pages/DocumentDetail.jsx"));
-const Capaian = lazy(() => import("@public/pages/Capaian.jsx"));
 const DashboardCapaian = lazy(() => import("@public/pages/DashboardCapaian.jsx"));
 const Pengajuan = lazy(() => import("@public/pages/Pengajuan.jsx"));
 const Berita = lazy(() => import("@public/pages/Berita.jsx"));
@@ -28,7 +27,7 @@ export default function PublicRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/dokumen" element={<Documents />} />
           <Route path="/dokumen/:slug" element={<DocumentDetail />} />
-          <Route path="/capaian" element={<Capaian />} />
+          <Route path="/capaian" element={<Navigate to="/dashboard" replace />} />
           <Route path="/dashboard" element={<DashboardCapaian />} />
           <Route path="/pengajuan" element={<Pengajuan />} />
           <Route path="/berita" element={<Berita />} />

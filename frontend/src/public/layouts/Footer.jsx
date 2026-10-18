@@ -62,7 +62,7 @@ export default function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#" className="text-sm text-ink-500 hover:text-white">
+                <a href="/dashboard" className="text-sm text-ink-500 hover:text-white">
                   Dashboard Capaian
                 </a>
               </li>
