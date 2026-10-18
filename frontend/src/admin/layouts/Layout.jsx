@@ -13,12 +13,11 @@ import {
   ExternalLink,
   Menu,
   X,
+  Bell,
+  Search,
+  User,
 } from "@shared/components/ui/Icons.jsx";
 
-/**
- * Menu admin. Path HARUS sama dengan rute anak di admin/routes/index.jsx:
- * berita, kegiatan, dokumen, mitra, profil.
- */
 const navItems = [
   { path: "/admin", label: "Dasbor", icon: LayoutDashboard, exact: true },
   { path: "/admin/berita", label: "Berita", icon: Newspaper },
@@ -35,7 +34,8 @@ function NavList({ onNavigate }) {
     item.exact ? location.pathname === item.path : location.pathname.startsWith(item.path);
 
   return (
-    <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto" aria-label="Navigasi admin">
+    <nav className="flex-1 px-3 py-6 space-y-1.5 overflow-y-auto custom-scrollbar" aria-label="Navigasi admin">
+      <p className="px-3 text-[10px] font-bold text-navy-400 uppercase tracking-widest mb-2">Main Menu</p>
       {navItems.map((item) => {
         const active = isActive(item);
         const Icon = item.icon;
@@ -45,14 +45,17 @@ function NavList({ onNavigate }) {
             to={item.path}
             onClick={onNavigate}
             aria-current={active ? "page" : undefined}
-            className={`flex items-center gap-3 px-3 py-3 rounded-lg text-sm font-medium transition-colors min-h-[44px] ${
+            className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 min-h-[44px] ${
               active
-                ? "bg-orange-500 text-white shadow-card"
-                : "text-gray-300 hover:bg-navy-800 hover:text-white"
+                ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
+                : "text-gray-400 hover:bg-navy-800 hover:text-white"
             }`}
           >
-            <Icon className={`w-5 h-5 flex-shrink-0 ${active ? "text-white" : "text-gray-400"}`} />
+            <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-white" : "text-gray-500 group-hover:text-white"}`} />
             <span className="whitespace-nowrap">{item.label}</span>
+            {active && (
+              <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+            )}
           </Link>
         );
       })}
@@ -62,18 +65,20 @@ function NavList({ onNavigate }) {
 
 function SidebarFooter() {
   return (
-    <div className="p-4 border-t border-navy-800">
+    <div className="p-4 border-t border-navy-800 bg-navy-950/30">
       <a
         href="/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center justify-between px-3 py-2.5 rounded-lg text-xs font-medium text-gray-300 hover:bg-navy-800 hover:text-white transition-colors min-h-[44px]"
+        className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-xs font-semibold text-gray-400 hover:bg-navy-800 hover:text-white transition-colors group"
       >
-        <span className="flex items-center gap-2">
-          <ExternalLink className="w-4 h-4 text-orange-400" />
-          Lihat Website Publik
-        </span>
-        <span aria-hidden="true">↗</span>
+        <div className="w-8 h-8 rounded bg-navy-800 flex items-center justify-center text-orange-400 group-hover:bg-orange-500 group-hover:text-white transition-all">
+          <ExternalLink size={16} />
+        </div>
+        <div className="flex flex-col">
+          <span>Website Publik</span>
+          <span className="text-[10px] font-normal text-gray-500">Buka di tab baru</span>
+        </div>
       </a>
     </div>
   );
@@ -85,46 +90,29 @@ export default function AdminLayout() {
   const location = useLocation();
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  // Tutup drawer setiap kali rute berubah.
   useEffect(() => {
     setSidebarOpen(false);
   }, [location.pathname]);
 
-  // Tutup drawer dengan tombol Escape + cegah scroll latar saat drawer terbuka.
-  useEffect(() => {
-    if (!sidebarOpen) return undefined;
-
-    const onKeyDown = (event) => {
-      if (event.key === "Escape") setSidebarOpen(false);
-    };
-
-    const previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKeyDown);
-
-    return () => {
-      document.body.style.overflow = previousOverflow;
-      window.removeEventListener("keydown", onKeyDown);
-    };
-  }, [sidebarOpen]);
-
   const handleLogout = async () => {
-    await logoutAdmin();
-    navigate("/admin/login", { replace: true });
+    if (confirm("Apakah Anda yakin ingin keluar dari panel admin?")) {
+      await logoutAdmin();
+      navigate("/admin/login", { replace: true });
+    }
   };
 
   return (
-    <div className="min-h-screen bg-canvas font-sans text-navy-900 antialiased flex">
-      {/* ===== Sidebar desktop: menetap mulai 1024px ===== */}
-      <aside className="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:flex-col bg-navy-900 text-white shrink-0">
-        <div className="p-5 border-b border-navy-800">
-          <Link to="/admin" className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-lg bg-orange-500 flex items-center justify-center font-bold text-white shadow-card">
+    <div className="min-h-screen bg-[#F8FAFC] font-sans text-navy-900 antialiased flex">
+      {/* Sidebar Desktop */}
+      <aside className="hidden lg:flex lg:sticky lg:top-0 lg:h-screen lg:w-64 lg:flex-col bg-navy-900 text-white shrink-0 shadow-2xl z-50">
+        <div className="p-6 border-b border-navy-800">
+          <Link to="/admin" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center font-black text-white shadow-lg shadow-orange-500/20 group-hover:scale-105 transition-transform">
               LP
             </div>
-            <div>
-              <span className="font-bold text-base tracking-tight block">Admin LPPM</span>
-              <span className="text-xs text-gray-400 block">Panel Pengelolaan</span>
+            <div className="leading-tight">
+              <span className="font-bold text-lg tracking-tight block">LPPM TSU</span>
+              <span className="text-[10px] text-orange-400 font-bold uppercase tracking-widest block opacity-70">Admin Panel</span>
             </div>
           </Link>
         </div>
@@ -133,99 +121,123 @@ export default function AdminLayout() {
         <SidebarFooter />
       </aside>
 
-      {/* ===== Drawer mobile (< 1024px) ===== */}
-      {sidebarOpen && (
-        <div
-          className="fixed inset-0 z-40 bg-navy-900/60 lg:hidden"
-          onClick={() => setSidebarOpen(false)}
-          aria-hidden="true"
-        />
-      )}
-
-      <aside
-        id="admin-sidebar"
-        className={`fixed inset-y-0 left-0 z-50 w-72 max-w-[85vw] bg-navy-900 text-white flex flex-col transition-transform duration-300 ease-in-out lg:hidden ${
-          sidebarOpen ? "translate-x-0" : "-translate-x-full"
-        }`}
-        aria-hidden={!sidebarOpen}
-        aria-label="Menu admin"
-      >
-        <div className="p-5 border-b border-navy-800 flex items-center justify-between">
-          <Link to="/admin" className="flex items-center gap-3" onClick={() => setSidebarOpen(false)}>
-            <div className="w-9 h-9 rounded-lg bg-orange-500 flex items-center justify-center font-bold text-white shadow-card">
-              LP
-            </div>
-            <div>
-              <span className="font-bold text-base tracking-tight block">Admin LPPM</span>
-              <span className="text-xs text-gray-400 block">Panel Pengelolaan</span>
-            </div>
-          </Link>
-          <button
-            type="button"
-            onClick={() => setSidebarOpen(false)}
-            className="w-11 h-11 -mr-1 flex items-center justify-center rounded-lg text-gray-300 hover:text-white hover:bg-navy-800 transition-colors"
-            aria-label="Tutup menu"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
-
-        <NavList onNavigate={() => setSidebarOpen(false)} />
-        <SidebarFooter />
-      </aside>
-
-      {/* ===== Area isi ===== */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <header className="sticky top-0 z-30 bg-surface border-b border-line shadow-sm px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
-          <div className="flex items-center gap-3 min-w-0">
+      {/* Area Isi */}
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-line shadow-sm px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-4 min-w-0">
             <button
               type="button"
               onClick={() => setSidebarOpen(true)}
-              className="lg:hidden w-11 h-11 shrink-0 rounded-lg border border-line flex items-center justify-center text-navy-900 hover:bg-canvas transition-colors"
-              aria-label="Buka menu"
-              aria-controls="admin-sidebar"
-              aria-expanded={sidebarOpen}
+              className="lg:hidden w-10 h-10 shrink-0 rounded-lg border border-line flex items-center justify-center text-navy-900 hover:bg-canvas transition-colors"
             >
-              <Menu className="w-5 h-5" />
+              <Menu size={20} />
             </button>
-            <h1 className="text-sm sm:text-base font-bold text-navy-900 truncate">
-              Portal Pengelola LPPM
-            </h1>
+            
+            <div className="hidden md:flex items-center bg-canvas rounded-lg px-3 py-1.5 w-64 border border-line focus-within:border-orange-500 transition-colors">
+              <Search size={16} className="text-gray-400 mr-2" />
+              <input 
+                type="text" 
+                placeholder="Cari fitur..." 
+                className="bg-transparent text-sm w-full outline-none text-navy-900"
+              />
+            </div>
           </div>
 
-          <div className="flex items-center gap-3 shrink-0">
-            <div className="hidden md:flex items-center gap-2 text-right">
-              <div className="w-8 h-8 rounded-full bg-navy-50 text-navy-700 flex items-center justify-center font-bold text-xs">
-                {user?.name?.[0] || "A"}
-              </div>
-              <div className="text-xs leading-tight">
-                <p className="font-semibold text-navy-900">{user?.name || "Administrator"}</p>
-                <p className="text-gray-500">{user?.email || "admin@lppm.ac.id"}</p>
-              </div>
+          <div className="flex items-center gap-4 shrink-0">
+            <div className="hidden sm:flex items-center gap-2">
+              <button className="w-10 h-10 rounded-lg border border-line flex items-center justify-center text-gray-500 hover:bg-canvas transition-colors relative">
+                <Bell size={20} />
+                <span className="absolute top-2.5 right-2.5 w-2 h-2 bg-orange-500 rounded-full border-2 border-white"></span>
+              </button>
             </div>
 
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleLogout}
-              className="text-red-600 border-red-200 hover:bg-red-50 hover:border-red-300 min-h-[44px] px-3"
-            >
-              <LogOut className="w-4 h-4 mr-1.5" />
-              <span className="whitespace-nowrap">Keluar</span>
-            </Button>
+            <div className="h-8 w-px bg-line hidden sm:block"></div>
+
+            <div className="flex items-center gap-3">
+              <div className="flex items-center gap-3 py-1.5 px-2 rounded-lg hover:bg-canvas transition-colors cursor-pointer group">
+                <div className="text-right hidden sm:block">
+                  <p className="text-sm font-bold text-navy-900 leading-none">{user?.name || "Administrator"}</p>
+                  <p className="text-[10px] text-gray-500 mt-1 leading-none font-medium uppercase tracking-wider">{user?.role || "Super Admin"}</p>
+                </div>
+                <div className="w-10 h-10 rounded-xl bg-navy-50 text-navy-700 flex items-center justify-center font-bold text-sm border border-navy-100 group-hover:border-navy-300 transition-colors">
+                  {user?.name?.[0] || <User size={20} />}
+                </div>
+              </div>
+
+              <button
+                onClick={handleLogout}
+                className="w-10 h-10 rounded-lg border border-red-100 flex items-center justify-center text-red-500 hover:bg-red-50 transition-colors"
+                title="Keluar"
+              >
+                <LogOut size={20} />
+              </button>
+            </div>
           </div>
         </header>
 
-        <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-6 sm:px-6 sm:py-8 lg:px-8">
-          <Outlet />
+        <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-8 sm:px-6 lg:px-8 overflow-y-auto custom-scrollbar">
+          <div className="animate-in fade-in slide-in-from-bottom-4 duration-500">
+            <Outlet />
+          </div>
         </main>
 
-        {import.meta.env.DEV && (
-          <footer className="py-2 px-4 bg-navy-900/5 text-center text-[11px] text-gray-500 border-t border-line">
-            Mode Pengembangan: Penyimpanan Data Mock Lokal (Aktif)
-          </footer>
-        )}
+        <footer className="py-4 px-8 bg-white border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-gray-500 font-medium">
+            &copy; 2026 LPPM Universitas Tiga Serangkai. All rights reserved.
+          </p>
+          <div className="flex items-center gap-4">
+             <span className="flex items-center gap-1.5 text-[10px] font-bold text-success uppercase tracking-widest bg-success/5 px-2 py-1 rounded border border-success/10">
+               <div className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
+               Sistem Stabil
+             </span>
+             <span className="text-[10px] font-bold text-navy-400 uppercase tracking-widest">
+               v2.0.4-beta
+             </span>
+          </div>
+        </footer>
       </div>
+
+      {/* Mobile Sidebar (Drawer) */}
+      {sidebarOpen && (
+        <div className="lg:hidden">
+          <div className="fixed inset-0 z-[60] bg-navy-900/60 backdrop-blur-sm transition-opacity" onClick={() => setSidebarOpen(false)} />
+          <aside className="fixed inset-y-0 left-0 z-[70] w-72 bg-navy-900 text-white flex flex-col shadow-2xl animate-in slide-in-from-left duration-300">
+             <div className="p-6 border-b border-navy-800 flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-orange-500 flex items-center justify-center font-black text-white shadow-lg">LP</div>
+                  <span className="font-bold text-lg">Admin LPPM</span>
+                </div>
+                <button onClick={() => setSidebarOpen(false)} className="w-10 h-10 rounded-lg hover:bg-navy-800 flex items-center justify-center">
+                  <X size={24} />
+                </button>
+             </div>
+             <NavList onNavigate={() => setSidebarOpen(false)} />
+             <SidebarFooter />
+          </aside>
+        </div>
+      )}
+
+      <style>{`
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #E2E8F0;
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #CBD5E1;
+        }
+        aside.custom-scrollbar::-webkit-scrollbar-thumb {
+          background: #1E293B;
+        }
+        aside.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: #334155;
+        }
+      `}</style>
     </div>
   );
 }
