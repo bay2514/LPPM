@@ -16,7 +16,7 @@ import {
   Bell,
   Search,
   User,
-  LayoutDashboard as LayoutIcon,
+  FileEdit,
 } from "@shared/components/ui/Icons.jsx";
 
 const navItems = [
@@ -26,7 +26,7 @@ const navItems = [
   { path: "/admin/dokumen", label: "Dokumen", icon: FolderOpen },
   { path: "/admin/mitra", label: "Mitra", icon: Building2 },
   { path: "/admin/profil", label: "Profil & Kontak", icon: Settings },
-  { path: "/admin/dashboard-config", label: "Tampilan Situs", icon: LayoutIcon, exact: true },
+  { path: "/admin/dashboard-config", label: "Pengaturan Dashboard", icon: FileEdit, exact: true },
 ];
 
 function NavList({ onNavigate }) {
