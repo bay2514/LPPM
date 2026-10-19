@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { rowsFor, totals, delta } from "@shared/lib/analytics.js";
+import PageHero from "@shared/components/ui/PageHero.jsx";
 import { UPDATED, PRODI } from "@shared/lib/dashboardData.js";
 import { latestOutputs } from "@shared/lib/mock.js";
 import { FileText, Award, BookOpen, Shield, Users, MapPin, TrendingUp, TrendingDown, Download, Search, ArrowRight } from "@shared/components/ui/Icons.jsx";
@@ -84,16 +85,12 @@ export default function DashboardCapaian() {
 
   return (
     <div className="min-h-screen bg-canvas pb-16">
-      <section className="bg-navy-950 text-white py-12 px-4 md:px-8 border-b border-navy-800">
-        <div className="mx-auto max-w-container">
-          <div className="inline-flex items-center gap-2 rounded-full bg-navy-800/80 px-3 py-1 text-xs font-semibold text-orange-400 mb-4 border border-navy-700">
-            DASHBOARD
-          </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">{config.title}</h1>
-          <p className="text-ink-300 text-sm md:text-base max-w-2xl mb-4">{config.intro}</p>
-          <div className="text-xs font-medium text-ink-400">{config.updatedLabel || "Diperbarui:"} {config.lastUpdated ? new Date(config.lastUpdated).toLocaleDateString("id-ID") : UPDATED}</div>
-        </div>
-      </section>
+      <PageHero 
+        badge="DASHBOARD"
+        title={config.title}
+        description={config.intro}
+        updated={config.lastUpdated ? new Date(config.lastUpdated).toLocaleDateString("id-ID") : UPDATED}
+      />
 
       {/* Filter Bar */}
       <section className="mx-auto max-w-container px-4 md:px-8 mt-6">
@@ -169,21 +166,21 @@ export default function DashboardCapaian() {
         <h2 className="text-2xl font-bold text-navy-950 mb-6">Pulse LPPM</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <BarChart data={chartData} title={`Top 5 Prodi Penelitian (${selectedYear})`} />
-          <div className="bg-surface p-6 rounded-lg border border-line shadow-card flex flex-col justify-between">
+          <div className="bg-[#172235] p-6 rounded-2xl border border-navy-800 flex flex-col justify-between">
             <div>
-              <h3 className="text-sm font-semibold text-ink-700 mb-4">Ringkasan Kinerja {selectedYear}</h3>
+              <h3 className="text-sm font-semibold text-white/70 mb-4">Ringkasan Kinerja {selectedYear}</h3>
               <div className="space-y-4">
-                <div className="p-4 bg-orange-50 border border-orange-100 rounded-lg">
-                  <div className="text-sm text-orange-800">Total Pendanaan Riset & PKM</div>
-                  <div className="text-2xl font-bold text-orange-950">Rp {currentTotals.danaJuta.toLocaleString("id-ID")} Juta</div>
+                <div className="p-4 bg-[#0f172a] border border-white/10 rounded-xl">
+                  <div className="text-sm text-white/60">Total Pendanaan Riset & PKM</div>
+                  <div className="text-2xl font-bold text-orange-400">Rp {currentTotals.danaJuta.toLocaleString("id-ID")} Juta</div>
                 </div>
-                <div className="p-4 bg-navy-50 border border-navy-100 rounded-lg">
-                  <div className="text-sm text-navy-800">Total Luaran (Publikasi + HKI)</div>
-                  <div className="text-2xl font-bold text-navy-950">{(currentTotals.publikasi + currentTotals.hki).toLocaleString("id-ID")}</div>
+                <div className="p-4 bg-[#0f172a] border border-white/10 rounded-xl">
+                  <div className="text-sm text-white/60">Total Luaran (Publikasi + HKI)</div>
+                  <div className="text-2xl font-bold text-white">{(currentTotals.publikasi + currentTotals.hki).toLocaleString("id-ID")}</div>
                 </div>
               </div>
             </div>
-            <div className="mt-4 text-xs text-ink-500 italic">
+            <div className="mt-4 text-xs text-white/40 italic">
               * Data diambil dari database LPPM TSU yang terintegrasi dengan Sistem Informasi Akademik.
             </div>
           </div>
