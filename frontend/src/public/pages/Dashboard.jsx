@@ -4,6 +4,7 @@ import { rowsFor, totals, delta } from "@shared/lib/analytics.js";
 import { UPDATED, PRODI } from "@shared/lib/dashboardData.js";
 import { latestOutputs } from "@shared/lib/mock.js";
 import { FileText, Award, BookOpen, Shield, Users, MapPin, TrendingUp, TrendingDown, Download, Search, ArrowRight } from "@shared/components/ui/Icons.jsx";
+import { useContentSingle } from "@public/hooks/useContent.js";
 
 // Komponen Grafik (SVG Internal)
 const BarChart = ({ data, title, color = "#3b82f6" }) => {
@@ -32,6 +33,12 @@ const BarChart = ({ data, title, color = "#3b82f6" }) => {
 export default function DashboardCapaian() {
   const [selectedYear, setSelectedYear] = useState("2026");
   const [selectedProdi, setSelectedProdi] = useState("Semua Prodi");
+  const config = useContentSingle("dashboard_config") || {
+    title: "Dashboard Capaian",
+    intro: "Ringkasan kinerja penelitian dan pengabdian LPPM Universitas Tiga Serangkai.",
+    updatedLabel: "Terakhir diperbarui pada",
+    widgets: [{id: "kpi", visible: true}, {id: "prodi_pulse", visible: true}, {id: "full_table", visible: true}, {id: "output_comp", visible: true}]
+  };
 
   const currentYear = parseInt(selectedYear, 10);
   const currentRows = rowsFor(currentYear, selectedProdi);
@@ -73,16 +80,18 @@ export default function DashboardCapaian() {
     document.body.removeChild(link);
   };
 
+  const isWidgetVisible = (id) => config.widgets?.find(w => w.id === id)?.visible !== false;
+
   return (
     <div className="min-h-screen bg-canvas pb-16">
       <section className="bg-navy-950 text-white py-12 px-4 md:px-8 border-b border-navy-800">
         <div className="mx-auto max-w-container">
           <div className="inline-flex items-center gap-2 rounded-full bg-navy-800/80 px-3 py-1 text-xs font-semibold text-orange-400 mb-4 border border-navy-700">
-            DASHBOARD CAPAIAN
+            DASHBOARD
           </div>
-          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">Dashboard Capaian LPPM</h1>
-          <p className="text-ink-300 text-sm md:text-base max-w-2xl mb-4">Monitoring kinerja penelitian, pengabdian masyarakat, publikasi, dan hilirisasi.</p>
-          <div className="text-xs font-medium text-ink-400">Diperbarui: {UPDATED}</div>
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-3">{config.title}</h1>
+          <p className="text-ink-300 text-sm md:text-base max-w-2xl mb-4">{config.intro}</p>
+          <div className="text-xs font-medium text-ink-400">{config.updatedLabel || "Diperbarui:"} {config.lastUpdated ? new Date(config.lastUpdated).toLocaleDateString("id-ID") : UPDATED}</div>
         </div>
       </section>
 
@@ -128,6 +137,7 @@ export default function DashboardCapaian() {
         </div>
       </section>
 
+      {isWidgetVisible("kpi") && (
       <section className="mx-auto max-w-container px-4 md:px-8 mt-6">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
           {kpis.map((kpi, idx) => {
@@ -151,8 +161,10 @@ export default function DashboardCapaian() {
           })}
         </div>
       </section>
+      )}
 
-      {/* Seksi Pulse LPPM */}
+      {isWidgetVisible("prodi_pulse") && (
+      /* Seksi Pulse LPPM */
       <section className="mx-auto max-w-container px-4 md:px-8 mt-12">
         <h2 className="text-2xl font-bold text-navy-950 mb-6">Pulse LPPM</h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -177,8 +189,9 @@ export default function DashboardCapaian() {
           </div>
         </div>
       </section>
+      )}
 
-      {/* Tabel Rincian */}
+      {isWidgetVisible("full_table") && (
       <section className="mx-auto max-w-container px-4 md:px-8 mt-12">
         <h2 className="text-2xl font-bold text-navy-950 mb-6">Rincian Data Kinerja</h2>
         <div className="bg-surface rounded-xl border border-line shadow-card overflow-hidden">
@@ -223,7 +236,9 @@ export default function DashboardCapaian() {
           </div>
         </div>
       </section>
+      )}
 
+      {isWidgetVisible("output_comp") && (
       <section className="mx-auto max-w-container px-4 md:px-8 mt-12 mb-16">
         <h2 className="text-2xl font-bold text-navy-950 mb-6">Daftar Luaran Terbaru</h2>
         <div className="grid md:grid-cols-2 gap-6">
@@ -242,6 +257,7 @@ export default function DashboardCapaian() {
           ))}
         </div>
       </section>
+      )}
     </div>
   );
 }

@@ -15,6 +15,7 @@ import {
   BarChart3,
   GraduationCap,
   FileText,
+  FileSpreadsheet,
 } from "@shared/components/ui/Icons.jsx";
 import { toast } from "sonner";
 
