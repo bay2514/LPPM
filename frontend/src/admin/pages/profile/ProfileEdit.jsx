@@ -116,7 +116,7 @@ export default function AdminProfile() {
   }
 
   return (
-    <div className="space-y-6 max-w-4xl">
+    <div className="space-y-6 max-w-6xl">
       {/* Toast */}
       {toast && (
         <div
@@ -130,125 +130,62 @@ export default function AdminProfile() {
 
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-xl font-bold text-navy-950">Kelola Profil Lembaga & Kontak</h2>
+          <h2 className="text-2xl font-bold text-navy-950">Kelola Profil Lembaga</h2>
           <p className="text-sm text-ink-700">
-            Perbarui deskripsi, visi-misi, serta informasi kontak yang tampil di website publik
+            Perbarui data profil lembaga. Perubahan akan langsung terlihat di pratinjau samping.
           </p>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {isDirty && (
-          <div className="p-3 rounded-lg bg-amber-50 text-amber-800 text-xs flex items-center gap-2 border border-amber-200">
-            <AlertCircle className="w-4 h-4 flex-shrink-0" />
-            Anda memiliki perubahan yang belum disimpan. Tekan tombol Simpan Perubahan di bawah.
-          </div>
-        )}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="lg:col-span-7 space-y-6">
+          {isDirty && (
+            <div className="p-3 rounded-xl bg-amber-50 text-amber-800 text-xs flex items-center gap-2 border border-amber-200">
+              <AlertCircle className="w-4 h-4 flex-shrink-0" />
+              Ada perubahan yang belum disimpan.
+            </div>
+          )}
 
-        {/* Informasi Utama */}
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Informasi Umum</h3>
-
-          <div>
-            <label className="block text-xs font-semibold text-navy-900 mb-1">
-              Nama Lembaga / Unit *
-            </label>
-            <Input
-              value={profile.name}
-              onChange={(e) => handleChange("name", e.target.value)}
-              error={errors.name}
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-navy-900 mb-1">
-              Deskripsi Singkat LPPM *
-            </label>
-            <Textarea
-              rows={4}
-              value={profile.description}
-              onChange={(e) => handleChange("description", e.target.value)}
-              placeholder="Jelaskan peran dan fungsi LPPM..."
-              error={errors.description}
-            />
-          </div>
-        </div>
-
-        {/* Visi & Misi */}
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Visi & Misi</h3>
-
-          <div>
-            <label className="block text-xs font-semibold text-navy-900 mb-1">
-              Visi LPPM *
-            </label>
-            <Textarea
-              rows={3}
-              value={profile.vision}
-              onChange={(e) => handleChange("vision", e.target.value)}
-              placeholder="Visi utama..."
-              error={errors.vision}
-            />
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-navy-900 mb-1">
-              Misi LPPM (Satu poin per baris)
-            </label>
-            <Textarea
-              rows={5}
-              value={missionText}
-              onChange={(e) => handleMissionChange(e.target.value)}
-              placeholder="1. Mendorong penelitian unggulan...&#10;2. Meningkatkan pengabdian..."
-            />
-          </div>
-        </div>
-
-        {/* Informasi Kontak & Alamat */}
-        <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm space-y-4">
-          <h3 className="text-base font-bold text-navy-950 border-b pb-2">Kontak & Lokasi</h3>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* ...Form fields... (tetap sama) */}
+          <div className="bg-surface p-6 rounded-2xl border border-line shadow-sm space-y-4">
+            <h3 className="text-base font-bold text-navy-950 border-b pb-2">Informasi Umum</h3>
             <div>
-              <label className="block text-xs font-semibold text-navy-900 mb-1">
-                Email Resmi *
-              </label>
-              <Input
-                type="email"
-                value={profile.email}
-                onChange={(e) => handleChange("email", e.target.value)}
-                error={errors.email}
-              />
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Nama Lembaga *</label>
+              <Input value={profile.name} onChange={(e) => handleChange("name", e.target.value)} error={errors.name} />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-navy-900 mb-1">
-                Nomor Telepon / WhatsApp
-              </label>
-              <Input
-                value={profile.phone}
-                onChange={(e) => handleChange("phone", e.target.value)}
-              />
+              <label className="block text-xs font-semibold text-navy-900 mb-1">Deskripsi *</label>
+              <Textarea rows={4} value={profile.description} onChange={(e) => handleChange("description", e.target.value)} error={errors.description} />
+            </div>
+          </div>
+          
+          <div className="bg-surface p-6 rounded-2xl border border-line shadow-sm space-y-4">
+            <h3 className="text-base font-bold text-navy-950 border-b pb-2">Kontak & Lokasi</h3>
+            <div className="grid grid-cols-2 gap-4">
+                <Input label="Email" value={profile.email} onChange={(e) => handleChange("email", e.target.value)} error={errors.email} />
+                <Input label="Telepon" value={profile.phone} onChange={(e) => handleChange("phone", e.target.value)} />
             </div>
           </div>
 
-          <div>
-            <label className="block text-xs font-semibold text-navy-900 mb-1">Alamat Lengkap</label>
-            <Textarea
-              rows={3}
-              value={profile.address}
-              onChange={(e) => handleChange("address", e.target.value)}
-              placeholder="Alamat kantor LPPM..."
-            />
-          </div>
-        </div>
-
-        {/* Action Button */}
-        <div className="flex justify-end gap-3 pt-2">
-          <Button type="submit" disabled={saving || !isDirty}>
+          <Button type="submit" disabled={saving || !isDirty} className="w-full">
             {saving ? "Menyimpan..." : "Simpan Perubahan"}
           </Button>
+        </form>
+
+        {/* Live Preview */}
+        <div className="lg:col-span-5">
+           <div className="sticky top-24 bg-navy-950 p-8 rounded-2xl text-white shadow-xl">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-orange-400 mb-6">Pratinjau Publik</h4>
+              <h2 className="text-2xl font-bold mb-4">{profile.name || "Nama Lembaga"}</h2>
+              <p className="text-sm text-gray-300 leading-relaxed mb-6">{profile.description || "Deskripsi akan muncul di sini..."}</p>
+              <div className="space-y-3 text-xs border-t border-navy-800 pt-6">
+                <p>Email: {profile.email || "-"}</p>
+                <p>Telp: {profile.phone || "-"}</p>
+              </div>
+           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

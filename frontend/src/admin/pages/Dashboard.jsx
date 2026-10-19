@@ -133,39 +133,39 @@ export default function Dashboard() {
       </div>
 
       {/* Grid Statistik / KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {statCards.map((card, idx) => {
           const Icon = card.icon;
           return (
             <div
               key={idx}
-              className="relative overflow-hidden rounded-xl border border-line bg-surface p-5 shadow-card hover:shadow-lg transition-all duration-200 group flex flex-col justify-between"
+              className="relative overflow-hidden rounded-2xl border border-line bg-surface p-6 shadow-lg hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
-                <div className="flex items-center justify-between mb-4">
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${card.lightAccent}`}>
-                    <Icon size={24} />
+                <div className="flex items-center justify-between mb-6">
+                  <div className={`w-14 h-14 rounded-2xl flex items-center justify-center border ${card.lightAccent}`}>
+                    <Icon size={28} />
                   </div>
                   <Link
                     to={card.link}
-                    className="opacity-0 group-hover:opacity-100 transition-opacity p-2 rounded-lg hover:bg-canvas text-ink-500 hover:text-navy-900"
+                    className="p-2 rounded-xl bg-canvas text-ink-500 hover:bg-navy-50 hover:text-navy-900 transition-colors"
                     title="Buka Menu"
                   >
-                    <ChevronRight size={18} />
+                    <ChevronRight size={20} />
                   </Link>
                 </div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-ink-700">{card.title}</p>
+                <p className="text-[11px] font-bold uppercase tracking-widest text-ink-600">{card.title}</p>
                 <div className="flex items-baseline gap-2 mt-1">
-                  <h3 className="text-3xl font-extrabold text-navy-950 tracking-tight">{card.value}</h3>
-                  <span className="text-[10px] font-bold text-success flex items-center">
-                    <TrendingUp size={12} className="mr-0.5" /> Aktif
+                  <h3 className="text-4xl font-extrabold text-navy-950 tracking-tight">{card.value}</h3>
+                  <span className="text-[11px] font-bold text-success flex items-center bg-success/10 px-2 py-0.5 rounded-full">
+                    <TrendingUp size={12} className="mr-1" /> +12%
                   </span>
                 </div>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-line/60 flex items-center justify-between text-xs text-ink-700">
-                <span className="truncate">{card.description}</span>
-                <Link to={card.link} className="font-semibold text-orange-600 hover:underline shrink-0 ml-2">
+              <div className="mt-6 pt-4 border-t border-line/60 flex items-center justify-between text-xs text-ink-700">
+                <span className="truncate pr-2">{card.description}</span>
+                <Link to={card.link} className="font-bold text-orange-600 hover:text-orange-700 transition-colors shrink-0">
                   Kelola
                 </Link>
               </div>
@@ -242,8 +242,8 @@ export default function Dashboard() {
           </div>
 
           {/* Quick Actions Panel */}
-          <div className="bg-surface rounded-xl border border-line shadow-card p-5">
-            <h3 className="text-sm font-bold text-navy-900 uppercase tracking-wider mb-4">Aksi Cepat</h3>
+          <div className="bg-surface rounded-2xl border border-line shadow-lg p-6">
+            <h3 className="text-sm font-bold text-navy-900 uppercase tracking-wider mb-5">Aksi Cepat</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               <Link
                 to="/admin/berita"
@@ -288,8 +288,31 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Right Column: Events & System Status */}
+        {/* Right Column: Events, Timeline & System Status */}
         <div className="space-y-6">
+          {/* Recent Activity Timeline */}
+          <div className="bg-surface rounded-2xl border border-line shadow-lg overflow-hidden">
+             <div className="p-6 border-b border-line">
+                <h3 className="text-base font-bold text-navy-900">Aktivitas Terakhir</h3>
+             </div>
+             <div className="p-6 space-y-6">
+                {[
+                  { title: "Berita Baru: Hibah Penelitian 2026", time: "10 menit lalu", user: "Admin A" },
+                  { title: "Dokumen SOP diunggah", time: "2 jam lalu", user: "Admin B" },
+                  { title: "Mitra Industri baru ditambahkan", time: "5 jam lalu", user: "Admin A" }
+                ].map((act, i) => (
+                   <div key={i} className="flex gap-4 relative">
+                      <div className="w-px bg-line h-full absolute left-2.5 top-6" />
+                      <div className="w-5 h-5 rounded-full bg-orange-100 border-4 border-surface shrink-0 z-10" />
+                      <div>
+                        <p className="text-xs font-bold text-navy-900">{act.title}</p>
+                        <p className="text-[10px] text-ink-500 mt-0.5">{act.time} oleh {act.user}</p>
+                      </div>
+                   </div>
+                ))}
+             </div>
+          </div>
+
           {/* Upcoming Events Box */}
           <div className="bg-surface rounded-xl border border-line shadow-card overflow-hidden">
             <div className="p-5 border-b border-line flex items-center justify-between">

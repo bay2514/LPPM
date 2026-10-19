@@ -12,31 +12,28 @@ export default function HeroSection({
   badge = null,
 }) {
   return (
-    <section className={`${dark ? "bg-navy-800" : "bg-white border-b border-line"} py-14 lg:py-20`}>
+    <section className={`${dark ? "bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800" : "bg-white border-b border-line"} py-16 lg:py-24`}>
       <div className="mx-auto max-w-container px-4 md:px-6 lg:px-8">
-        <div className="grid gap-10 md:grid-cols-2 md:items-center">
+        <div className="grid gap-12 md:grid-cols-2 md:items-center">
           <div className={`${dark ? "text-white" : ""}`}>
             {badge ? (
-              <div className="mb-4 inline-flex items-center rounded-full bg-orange-500/20 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-300">
+              <div className="mb-5 inline-flex items-center rounded-full bg-orange-500/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-orange-400 border border-orange-500/20">
                 {badge}
               </div>
             ) : null}
-            {eyebrow && !badge ? (
-              <span className="mb-3 block text-xs font-bold uppercase tracking-widest text-orange-500">{eyebrow}</span>
-            ) : null}
-            <h1 className={`mb-5 text-3xl font-extrabold leading-tight md:text-4xl lg:text-5xl ${dark ? "text-white" : "text-navy-800"}`}>
+            <h1 className={`mb-6 text-4xl font-extrabold leading-tight md:text-5xl lg:text-6xl ${dark ? "text-white" : "text-navy-950"}`}>
               {title}
             </h1>
             {description ? (
-              <p className={`mb-8 text-base leading-relaxed md:text-lg ${dark ? "text-white/75" : "text-ink-500"}`}>
+              <p className={`mb-10 text-lg leading-relaxed ${dark ? "text-white/70" : "text-ink-600"}`}>
                 {description}
               </p>
             ) : null}
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-4">
               {primaryAction && (
                 <Link
                   to={primaryAction.to}
-                  className="inline-flex items-center justify-center rounded-md bg-orange-500 px-5 py-3 text-sm font-bold text-white shadow-md hover:bg-orange-600"
+                  className="inline-flex items-center justify-center rounded-2xl bg-orange-500 px-8 py-4 text-sm font-bold text-white shadow-xl shadow-orange-500/20 hover:bg-orange-600 transition-all"
                 >
                   {primaryAction.label}
                 </Link>
@@ -44,15 +41,15 @@ export default function HeroSection({
               {secondaryAction && (
                 <Link
                   to={secondaryAction.to}
-                  className={`inline-flex items-center justify-center rounded-md border px-5 py-3 text-sm font-bold hover:bg-white/10 ${dark ? "border-white/20 text-white" : "border-line text-ink-700 hover:bg-canvas"}`}
+                  className={`inline-flex items-center justify-center rounded-2xl border px-8 py-4 text-sm font-bold transition-all ${dark ? "border-white/10 text-white hover:bg-white/5" : "border-line text-navy-900 hover:bg-canvas"}`}
                 >
-                  <span className="mr-2">{secondaryAction.label}</span>
-                  <ChevronRight size={18} />
+                  {secondaryAction.label}
+                  <ChevronRight size={18} className="ml-2" />
                 </Link>
               )}
             </div>
           </div>
-          {children && <div>{children}</div>}
+          {children && <div className="rounded-3xl bg-surface/5 backdrop-blur-sm p-2 shadow-2xl">{children}</div>}
         </div>
       </div>
     </section>

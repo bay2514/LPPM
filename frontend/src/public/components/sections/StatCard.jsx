@@ -5,11 +5,13 @@ const map = { flask: Flask, award: Award, bookOpen: BookOpen, users: Users, hand
 export default function StatCard({ label, value, sublabel, icon, className = "" }) {
   const Icon = map[icon] || Flask;
   return (
-    <div className={`flex flex-col items-center rounded-lg bg-surface px-5 py-8 text-center shadow-card ${className}`}>
-      <Icon size={28} className="mb-3 text-orange-500" />
-      <div className="text-3xl font-extrabold text-navy-800">{value}</div>
-      <div className="mt-1 text-sm font-semibold text-ink-900">{label}</div>
-      <div className="text-xs text-ink-500">{sublabel}</div>
+    <div className={`flex flex-col items-center rounded-2xl border border-line bg-surface p-6 text-center shadow-lg transition-all hover:shadow-xl hover:border-orange-200 ${className}`}>
+      <div className="mb-4 rounded-xl bg-orange-50 p-3 text-orange-500">
+        <Icon size={24} />
+      </div>
+      <div className="text-3xl font-extrabold text-navy-950">{value}</div>
+      <div className="mt-1 text-xs font-bold uppercase tracking-wider text-navy-600">{label}</div>
+      <div className="mt-1 text-[11px] text-ink-500">{sublabel}</div>
     </div>
   );
 }

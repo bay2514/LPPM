@@ -24,25 +24,25 @@ export default function NewsCard({ news, variant = "default", ...props }) {
   }
 
   return (
-    <div className="flex flex-col justify-between rounded-lg border border-line bg-surface shadow-card overflow-hidden transition-transform hover:-translate-y-1">
+    <div className="flex flex-col justify-between rounded-2xl border border-line bg-surface shadow-lg overflow-hidden transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-200">
       <div className="p-6">
-        <div className="mb-3 flex items-center justify-between">
-          <span className="rounded-full bg-orange-50 px-2.5 py-0.5 text-[11px] font-bold uppercase tracking-wide text-orange-700">
+        <div className="mb-4 flex items-center justify-between">
+          <span className="rounded-full bg-orange-100/80 px-3 py-1 text-xs font-bold uppercase tracking-wider text-orange-700">
             {tag}
           </span>
-          <span className="text-xs text-ink-500">{date}</span>
+          <span className="text-xs font-semibold text-ink-500">{date}</span>
         </div>
-        <h3 className="mb-2 text-base font-bold leading-snug text-navy-800">
-          <Link to={to} className="hover:text-orange-500">
+        <h3 className="mb-3 text-lg font-bold leading-snug text-navy-950">
+          <Link to={to} className="hover:text-orange-600 transition-colors">
             {title}
           </Link>
         </h3>
-        <p className="text-sm text-ink-500 line-clamp-2">{desc}</p>
+        <p className="text-sm text-ink-600 line-clamp-2 leading-relaxed">{desc}</p>
       </div>
-      <div className="border-t border-line bg-canvas/50 px-6 py-3">
+      <div className="border-t border-line bg-canvas/40 px-6 py-4">
         <Link
           to={to}
-          className="text-xs font-bold text-orange-600 hover:text-orange-700 hover:underline"
+          className="text-xs font-bold text-orange-600 hover:text-orange-700 hover:underline flex items-center gap-1"
         >
           Selengkapnya →
         </Link>

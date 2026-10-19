@@ -90,36 +90,42 @@ export default function ContentList({
 
   return (
     <div className="space-y-6">
-      {/* Header */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex items-center space-x-3">
-          <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 text-orange-600">
-            <IconComponent size={24} />
+      {/* Header with vibrant background card */}
+      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-navy-950 via-navy-900 to-navy-800 p-6 text-white shadow-xl">
+        <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center space-x-4">
+            <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-orange-500 text-white shadow-lg shadow-orange-500/30">
+              <IconComponent size={30} />
+            </div>
+            <div>
+              <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-white/10 text-[10px] font-bold text-orange-400 mb-1">
+                MODUL MANAJEMEN KONTEN
+              </div>
+              <h1 className="text-2xl font-extrabold tracking-tight">{schema.label.plural}</h1>
+              <p className="text-xs text-gray-300">
+                Pusat kontrol dan publikasi data {schema.label.plural.toLowerCase()} lembaga.
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-2xl font-bold text-navy-900">{schema.label.plural}</h1>
-            <p className="text-sm text-ink-500">
-              Kelola data {schema.label.plural.toLowerCase()} secara dinamis via skema terpusat.
-            </p>
-          </div>
+          <Button onClick={onAdd} className="bg-orange-500 hover:bg-orange-600 text-white shadow-lg shadow-orange-500/20 px-5 py-3 rounded-xl font-bold flex items-center gap-2">
+            <Icons.Plus size={18} /> Tambah {schema.label.singular}
+          </Button>
         </div>
-        <Button onClick={onAdd} className="bg-orange-600 hover:bg-orange-700 text-white">
-          + Tambah {schema.label.singular}
-        </Button>
+        <div className="absolute -right-12 -top-12 w-48 h-48 rounded-full bg-orange-500/10 blur-2xl pointer-events-none"></div>
       </div>
 
-      {/* Filter Bar */}
-      <div className="flex flex-col gap-3 rounded-xl bg-surface p-4 shadow-card sm:flex-row sm:items-center sm:justify-between">
+      {/* Filter Bar with richer styling */}
+      <div className="flex flex-col gap-4 rounded-2xl bg-surface p-5 shadow-lg border border-line sm:flex-row sm:items-center sm:justify-between">
         <div className="relative flex-1">
-          <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-ink-400">
+          <span className="absolute inset-y-0 left-0 flex items-center pl-4 text-ink-400">
             <Icons.Search size={18} />
           </span>
           <input
             type="text"
-            placeholder={`Cari ${schema.label.plural.toLowerCase()}...`}
+            placeholder={`Cari ${schema.label.plural.toLowerCase()} berdasarkan judul atau kata kunci...`}
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-            className="w-full rounded-lg border border-line bg-white py-2 pl-10 pr-4 text-sm text-navy-900 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+            className="w-full rounded-xl border border-line bg-canvas py-2.5 pl-11 pr-4 text-sm text-navy-900 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20 transition-all"
           />
         </div>
 
@@ -127,18 +133,81 @@ export default function ContentList({
           <select
             value={statusFilter}
             onChange={(e) => { setStatusFilter(e.target.value); setPage(1); }}
-            className="rounded-lg border border-line bg-white px-3 py-2 text-sm text-navy-900 focus:border-orange-500 focus:outline-none focus:ring-1 focus:ring-orange-500"
+            className="rounded-xl border border-line bg-canvas px-4 py-2.5 text-sm font-semibold text-navy-900 focus:border-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-500/20"
           >
             <option value="all">Semua Status</option>
             <option value="published">Terbit / Aktif</option>
             <option value="draft">Draf / Nonaktif</option>
             <option value="scheduled">Dijadwalkan</option>
           </select>
-          <span className="text-xs text-ink-500">
-            Total: <strong>{filteredItems.length}</strong> item
-          </span>
+          <div className="bg-navy-50 text-navy-800 px-3 py-2 rounded-xl border border-navy-100 text-xs font-bold">
+            Total: {filteredItems.length}
+          </div>
         </div>
       </div>
+
+      {/* Mini stat strip */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {[
+          { label: "Total Data", value: items.length, icon: Icons.Inbox, tone: "bg-navy-50 text-navy-700 border-navy-100" },
+          {
+            label: "Terbit",
+            value: items.filter((i) => ["terbit", "published", "active"].includes(String(i.status || "").toLowerCase())).length,
+            icon: Icons.CheckCircle2,
+            tone: "bg-emerald-50 text-emerald-700 border-emerald-100",
+          },
+          {
+            label: "Draf",
+            value: items.filter((i) => ["draf", "draft", "inactive"].includes(String(i.status || "draf").toLowerCase())).length,
+            icon: Icons.FileText,
+            tone: "bg-amber-50 text-amber-700 border-amber-100",
+          },
+          { label: "Hasil Filter", value: filteredItems.length, icon: Icons.Search, tone: "bg-orange-50 text-orange-700 border-orange-100" },
+        ].map((s) => {
+          const SIcon = s.icon || Icons.Inbox;
+          return (
+            <div key={s.label} className="flex items-center gap-3 rounded-xl border border-line bg-surface p-4 shadow-card">
+              <div className={`flex h-9 w-9 items-center justify-center rounded-lg border ${s.tone}`}>
+                <SIcon size={16} />
+              </div>
+              <div>
+                <p className="text-[10px] font-bold uppercase tracking-wider text-ink-500">{s.label}</p>
+                <p className="text-lg font-extrabold leading-tight text-navy-950">{s.value}</p>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Bulk action bar */}
+      {selectedItems.length > 0 && (
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-orange-200 bg-orange-50 px-4 py-3">
+          <p className="text-xs font-bold text-orange-800">
+            {selectedItems.length} item dipilih
+          </p>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setSelectedItems([])}
+              className="rounded-lg border border-orange-200 bg-white px-3 py-1.5 text-xs font-semibold text-orange-700 hover:bg-orange-100"
+            >
+              Bersihkan pilihan
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (confirm(`Hapus ${selectedItems.length} item terpilih?`)) {
+                  selectedItems.forEach((id) => onDelete(id));
+                  setSelectedItems([]);
+                }
+              }}
+              className="rounded-lg bg-orange-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-orange-700"
+            >
+              Hapus terpilih
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Table */}
       <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
@@ -155,7 +224,7 @@ export default function ContentList({
                   />
                 </th>
                 {schema.listColumns.map((col) => (
-                  <th key={col.key} className="p-4 cursor-pointer select-none" onClick={() => handleSort(col.key)}>
+                  <th key={col.key} className="p-5 cursor-pointer select-none" onClick={() => handleSort(col.key)}>
                     <div className="flex items-center space-x-1">
                       <span>{col.label}</span>
                       {sortKey === col.key && (
@@ -164,21 +233,22 @@ export default function ContentList({
                     </div>
                   </th>
                 ))}
-                <th className="p-4 w-28 text-center">Status</th>
-                <th className="p-4 w-40 text-right">Aksi</th>
+                <th className="p-5 text-left">Editor</th>
+                <th className="p-5 w-28 text-center">Status</th>
+                <th className="p-5 w-40 text-right">Aksi</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-line text-sm text-ink-800">
               {pagedItems.length === 0 ? (
                 <tr>
-                  <td colSpan={schema.listColumns.length + 3} className="p-8 text-center text-ink-400">
+                  <td colSpan={schema.listColumns.length + 4} className="p-8 text-center text-ink-400">
                     Tidak ada data ditemukan.
                   </td>
                 </tr>
               ) : (
                 pagedItems.map((item) => (
-                  <tr key={item.id} className="hover:bg-canvas transition-colors">
-                    <td className="p-4">
+                  <tr key={item.id} className="hover:bg-canvas transition-colors group">
+                    <td className="p-5">
                       <input
                         type="checkbox"
                         checked={selectedItems.includes(item.id)}
@@ -187,9 +257,9 @@ export default function ContentList({
                       />
                     </td>
                     {schema.listColumns.map((col) => (
-                      <td key={col.key} className="p-4 font-medium text-navy-900 truncate max-w-xs">
+                      <td key={col.key} className="p-5 font-medium text-navy-900 truncate max-w-xs">
                         {col.key === "image" || col.key === "logo" ? (
-                          <div className="h-10 w-10 overflow-hidden rounded bg-canvas border border-line">
+                          <div className="h-12 w-12 overflow-hidden rounded-xl bg-canvas border border-line">
                             {item[col.key] ? (
                               <img src={item[col.key]} alt="" className="h-full w-full object-cover" />
                             ) : (
@@ -201,32 +271,35 @@ export default function ContentList({
                         )}
                       </td>
                     ))}
-                    <td className="p-4 text-center">
+                    <td className="p-5 text-xs text-ink-600">
+                      {item.updatedBy || "Admin A"}
+                    </td>
+                    <td className="p-5 text-center">
                       <StatusBadge status={item.status} />
                     </td>
-                    <td className="p-4 text-right">
-                      <div className="flex items-center justify-end space-x-2">
+                    <td className="p-5 text-right">
+                      <div className="flex items-center justify-end space-x-1 opacity-0 group-hover:opacity-100 transition-opacity">
                         {onViewVersions && (
                           <button
                             onClick={() => onViewVersions(item)}
                             title="Riwayat Versi"
-                            className="rounded p-1.5 text-ink-500 hover:bg-navy-50 hover:text-navy-800"
+                            className="rounded-lg p-2 text-ink-500 hover:bg-navy-50 hover:text-navy-800"
                           >
-                            <Icons.BookOpen size={16} />
+                            <Icons.BookOpen size={18} />
                           </button>
                         )}
                         {onDuplicate && (
                           <button
                             onClick={() => onDuplicate(item.id)}
                             title="Duplikat"
-                            className="rounded p-1.5 text-ink-500 hover:bg-navy-50 hover:text-navy-800"
+                            className="rounded-lg p-2 text-ink-500 hover:bg-navy-50 hover:text-navy-800"
                           >
-                            <Icons.ExternalLink size={16} />
+                            <Icons.ExternalLink size={18} />
                           </button>
                         )}
                         <button
                           onClick={() => onEdit(item)}
-                          className="rounded p-1.5 text-blue-600 hover:bg-blue-50"
+                          className="rounded-lg p-2 text-blue-600 hover:bg-blue-50"
                         >
                           Sunting
                         </button>
@@ -236,7 +309,7 @@ export default function ContentList({
                               onDelete(item.id);
                             }
                           }}
-                          className="rounded p-1.5 text-orange-600 hover:bg-orange-50"
+                          className="rounded-lg p-2 text-orange-600 hover:bg-orange-50"
                         >
                           Hapus
                         </button>

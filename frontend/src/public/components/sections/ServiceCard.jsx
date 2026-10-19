@@ -9,15 +9,16 @@ const map = {
 export default function ServiceCard({ title, description, icon, to = "#" }) {
   const Icon = map[icon] || Flask;
   return (
-    <Link to={to} className="group rounded-lg border border-line bg-surface p-6 shadow-card transition-shadow hover:shadow-lift">
-      <div className="mb-4 rounded-md bg-navy-50 p-3 text-navy-700 w-max">
+    <Link to={to} className="group flex flex-col rounded-2xl border border-line bg-surface p-8 shadow-lg transition-all hover:-translate-y-1 hover:shadow-xl hover:border-orange-200">
+      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-navy-50 text-navy-700 transition-colors group-hover:bg-orange-500 group-hover:text-white shadow-sm">
         <Icon size={28} />
       </div>
-      <h3 className="mb-2 text-lg font-bold text-navy-800">{title}</h3>
-      <p className="mb-4 text-sm text-ink-500">{description}</p>
-      <span className="inline-flex items-center text-sm font-bold text-orange-500 transition-transform group-hover:translate-x-1">
-        Pelajari <ChevronRight size={16} />
-      </span>
+      <h3 className="mb-3 text-xl font-bold text-navy-950 transition-colors group-hover:text-orange-600">{title}</h3>
+      <p className="mb-6 text-sm leading-relaxed text-ink-600">{description}</p>
+      <div className="mt-auto flex items-center font-bold text-orange-600">
+        <span className="text-sm">Pelajari Selengkapnya</span>
+        <ChevronRight size={18} className="ml-1 transition-transform group-hover:translate-x-1" />
+      </div>
     </Link>
   );
 }

@@ -3,14 +3,14 @@ export default function EventItem({ event, ...props }) {
   const { day, month, title, meta } = item;
 
   return (
-    <div className="flex items-start gap-4 rounded-lg border border-line bg-surface p-4 shadow-card transition-all hover:border-orange-200 hover:shadow-md">
-      <div className="flex h-14 w-14 shrink-0 flex-col items-center justify-center rounded-lg bg-navy-50 text-navy-800">
-        <span className="text-xl font-extrabold leading-none">{day}</span>
-        <span className="text-[10px] font-bold uppercase tracking-wide text-orange-600">{month}</span>
+    <div className="flex items-start gap-5 rounded-2xl border border-line bg-surface p-5 shadow-lg transition-all hover:border-orange-300 hover:shadow-xl hover:pl-6">
+      <div className="flex h-16 w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-gradient-to-br from-navy-50 to-navy-100 text-navy-800 shadow-sm">
+        <span className="text-2xl font-extrabold leading-none">{day}</span>
+        <span className="text-xs font-bold uppercase tracking-wider text-orange-600">{month}</span>
       </div>
-      <div>
-        <h4 className="text-sm font-bold text-navy-800 leading-snug">{title}</h4>
-        <p className="mt-1 text-xs text-ink-500">{meta}</p>
+      <div className="flex-1">
+        <h4 className="text-base font-bold text-navy-900 leading-tight">{title}</h4>
+        <p className="mt-1 text-sm text-ink-500">{meta}</p>
       </div>
     </div>
   );
