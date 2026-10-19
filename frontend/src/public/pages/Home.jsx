@@ -11,10 +11,12 @@ function QuickAccessCard({ title, link }) {
   return (
     <Link
       to={link}
-      className="group flex items-center justify-between rounded-md border border-line bg-surface px-4 py-3 text-sm font-medium text-ink-700 hover:bg-canvas hover:shadow-card"
+      className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-line bg-surface p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:border-orange-500/50 hover:shadow-xl"
     >
-      <span>{title}</span>
-      <ChevronRight size={16} className="text-ink-500 transition-transform group-hover:translate-x-1" />
+      <div className="rounded-full bg-orange-50 p-3 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
+        <ChevronRight size={24} className="rotate-0 group-hover:rotate-90 transition-transform" />
+      </div>
+      <span className="text-sm font-bold text-navy-950">{title}</span>
     </Link>
   );
 }

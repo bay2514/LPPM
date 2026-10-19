@@ -7,22 +7,22 @@ import { FileText, Award, BookOpen, Shield, Users, MapPin, TrendingUp, TrendingD
 import { useContentSingle } from "@public/hooks/useContent.js";
 
 // Komponen Grafik (SVG Internal)
-const BarChart = ({ data, title, color = "#3b82f6" }) => {
+const BarChart = ({ data, title, color = "#f58220" }) => {
   const max = Math.max(...data.map(d => d.value), 1);
   return (
-    <div className="bg-navy-900 rounded-lg p-6 border border-navy-800" role="img" aria-label={`Grafik ${title}`}>
-      <h3 className="text-sm font-semibold text-ink-300 mb-4">{title}</h3>
+    <div className="bg-surface rounded-2xl p-6 border border-line shadow-card" role="img" aria-label={`Grafik ${title}`}>
+      <h3 className="text-sm font-bold text-navy-800 mb-4 uppercase tracking-wider">{title}</h3>
       <div className="space-y-3">
         {data.map((d, i) => (
           <div key={i} className="flex items-center gap-3">
-            <span className="w-24 text-xs text-ink-400 truncate">{d.label}</span>
-            <div className="flex-1 h-3 bg-navy-950 rounded-full overflow-hidden">
+            <span className="w-24 text-xs font-medium text-ink-600 truncate">{d.label}</span>
+            <div className="flex-1 h-3 bg-canvas rounded-full overflow-hidden">
               <div 
-                className="h-full rounded-full" 
+                className="h-full rounded-full transition-all duration-1000 ease-out" 
                 style={{ width: `${(d.value / max) * 100}%`, backgroundColor: color }}
               />
             </div>
-            <span className="w-8 text-xs font-bold text-white text-right">{d.value}</span>
+            <span className="w-8 text-xs font-bold text-navy-900 text-right">{d.value}</span>
           </div>
         ))}
       </div>
@@ -52,12 +52,12 @@ export default function DashboardCapaian() {
   }).sort((a, b) => b.value - a.value).slice(0, 5);
 
   const kpis = [
-    { title: "Penelitian Aktif", value: currentTotals.penelitian, delta: delta(currentYear, selectedProdi, "penelitian"), icon: FileText, color: "text-blue-600 bg-blue-50 border-blue-100" },
-    { title: "PKM Aktif", value: currentTotals.pkm, delta: delta(currentYear, selectedProdi, "pkm"), icon: Award, color: "text-orange-600 bg-orange-50 border-orange-100" },
-    { title: "Publikasi Ilmiah", value: currentTotals.publikasi, delta: delta(currentYear, selectedProdi, "publikasi"), icon: BookOpen, color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
-    { title: "HKI Terdaftar", value: currentTotals.hki, delta: delta(currentYear, selectedProdi, "hki"), icon: Shield, color: "text-purple-600 bg-purple-50 border-purple-100" },
-    { title: "Mitra Strategis", value: currentTotals.mitra, delta: delta(currentYear, selectedProdi, "mitra"), icon: Users, color: "text-indigo-600 bg-indigo-50 border-indigo-100" },
-    { title: "Desa Binaan", value: currentTotals.desa, delta: delta(currentYear, selectedProdi, "desa"), icon: MapPin, color: "text-teal-600 bg-teal-50 border-teal-100" },
+    { title: "Penelitian Aktif", value: currentTotals.penelitian, delta: delta(currentYear, selectedProdi, "penelitian"), icon: FileText, color: "text-orange-600 bg-orange-50 border-orange-100" },
+    { title: "PKM Aktif", value: currentTotals.pkm, delta: delta(currentYear, selectedProdi, "pkm"), icon: Award, color: "text-teal-600 bg-teal-50 border-teal-100" },
+    { title: "Publikasi Ilmiah", value: currentTotals.publikasi, delta: delta(currentYear, selectedProdi, "publikasi"), icon: BookOpen, color: "text-navy-600 bg-navy-50 border-navy-100" },
+    { title: "HKI Terdaftar", value: currentTotals.hki, delta: delta(currentYear, selectedProdi, "hki"), icon: Shield, color: "text-orange-700 bg-orange-100 border-orange-200" },
+    { title: "Mitra Strategis", value: currentTotals.mitra, delta: delta(currentYear, selectedProdi, "mitra"), icon: Users, color: "text-teal-700 bg-teal-100 border-teal-200" },
+    { title: "Desa Binaan", value: currentTotals.desa, delta: delta(currentYear, selectedProdi, "desa"), icon: MapPin, color: "text-navy-700 bg-navy-100 border-navy-200" },
   ];
 
   // Handler Unduh CSV

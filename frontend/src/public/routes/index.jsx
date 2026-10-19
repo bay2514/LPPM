@@ -11,12 +11,16 @@ const Pengajuan = lazy(() => import("@public/pages/Pengajuan.jsx"));
 const Berita = lazy(() => import("@public/pages/Berita.jsx"));
 const Kegiatan = lazy(() => import("@public/pages/Kegiatan.jsx"));
 const Kerjasama = lazy(() => import("@public/pages/Kerjasama.jsx"));
+const Penelitian = lazy(() => import("@public/pages/Penelitian.jsx"));
+const Pengabdian = lazy(() => import("@public/pages/Pengabdian.jsx"));
+const Publikasi = lazy(() => import("@public/pages/Publikasi.jsx"));
+const HKI = lazy(() => import("@public/pages/HKI.jsx"));
 const NotFound = lazy(() => import("@public/pages/NotFound.jsx"));
 const Layout = lazy(() => import("@public/layouts/Layout.jsx"));
 
 const Loading = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gray-50/50">
-    <div className="w-8 h-8 border-4 border-blue-600 border-t-transparent rounded-full animate-spin" />
+  <div className="min-h-screen flex items-center justify-center bg-canvas">
+    <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" />
   </div>
 );
 
@@ -34,6 +38,10 @@ export default function PublicRoutes() {
           <Route path="/berita" element={<Berita />} />
           <Route path="/kegiatan" element={<Kegiatan />} />
           <Route path="/kerjasama" element={<Kerjasama />} />
+          <Route path="/penelitian" element={<Penelitian />} />
+          <Route path="/pengabdian" element={<Pengabdian />} />
+          <Route path="/publikasi" element={<Publikasi />} />
+          <Route path="/hki" element={<HKI />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
