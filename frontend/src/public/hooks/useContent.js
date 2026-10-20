@@ -11,6 +11,7 @@ import { contentStore } from "@shared/lib/contentStore.js";
 export function useContent(collection) {
   const snapshot = useSyncExternalStore(
     (onStoreChange) => contentStore.subscribe(onStoreChange),
+    () => contentStore.getSnapshot(),
     () => contentStore.getSnapshot()
   );
 
@@ -48,6 +49,7 @@ export function useContent(collection) {
 export function useContentSingle(key) {
   const snapshot = useSyncExternalStore(
     (onStoreChange) => contentStore.subscribe(onStoreChange),
+    () => contentStore.getSnapshot(),
     () => contentStore.getSnapshot()
   );
 
