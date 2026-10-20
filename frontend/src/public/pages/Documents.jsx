@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { usePublicData } from "@public/hooks/useStore.js";
+import { usePublicData } from "@shared/hooks/usePublicData.js";
 import { Search, Download, FileText, Inbox, ChevronRight } from "@shared/components/ui/Icons.jsx";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 
