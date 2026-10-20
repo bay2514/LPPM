@@ -86,20 +86,32 @@ export default function Navbar() {
             item.children ? (
               <div key={item.label} className="relative">
                 <button
-                  className="flex items-center gap-1 rounded-xl px-4 py-2.5 text-sm font-bold text-navy-900 hover:bg-canvas transition-colors"
+                  className={`flex items-center gap-1 rounded-xl px-4 py-2.5 text-sm font-bold transition-colors ${
+                    item.children.some((c) => pathname === c.to)
+                      ? "bg-orange-50 text-orange-700"
+                      : "text-navy-900 hover:bg-canvas"
+                  }`}
                   onClick={() => setOpenDropdown((s) => !s)}
-                  onBlur={() => setTimeout(() => setOpenDropdown(false), 120)}
+                  onBlur={(e) => {
+                    if (!e.currentTarget.parentElement.contains(e.relatedTarget)) {
+                      setOpenDropdown(false);
+                    }
+                  }}
                 >
                   {item.label}
                   <ChevronDown size={16} />
                 </button>
                 {openDropdown && (
-                  <div className="absolute left-0 top-full mt-2 w-48 rounded-2xl border border-line bg-white p-2 shadow-2xl">
+                  <div className="absolute left-0 top-full mt-2 w-48 rounded-2xl border border-line bg-white p-2 shadow-2xl z-50">
                     {item.children.map((c) => (
                       <Link
                         key={c.label}
                         to={c.to}
-                        className="block rounded-xl px-4 py-2.5 text-sm font-semibold text-navy-900 hover:bg-orange-50 hover:text-orange-700 transition-colors"
+                        className={`block rounded-xl px-4 py-2.5 text-sm font-semibold transition-colors ${
+                          pathname === c.to
+                            ? "bg-orange-50 text-orange-700"
+                            : "text-navy-900 hover:bg-orange-50 hover:text-orange-700"
+                        }`}
                         onClick={() => setOpenDropdown(false)}
                       >
                         {c.label}
@@ -142,39 +154,45 @@ export default function Navbar() {
       {open && (
         <div className="fixed inset-0 z-50 bg-black/40 min-[900px]:hidden" onClick={() => setOpen(false)}>
           <div
-            className="absolute right-0 top-0 h-full w-72 bg-surface p-6 shadow-lift"
+            className="absolute right-0 top-0 h-full w-72 bg-surface p-6 shadow-lift overflow-y-auto"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between pb-4">
-              <span className="text-sm font-extrabold text-navy-800">Menu</span>
+            <div className="flex items-center justify-between pb-4 border-b border-line mb-4">
+              <span className="text-sm font-extrabold text-navy-900">Menu</span>
               <button className="inline-flex h-9 w-9 items-center justify-center rounded-md text-ink-500 hover:bg-canvas" onClick={() => setOpen(false)}>
                 <X size={24} />
               </button>
             </div>
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col gap-2">
               {links.map((item) =>
                 item.children ? (
-                  <div key={item.label}>
-                    <span className="px-2 py-2 text-sm font-semibold text-ink-500">{item.label}</span>
-                    {item.children.map((c) => (
-                      <Link
-                        key={c.label}
-                        to={c.to}
-                        onClick={() => setOpen(false)}
-                        className="block rounded-md px-4 py-2 text-sm text-ink-700 hover:bg-canvas"
-                      >
-                        {c.label}
-                      </Link>
-                    ))}
+                  <div key={item.label} className="flex flex-col gap-1">
+                    <span className="px-2 py-2 text-sm font-bold text-navy-900">{item.label}</span>
+                    <div className="flex flex-col gap-1 pl-3 border-l-2 border-line ml-2">
+                      {item.children.map((c) => (
+                        <Link
+                          key={c.label}
+                          to={c.to}
+                          onClick={() => setOpen(false)}
+                          className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                            pathname === c.to
+                              ? "bg-navy-50 text-navy-800 font-bold"
+                              : "text-ink-700 hover:bg-canvas"
+                          }`}
+                        >
+                          {c.label}
+                        </Link>
+                      ))}
+                    </div>
                   </div>
                 ) : (
                   <Link
                     key={item.label}
                     to={item.to}
                     onClick={() => setOpen(false)}
-                    className={`rounded-md px-2 py-2 text-sm font-medium ${
+                    className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                       pathname === item.to
-                        ? "bg-navy-50 text-navy-800"
+                        ? "bg-navy-50 text-navy-800 font-bold"
                         : "text-ink-700 hover:bg-canvas"
                     }`}
                   >
@@ -182,7 +200,7 @@ export default function Navbar() {
                   </Link>
                 )
               )}
-              <div className="mt-2">
+              <div className="mt-4 pt-4 border-t border-line">
                 <AuthLink onNavigate={() => setOpen(false)} />
               </div>
             </div>
