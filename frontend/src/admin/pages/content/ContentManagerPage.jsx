@@ -2,9 +2,13 @@ import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import {
   newsSchema,
-  collaboratorSchema,
+  collaboratorsSchema,
   eventsSchema,
   documentsSchema,
+  profileSchema,
+  programsSchema,
+  performanceDataSchema,
+  dashboardConfigSchema,
 } from "@admin/content/schema.js";
 import { useAdminContent } from "@admin/hooks/useAdminContent.js";
 import ContentList from "@admin/components/content/ContentList.jsx";
@@ -12,9 +16,13 @@ import ContentForm from "@admin/components/content/ContentForm.jsx";
 
 const schemaMap = {
   news: newsSchema,
-  collaborators: collaboratorSchema,
+  collaborators: collaboratorsSchema,
   events: eventsSchema,
   documents: documentsSchema,
+  profile: profileSchema,
+  programs: programsSchema,
+  performanceData: performanceDataSchema,
+  dashboardConfig: dashboardConfigSchema,
 };
 
 const pathToKey = {
@@ -22,6 +30,10 @@ const pathToKey = {
   mitra: "collaborators",
   kegiatan: "events",
   dokumen: "documents",
+  profil: "profile",
+  prodi: "programs",
+  "data-kinerja": "performanceData",
+  "dashboard-config": "dashboardConfig",
 };
 
 export default function ContentManagerPage() {

@@ -49,8 +49,10 @@ export default function AdminRoutes() {
           <Route path="mitra" element={<ContentManagerPage />} />
           <Route path="kegiatan" element={<ContentManagerPage />} />
           <Route path="dokumen" element={<ContentManagerPage />} />
-          <Route path="profil" element={<Profile />} />
-          <Route path="dashboard-config" element={<DashboardSettingsPage />} />
+          <Route path="profil" element={<ContentManagerPage />} />
+          <Route path="prodi" element={<ContentManagerPage />} />
+          <Route path="data-kinerja" element={<ContentManagerPage />} />
+          <Route path="dashboard-config" element={<ContentManagerPage />} />
           <Route path="*" element={<Navigate to="/admin" replace />} />
         </Route>
       </Routes>
