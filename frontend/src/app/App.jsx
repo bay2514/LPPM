@@ -35,6 +35,7 @@ export default function App() {
             <Route path="/dokumen/:slug" element={<DocumentDetail />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/luaran" element={<Luaran />} />
+            <Route path="/pengajuan" element={<Pengajuan />} />
             <Route path="/berita" element={<Berita />} />
             <Route path="/kegiatan" element={<Kegiatan />} />
             <Route path="/kerjasama" element={<Kerjasama />} />
