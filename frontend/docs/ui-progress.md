@@ -1,4 +1,4 @@
-- [ ] Tahap 1 - Fondasi
-- [ ] Tahap 2 - Halaman publik
+- [x] Tahap 1 - Fondasi
+- [x] Tahap 2 - Halaman publik
 - [ ] Tahap 3 - Admin
 - [ ] Tahap 4 - QA

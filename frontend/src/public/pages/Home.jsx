@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { ChevronRight } from "@shared/components/ui/Icons.jsx";
+import { ChevronRight, FileText, Users, Award, TrendingUp, Calendar } from "@shared/components/ui/Icons.jsx";
 import HeroSection from "@public/components/sections/HeroSection.jsx";
 import StatCard from "@public/components/sections/StatCard.jsx";
 import ServiceCard from "@public/components/sections/ServiceCard.jsx";
 import NewsCard from "@public/components/sections/NewsCard.jsx";
 import EventItem from "@public/components/sections/EventItem.jsx";
+import PageHero from "@shared/components/ui/PageHero.jsx";
 import { useContent } from "@public/hooks/useContent.js";
 
 function QuickAccessCard({ title, link }) {
