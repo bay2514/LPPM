@@ -1,4 +1,5 @@
 import { MapPin, Mail, Phone } from "@shared/components/ui/Icons.jsx";
+import { Link } from "react-router-dom";
 import logo from "@assets/logo-lppm-tsu.png";
 
 export default function Footer() {
@@ -11,7 +12,7 @@ export default function Footer() {
           <div>
             <div className="mb-6 flex items-center gap-4">
               <img src={logo} alt="Logo LPPM TSU" className="h-12 w-auto rounded-xl bg-white p-2 shadow-sm" />
-              <div className="text-xl font-extrabold tracking-tight text-white">LPPM</div>
+              <div className="text-xl font-extrabold tracking-tight text-white">LPPM TSU</div>
             </div>
             <p className="mb-6 text-sm leading-relaxed text-ink-500">
               Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Tiga
@@ -37,34 +38,34 @@ export default function Footer() {
             <h4 className="mb-6 text-sm font-extrabold uppercase tracking-wider text-white">Menu Cepat</h4>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
-                  Hubungan Internal Dosen
-                </a>
+                <Link to="/pengajuan" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                  Pengajuan Proposal & Layanan
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/penelitian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                  Panduan & Riset Penelitian
+                </Link>
+              </li>
+              <li>
+                <Link to="/pengabdian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Panduan Pengabdian Masyarakat
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/hki" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Sertifikat & HKI
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
-                  Panduan Jurnal Ilmiah
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/dokumen" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Pusat Dokumen & SOP
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/dashboard" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/dashboard" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Dashboard Capaian
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -95,9 +96,9 @@ export default function Footer() {
           <p className="text-ink-500">© {currentYear} LPPM Universitas Tiga Serangkai. All Rights Reserved.</p>
           <div className="flex items-center gap-4">
             <p className="text-xs text-ink-500">Developed by IT Div TSU</p>
-            <a href="/admin/login" className="rounded-lg bg-orange-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-orange-700 transition-colors" title="Masuk Portal Admin">
+            <Link to="/admin/login" className="rounded-lg bg-orange-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-orange-700 transition-colors" title="Masuk Portal Admin">
               Masuk Admin
-            </a>
+            </Link>
           </div>
         </div>
       </div>

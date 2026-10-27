@@ -100,6 +100,26 @@ export const INITIAL_DATA = (() => {
     it.order = idx;
   });
 
+  // Normalisasi data layanan awal
+  data.services.forEach((it, idx) => {
+    if (!it.id) it.id = `service-${idx + 1}`;
+    it.status = it.status || "terbit";
+    it.createdAt = it.createdAt || now;
+    it.updatedAt = it.updatedAt || now;
+    it.publishAt = it.publishAt || now;
+    it.order = idx;
+  });
+
+  // Normalisasi data statistik awal
+  data.stats.forEach((it, idx) => {
+    if (!it.id) it.id = `stat-${idx + 1}`;
+    it.status = "terbit";
+    it.createdAt = it.createdAt || now;
+    it.updatedAt = it.updatedAt || now;
+    it.publishAt = it.publishAt || now;
+    it.order = idx;
+  });
+
   return data;
 })();
 

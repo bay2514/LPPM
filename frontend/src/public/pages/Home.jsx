@@ -72,7 +72,7 @@ export default function Home() {
               Layanan Utama LPPM
             </h2>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {services.map((s) => (
               <ServiceCard key={s.id} {...s} />
             ))}
