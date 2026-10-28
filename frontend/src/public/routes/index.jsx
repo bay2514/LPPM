@@ -52,15 +52,7 @@ export default function PublicRoutes() {
           <Route path="/info/pengumuman" element={<Berita />} />
           <Route path="/info/dokumen" element={<Documents />} />
           <Route path="/dokumen/:slug" element={<DocumentDetail />} />
-          <Route
-            path="/info/surat-penugasan"
-            element={
-              <PlaceholderPage
-                title="Surat Penugasan"
-                description="Daftar surat penugasan penelitian, pengabdian, dan tugas resmi LPPM TSU."
-              />
-            }
-          />
+          <Route path="/info/surat-penugasan" element={<SuratPenugasan />} />
 
           {/* Unlisted active routes (Kerjasama & Pengajuan) */}
           <Route path="/kerjasama" element={<Kerjasama />} />
