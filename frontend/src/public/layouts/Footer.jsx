@@ -35,7 +35,7 @@ export default function Footer() {
             </div>
           </div>
           <div>
-            <h4 className="mb-6 text-sm font-extrabold uppercase tracking-wider text-white">Menu Cepat</h4>
+            <h4 className="mb-6 text-sm font-extrabold uppercase tracking-wider text-white">Menu Cepat & Layanan</h4>
             <ul className="space-y-3">
               <li>
                 <Link to="/pengajuan" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
@@ -43,22 +43,22 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link to="/penelitian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/layanan/penelitian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Panduan & Riset Penelitian
                 </Link>
               </li>
               <li>
-                <Link to="/pengabdian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/layanan/pengabdian" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Panduan Pengabdian Masyarakat
                 </Link>
               </li>
               <li>
-                <Link to="/hki" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/layanan/luaran/hki" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Sertifikat & HKI
                 </Link>
               </li>
               <li>
-                <Link to="/dokumen" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
+                <Link to="/info/dokumen" className="text-sm font-medium text-ink-400 hover:text-orange-400 transition-colors">
                   Pusat Dokumen & SOP
                 </Link>
               </li>
