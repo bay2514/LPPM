@@ -13,8 +13,11 @@ const Kegiatan = lazy(() => import("@public/pages/Kegiatan.jsx"));
 const Kerjasama = lazy(() => import("@public/pages/Kerjasama.jsx"));
 const Penelitian = lazy(() => import("@public/pages/Penelitian.jsx"));
 const Pengabdian = lazy(() => import("@public/pages/Pengabdian.jsx"));
+const KKN = lazy(() => import("@public/pages/KKN.jsx"));
 const Publikasi = lazy(() => import("@public/pages/Publikasi.jsx"));
 const HKI = lazy(() => import("@public/pages/HKI.jsx"));
+const Buku = lazy(() => import("@public/pages/Buku.jsx"));
+const Monograf = lazy(() => import("@public/pages/Monograf.jsx"));
 const PlaceholderPage = lazy(() => import("@public/pages/PlaceholderPage.jsx"));
 const NotFound = lazy(() => import("@public/pages/NotFound.jsx"));
 const Layout = lazy(() => import("@public/layouts/Layout.jsx"));
@@ -40,33 +43,9 @@ export default function PublicRoutes() {
           <Route path="/layanan/luaran" element={<Luaran />} />
           <Route path="/layanan/luaran/publikasi" element={<Publikasi />} />
           <Route path="/layanan/luaran/hki" element={<HKI />} />
-          <Route
-            path="/layanan/luaran/buku"
-            element={
-              <PlaceholderPage
-                title="Buku"
-                description="Katalog buku referensi, ajar, dan monograf hasil riset sivitas akademika Universitas Tiga Serangkai."
-              />
-            }
-          />
-          <Route
-            path="/layanan/luaran/monograf"
-            element={
-              <PlaceholderPage
-                title="Monograf"
-                description="Koleksi monograf ilmiah dan laporan riset mendalam LPPM TSU."
-              />
-            }
-          />
-          <Route
-            path="/layanan/kkn"
-            element={
-              <PlaceholderPage
-                title="KKN"
-                description="Kuliah Kerja Nyata Pembelajaran Pemberdayaan Masyarakat (KKN-PPM) Universitas Tiga Serangkai."
-              />
-            }
-          />
+          <Route path="/layanan/luaran/buku" element={<Buku />} />
+          <Route path="/layanan/luaran/monograf" element={<Monograf />} />
+          <Route path="/layanan/kkn" element={<KKN />} />
 
           {/* Info LPPM Routes */}
           <Route path="/info/agenda" element={<Kegiatan />} />
