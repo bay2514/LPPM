@@ -18,6 +18,7 @@ const Publikasi = lazy(() => import("@public/pages/Publikasi.jsx"));
 const HKI = lazy(() => import("@public/pages/HKI.jsx"));
 const Buku = lazy(() => import("@public/pages/Buku.jsx"));
 const Monograf = lazy(() => import("@public/pages/Monograf.jsx"));
+const SuratPenugasan = lazy(() => import("@public/pages/SuratPenugasan.jsx"));
 const PlaceholderPage = lazy(() => import("@public/pages/PlaceholderPage.jsx"));
 const NotFound = lazy(() => import("@public/pages/NotFound.jsx"));
 const Layout = lazy(() => import("@public/layouts/Layout.jsx"));
