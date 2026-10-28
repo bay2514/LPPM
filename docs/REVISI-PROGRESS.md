@@ -3,5 +3,5 @@
 - [x] TAHAP 1: menu dan rute
 - [x] TAHAP 2: halaman Layanan LPPM
 - [x] TAHAP 3: halaman Info LPPM
-- [ ] TAHAP 4: admin dan data
+- [x] TAHAP 4: admin dan data
 - [ ] TAHAP 5: QA
