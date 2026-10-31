@@ -5,7 +5,7 @@
 - [x] TAHAP 1: Fondasi & Navigasi (Token, Navbar, Footer, PageHero)
 - [x] TAHAP 2: Modal Login Admin
 - [x] TAHAP 3: Beranda (Hero, KPI, Pulse, Layanan, Berita)
-- [ ] TAHAP 4: Layanan LPPM (Penelitian, Pengabdian, Luaran, KKN, e-Jurnal)
+- [x] TAHAP 4: Layanan LPPM (Penelitian, Pengabdian, Luaran, KKN, e-Jurnal)
 - [ ] TAHAP 5: Profil & Info LPPM (Tentang, Visi Misi, Struktur, Kontak, Agenda, Dokumen, Form)
 - [ ] TAHAP 6: Dashboard, Admin Sync & QA
 
