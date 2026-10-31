@@ -38,6 +38,44 @@ export default function PublicRoutes() {
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
 
+          {/* Profil Routes */}
+          <Route 
+            path="/profil/tentang" 
+            element={
+              <PlaceholderPage 
+                title="Tentang LPPM TSU" 
+                description="Mengenal lebih dekat Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Tiga Serangkai."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/visi-misi" 
+            element={
+              <PlaceholderPage 
+                title="Visi dan Misi LPPM" 
+                description="Landasan strategis, visi, misi, dan tujuan pengembangan riset serta pengabdian TSU."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/struktur" 
+            element={
+              <PlaceholderPage 
+                title="Struktur Organisasi" 
+                description="Susunan pimpinan, pengurus, dan unit pelaksana teknis di lingkungan LPPM TSU."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/kontak" 
+            element={
+              <PlaceholderPage 
+                title="Kontak Kami" 
+                description="Hubungi sekretariat dan layanan terpadu LPPM Universitas Tiga Serangkai."
+              />
+            } 
+          />
+
           {/* Layanan LPPM Routes */}
           <Route path="/layanan/penelitian" element={<Penelitian />} />
           <Route path="/layanan/pengabdian" element={<Pengabdian />} />
@@ -47,6 +85,16 @@ export default function PublicRoutes() {
           <Route path="/layanan/luaran/buku" element={<Buku />} />
           <Route path="/layanan/luaran/monograf" element={<Monograf />} />
           <Route path="/layanan/kkn" element={<KKN />} />
+          <Route 
+            path="/layanan/e-jurnal" 
+            element={
+              <PlaceholderPage 
+                title="e-Jurnal Universitas Tiga Serangkai" 
+                description="Portal publikasi jurnal ilmiah terakreditasi di bawah pengelolaan LPPM TSU Press."
+              />
+            } 
+          />
+          <Route path="/layanan/kerjasama" element={<Kerjasama />} />
 
           {/* Info LPPM Routes */}
           <Route path="/info/agenda" element={<Kegiatan />} />
@@ -55,11 +103,11 @@ export default function PublicRoutes() {
           <Route path="/dokumen/:slug" element={<DocumentDetail />} />
           <Route path="/info/surat-penugasan" element={<SuratPenugasan />} />
 
-          {/* Unlisted active routes (Kerjasama & Pengajuan) */}
-          <Route path="/kerjasama" element={<Kerjasama />} />
+          {/* Unlisted active routes */}
           <Route path="/pengajuan" element={<Pengajuan />} />
 
           {/* Old Route Redirects (Navigate replace to prevent 404) */}
+          <Route path="/profil" element={<Navigate to="/profil/tentang" replace />} />
           <Route path="/dokumen" element={<Navigate to="/info/dokumen" replace />} />
           <Route path="/kegiatan" element={<Navigate to="/info/agenda" replace />} />
           <Route path="/berita" element={<Navigate to="/info/pengumuman" replace />} />
@@ -71,6 +119,7 @@ export default function PublicRoutes() {
           <Route path="/pengumuman" element={<Navigate to="/info/pengumuman" replace />} />
           <Route path="/kkn" element={<Navigate to="/layanan/kkn" replace />} />
           <Route path="/capaian" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/kerjasama" element={<Navigate to="/layanan/kerjasama" replace />} />
 
           <Route path="*" element={<NotFound />} />
         </Route>

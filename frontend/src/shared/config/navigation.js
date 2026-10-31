@@ -1,6 +1,16 @@
 export const navigationConfig = [
-  { label: "Beranda", to: "/" },
   { label: "Dashboard", to: "/dashboard" },
+  { label: "Beranda", to: "/" },
+  {
+    label: "Profil",
+    to: "/profil/tentang",
+    children: [
+      { label: "Tentang LPPM", to: "/profil/tentang" },
+      { label: "Visi dan Misi", to: "/profil/visi-misi" },
+      { label: "Struktur Organisasi", to: "/profil/struktur" },
+      { label: "Kontak Kami", to: "/profil/kontak" },
+    ],
+  },
   {
     label: "Layanan LPPM",
     to: "/layanan/penelitian",
@@ -18,6 +28,8 @@ export const navigationConfig = [
         ],
       },
       { label: "KKN", to: "/layanan/kkn" },
+      { label: "E-Jurnal", to: "/layanan/e-jurnal" },
+      { label: "Kerjasama", to: "/layanan/kerjasama" },
     ],
   },
   {
