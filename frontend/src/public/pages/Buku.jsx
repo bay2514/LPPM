@@ -1,17 +1,28 @@
-import PageHero from "@shared/components/ui/PageHero.jsx";
-import OutputList from "@public/components/sections/OutputList.jsx";
+import LayananDetail from "./LayananDetail.jsx";
 
 export default function Buku() {
+  const steps = [
+    {
+      title: "Draft Naskah Buku",
+      description: "Penyusunan naskah buku ajar atau referensi sesuai kaidah penulisan ilmiah dan ISBN."
+    },
+    {
+      title: "Review & Layout",
+      description: "Proses peer review internal, editing, tata letak, dan pembuatan desain cover buku."
+    },
+    {
+      title: "Penerbitan ISBN",
+      description: "Pengurusan nomor ISBN resmi dan publikasi buku untuk kebutuhan akademik."
+    }
+  ];
+
   return (
-    <div className="bg-canvas min-h-screen">
-      <PageHero 
-        title="Buku & Karya Tulis"
-        description="Koleksi buku ajar, buku referensi, dan monograf yang telah diterbitkan oleh dosen Universitas Tiga Serangkai."
-        badge="Luaran"
-      />
-      <div className="mx-auto max-w-container px-4 md:px-8">
-        <OutputList type="Buku" title="Buku" />
-      </div>
-    </div>
+    <LayananDetail 
+      title="Buku Ajar & Referensi"
+      description="Fasilitasi penulisan, penerbitan, dan pengurusan ISBN buku ajar, monograf, serta referensi hasil riset dosen TSU."
+      steps={steps}
+      docCategory="Panduan"
+      eventTag="Buku"
+    />
   );
 }

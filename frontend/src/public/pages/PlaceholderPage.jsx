@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
-import { FileText, Download, ArrowRight, Shield, AlertCircle } from "@shared/components/ui/Icons.jsx";
+import PageHero from "@shared/components/ui/PageHero.jsx";
+import { Download, ArrowRight, Shield, AlertCircle, FileText, Calendar } from "@shared/components/ui/Icons.jsx";
+import { useContent } from "@public/hooks/useContent";
 
 export default function PlaceholderPage({ title, description, features = [] }) {
+  const documents = useContent("documents");
+  const events = useContent("events");
+  const news = useContent("news");
+
   const defaultFeatures = [
     { title: "Panduan & SOP", desc: `Informasi pedoman resmi pelaksanaan ${title.toLowerCase()} LPPM TSU.` },
     { title: "Pengajuan Daring", desc: `Sistem pengajuan proposal dan laporan ${title.toLowerCase()} terintegrasi.` },
@@ -10,45 +16,38 @@ export default function PlaceholderPage({ title, description, features = [] }) {
 
   const displayFeatures = features.length > 0 ? features : defaultFeatures;
 
-  return (
-    <div className="bg-canvas min-h-[calc(100vh-200px)] py-12 md:py-16">
-      <div className="mx-auto max-w-container px-4 md:px-6 lg:px-8">
-        {/* Header Hero Card */}
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 p-8 md:p-12 text-white shadow-2xl mb-12">
-          <div className="relative z-10 max-w-2xl">
-            <span className="inline-block rounded-full bg-orange-500/20 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-orange-400 border border-orange-500/30 mb-4">
-              Layanan & Informasi
-            </span>
-            <h1 className="text-3xl md:text-5xl font-extrabold tracking-tight mb-4 text-white">
-              {title}
-            </h1>
-            <p className="text-ink-200 text-base md:text-lg leading-relaxed">
-              {description || `Pusat informasi, pedoman, dan manajemen ${title.toLowerCase()} di lingkungan Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Tiga Serangkai.`}
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                to="/dokumen"
-                className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600 transition-all"
-              >
-                <Download size={18} />
-                Unduh Panduan
-              </Link>
-              <Link
-                to="/pengajuan"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-all"
-              >
-                Ajukan Sekarang
-                <ArrowRight size={18} />
-              </Link>
-            </div>
-          </div>
-          {/* Subtle background decoration */}
-          <div className="absolute -right-12 -bottom-12 w-64 h-64 rounded-full bg-orange-500/10 blur-3xl pointer-events-none" />
-          <div className="absolute right-12 top-0 w-80 h-80 rounded-full bg-teal-500/10 blur-3xl pointer-events-none" />
-        </div>
+  const relatedDocs = documents.slice(0, 3);
+  const relatedEvents = events.slice(0, 3);
+  const relatedNews = news.slice(0, 3);
 
+  return (
+    <div className="bg-canvas min-h-screen">
+      <PageHero
+        title={title}
+        description={description}
+        badge="Layanan LPPM"
+      >
+        <div className="flex flex-wrap gap-4">
+          <Link
+            to="/info/dokumen"
+            className="inline-flex items-center gap-2 rounded-xl bg-orange-500 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-orange-500/20 hover:bg-orange-600 transition-all focus:ring-2 focus:ring-orange-400"
+          >
+            <Download size={18} />
+            Unduh Panduan
+          </Link>
+          <Link
+            to="/pengajuan"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 text-sm font-bold text-white hover:bg-white/10 transition-all focus:ring-2 focus:ring-white/30"
+          >
+            Ajukan Sekarang
+            <ArrowRight size={18} />
+          </Link>
+        </div>
+      </PageHero>
+
+      <div className="mx-auto max-w-container px-4 py-12 md:px-8 md:py-20">
         {/* Feature Grid */}
-        <div className="mb-12">
+        <section className="mb-20">
           <h2 className="text-xl font-bold text-navy-950 mb-6 flex items-center gap-2">
             <span className="w-2.5 h-6 bg-orange-500 rounded-full inline-block" />
             Fitur & Ruang Lingkup
@@ -71,10 +70,84 @@ export default function PlaceholderPage({ title, description, features = [] }) {
               </div>
             ))}
           </div>
+        </section>
+
+        <div className="grid gap-12 lg:grid-cols-2">
+          {/* Dokumen Terkait */}
+          <section>
+            <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
+              <h3 className="flex items-center gap-2 text-xl font-bold text-navy-950">
+                <FileText className="text-orange-500" />
+                Dokumen & Template
+              </h3>
+              <Link to="/info/dokumen" className="text-sm font-bold text-orange-600 hover:underline">
+                Lihat Semua
+              </Link>
+            </div>
+
+            <div className="space-y-4">
+              {relatedDocs.length > 0 ? (
+                relatedDocs.map(doc => (
+                  <div key={doc.id} className="flex items-center justify-between rounded-2xl border border-line bg-surface p-5 transition-all hover:border-orange-200 hover:shadow-md">
+                    <div className="flex items-center gap-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-navy-50 text-navy-700">
+                        <FileText size={24} />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-navy-900 line-clamp-1">{doc.title}</h4>
+                        <p className="text-xs text-ink-500">{doc.fileType} • {doc.size}</p>
+                      </div>
+                    </div>
+                    <button className="rounded-xl p-2.5 text-navy-400 hover:bg-canvas hover:text-orange-600">
+                      <Download size={20} />
+                    </button>
+                  </div>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-dashed border-line p-8 text-center text-ink-400">
+                  Belum ada dokumen tersedia.
+                </div>
+              )}
+            </div>
+          </section>
+
+          {/* Agenda/Kegiatan Terkait */}
+          <section>
+            <div className="mb-6 flex items-center justify-between border-b border-line pb-4">
+              <h3 className="flex items-center gap-2 text-xl font-bold text-navy-950">
+                <Calendar className="text-orange-500" />
+                Agenda Mendatang
+              </h3>
+              <Link to="/info/agenda" className="text-sm font-bold text-orange-600 hover:underline">
+                Lihat Kalender
+              </Link>
+            </div>
+
+            <div className="space-y-4">
+              {relatedEvents.length > 0 ? (
+                relatedEvents.map(event => (
+                  <div key={event.id} className="flex items-center gap-5 rounded-2xl border border-line bg-surface p-5 transition-all hover:border-teal-200 hover:shadow-md">
+                    <div className="flex h-14 w-14 flex-col items-center justify-center rounded-xl bg-teal-50 text-teal-700">
+                      <span className="text-xs font-bold uppercase">{event.month}</span>
+                      <span className="text-xl font-black">{event.day}</span>
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-navy-900 line-clamp-1">{event.title}</h4>
+                      <p className="text-xs text-ink-500">{event.meta}</p>
+                    </div>
+                  </div>
+                ))
+              ) : (
+                <div className="rounded-2xl border border-dashed border-line p-8 text-center text-ink-400">
+                  Tidak ada agenda terdekat.
+                </div>
+              )}
+            </div>
+          </section>
         </div>
 
         {/* Help / Contact Section */}
-        <div className="rounded-2xl border border-line bg-surface p-8 shadow-card flex flex-col md:flex-row items-center justify-between gap-6">
+        <section className="mt-16 rounded-2xl border border-line bg-surface p-8 shadow-card flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4">
             <div className="p-3.5 rounded-2xl bg-teal-50 text-teal-600">
               <AlertCircle size={28} />
@@ -90,7 +163,7 @@ export default function PlaceholderPage({ title, description, features = [] }) {
           >
             Lihat SOP & Regulasi
           </Link>
-        </div>
+        </section>
       </div>
     </div>
   );

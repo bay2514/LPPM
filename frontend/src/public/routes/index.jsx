@@ -66,6 +66,10 @@ export default function PublicRoutes() {
           <Route path="/luaran" element={<Navigate to="/layanan/luaran" replace />} />
           <Route path="/penelitian" element={<Navigate to="/layanan/penelitian" replace />} />
           <Route path="/pengabdian" element={<Navigate to="/layanan/pengabdian" replace />} />
+          <Route path="/surat-penugasan" element={<Navigate to="/info/surat-penugasan" replace />} />
+          <Route path="/agenda" element={<Navigate to="/info/agenda" replace />} />
+          <Route path="/pengumuman" element={<Navigate to="/info/pengumuman" replace />} />
+          <Route path="/kkn" element={<Navigate to="/layanan/kkn" replace />} />
           <Route path="/capaian" element={<Navigate to="/dashboard" replace />} />
 
           <Route path="*" element={<NotFound />} />

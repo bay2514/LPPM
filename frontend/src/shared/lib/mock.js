@@ -54,6 +54,8 @@ export const news = [
     date: "2025-03-10",
     title: "Pengumuman Hasil Seleksi Program Hibah Penelitian Tahun 2025",
     excerpt: "LPPM mengumumkan hasil seleksi program hibah penelitian dosen dan mahasiswa tahun 2025.",
+    status: "terbit",
+    publishAt: "2025-03-10T00:00:00.000Z",
   },
   {
     id: "n2",
@@ -61,6 +63,8 @@ export const news = [
     date: "2025-03-08",
     title: "Workshop Penulisan Artikel Jurnal Bereputasi Sinta dan Scopus",
     excerpt: "Dalam rangka meningkatkan kualitas publikasi, LPPM mengadakan workshop intensif.",
+    status: "terbit",
+    publishAt: "2025-03-08T00:00:00.000Z",
   },
   {
     id: "n3",
@@ -68,6 +72,8 @@ export const news = [
     date: "2025-03-05",
     title: "Pelatihan Manajemen Data Riset dan Sentra HKI",
     excerpt: "Pelatihan manajemen data riset dan pengenalan Sentra HKI bagi dosen baru.",
+    status: "terbit",
+    publishAt: "2025-03-05T00:00:00.000Z",
   },
 ];
 
@@ -78,6 +84,8 @@ export const events = [
     month: "Mar",
     title: "Webinar Metodologi Penelitian Kuantitatif",
     meta: "Online via Zoom",
+    status: "terbit",
+    publishAt: "2025-03-12T00:00:00.000Z",
   },
   {
     id: "e2",
@@ -85,6 +93,8 @@ export const events = [
     month: "Mar",
     title: "Sosialisasi Hibah Penelitian Dosen 2025",
     meta: "Auditorium Rektorat",
+    status: "terbit",
+    publishAt: "2025-03-15T00:00:00.000Z",
   },
   {
     id: "e3",
@@ -92,6 +102,8 @@ export const events = [
     month: "Mar",
     title: "Pengabdian Masyarakat di Desa Binaan",
     meta: "Desa Binaan TSU",
+    status: "terbit",
+    publishAt: "2025-03-20T00:00:00.000Z",
   },
   {
     id: "e4",
@@ -99,6 +111,8 @@ export const events = [
     month: "Mar",
     title: "Klinik Penulisan Artikel Ilmiah",
     meta: "Ruang Klinik LPPM",
+    status: "terbit",
+    publishAt: "2025-03-25T00:00:00.000Z",
   },
 ];
 
@@ -119,6 +133,8 @@ export const documents = [
     fileType: "PDF",
     year: 2025,
     size: "2.4 MB",
+    status: "terbit",
+    publishAt: "2025-01-15T00:00:00.000Z",
   },
   {
     id: "d2",
@@ -129,6 +145,8 @@ export const documents = [
     fileType: "DOCX",
     year: 2025,
     size: "450 KB",
+    status: "terbit",
+    publishAt: "2025-01-15T00:00:00.000Z",
   },
   {
     id: "d3",
@@ -139,16 +157,20 @@ export const documents = [
     fileType: "PDF",
     year: 2024,
     size: "1.1 MB",
+    status: "terbit",
+    publishAt: "2024-09-01T00:00:00.000Z",
   },
   {
     id: "d4",
-    slug: "sk-kebijakan-hki",
+    slug: "sk-hki",
     title: "SK Kebijakan Hak Kekayaan Intelektual",
     description: "Kebijakan internal tentang pendaftaran, pemeliharaan, dan insentif HKI.",
     category: "SK",
     fileType: "PDF",
     year: 2024,
     size: "890 KB",
+    status: "terbit",
+    publishAt: "2024-06-01T00:00:00.000Z",
   },
   {
     id: "d5",
@@ -159,6 +181,8 @@ export const documents = [
     fileType: "XLSX",
     year: 2025,
     size: "320 KB",
+    status: "terbit",
+    publishAt: "2025-01-15T00:00:00.000Z",
   },
   {
     id: "d6",
@@ -169,6 +193,8 @@ export const documents = [
     fileType: "PDF",
     year: 2024,
     size: "670 KB",
+    status: "terbit",
+    publishAt: "2024-09-01T00:00:00.000Z",
   },
 ];
 
@@ -199,6 +225,8 @@ export const latestOutputs = [
     year: 2025,
     title: "Pengembangan Model Ekosistem Digital Riset Berbasis Dampak Sosial",
     description: "Studi mengenai model ekosistem digital riset yang berbasis dampak sosial dengan pendekatan kemitraan multidisiplin.",
+    status: "terbit",
+    publishAt: "2025-01-01T00:00:00.000Z",
   },
   {
     id: "lo2",
@@ -206,6 +234,8 @@ export const latestOutputs = [
     year: 2025,
     title: "Sistem Manajemen Data Penelitian Terintegrasi",
     description: "Platform manajemen data penelitian dan pengabdian masyarakat terintegrasi berbasis web.",
+    status: "terbit",
+    publishAt: "2025-01-01T00:00:00.000Z",
   },
   {
     id: "lo3",
@@ -213,12 +243,25 @@ export const latestOutputs = [
     year: 2024,
     title: "Metodologi Penelitian Kuantitatif dan Kualitatif Terapan",
     description: "Buku ajar metodologi penelitian terapan untuk mahasiswa program pascasarjana.",
+    status: "terbit",
+    publishAt: "2024-01-01T00:00:00.000Z",
   },
   {
     id: "lo4",
+    tag: "Monograf",
+    year: 2024,
+    title: "Monograf Analisis Kebijakan Ekonomi Kreatif Daerah",
+    description: "Kajian mendalam mengenai pengembangan ekonomi kreatif daerah berbasis potensi lokal.",
+    status: "terbit",
+    publishAt: "2024-01-01T00:00:00.000Z",
+  },
+  {
+    id: "lo5",
     tag: "Produk",
     year: 2024,
     title: "Aplikasi Monitoring Capaian Penelitian Real-Time",
     description: "Aplikasi berbasis web untuk monitoring capaian penelitian dan publikasi dosen secara real-time.",
+    status: "terbit",
+    publishAt: "2024-01-01T00:00:00.000Z",
   },
 ];

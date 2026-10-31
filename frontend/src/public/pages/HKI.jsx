@@ -1,17 +1,28 @@
-import PageHero from "@shared/components/ui/PageHero.jsx";
-import OutputList from "@public/components/sections/OutputList.jsx";
+import LayananDetail from "./LayananDetail.jsx";
 
 export default function HKI() {
+  const steps = [
+    {
+      title: "Penyusunan Berkas",
+      description: "Menyiapkan deskripsi ciptaan, formulir pengalihan hak, dan surat pernyataan keaslian."
+    },
+    {
+      title: "Pemeriksaan & Pendaftaran",
+      description: "Verifikasi dokumen oleh tim HKI LPPM dan pengajuan ke Direktorat Jenderal Kekayaan Intelektual (DJKI)."
+    },
+    {
+      title: "Penerbitan Sertifikat",
+      description: "Penerbitan sertifikat Hak Cipta / Paten / Desain Industri resmi dari Kemenkumham."
+    }
+  ];
+
   return (
-    <div className="bg-canvas min-h-screen">
-      <PageHero 
-        title="Hak Kekayaan Intelektual"
-        description="Daftar paten, hak cipta, merek, dan desain industri yang telah didaftarkan oleh civitas akademika Universitas Tiga Serangkai."
-        badge="Luaran"
-      />
-      <div className="mx-auto max-w-container px-4 md:px-8">
-        <OutputList type="HKI" title="HKI" />
-      </div>
-    </div>
+    <LayananDetail 
+      title="Hak Kekayaan Intelektual (HKI)"
+      description="Layanan perlindungan hukum atas karya cipta, paten, merek, dan desain industri hasil inovasi civitas akademika Universitas Tiga Serangkai."
+      steps={steps}
+      docCategory="SOP"
+      eventTag="HKI"
+    />
   );
 }

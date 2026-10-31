@@ -3,7 +3,7 @@ export const navigationConfig = [
   { label: "Dashboard", to: "/dashboard" },
   {
     label: "Layanan LPPM",
-    to: "#",
+    to: "/layanan/penelitian",
     children: [
       { label: "Penelitian", to: "/layanan/penelitian" },
       { label: "Pengabdian", to: "/layanan/pengabdian" },
@@ -22,7 +22,7 @@ export const navigationConfig = [
   },
   {
     label: "Info LPPM",
-    to: "#",
+    to: "/info/agenda",
     children: [
       { label: "Agenda", to: "/info/agenda" },
       { label: "Pengumuman", to: "/info/pengumuman" },
