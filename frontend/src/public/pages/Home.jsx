@@ -8,16 +8,19 @@ import EventItem from "@public/components/sections/EventItem.jsx";
 import PageHero from "@shared/components/ui/PageHero.jsx";
 import { useContent } from "@public/hooks/useContent.js";
 
-function QuickAccessCard({ title, link }) {
+function QuickAccessCard({ title, description, link }) {
   return (
     <Link
       to={link}
-      className="group flex flex-col items-center justify-center gap-3 rounded-2xl border border-line bg-surface p-6 text-center shadow-lg transition-all hover:-translate-y-1 hover:border-orange-500/50 hover:shadow-xl"
+      className="group flex items-center justify-between rounded-2xl border border-line bg-surface p-4 text-left shadow-md transition-all hover:-translate-y-0.5 hover:border-orange-500/50 hover:shadow-lg"
     >
-      <div className="rounded-full bg-orange-50 p-3 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white">
-        <ChevronRight size={24} className="rotate-0 group-hover:rotate-90 transition-transform" />
+      <div>
+        <h4 className="text-xs font-extrabold text-navy-950 group-hover:text-orange-600 transition-colors">{title}</h4>
+        <p className="text-[11px] text-ink-500 line-clamp-1">{description}</p>
       </div>
-      <span className="text-sm font-bold text-navy-950">{title}</span>
+      <div className="rounded-xl bg-orange-50 p-2 text-orange-600 transition-colors group-hover:bg-orange-500 group-hover:text-white shrink-0 ml-2">
+        <ChevronRight size={16} />
+      </div>
     </Link>
   );
 }
@@ -41,15 +44,15 @@ export default function Home() {
         primaryAction={{ label: "Mulai Sekarang", to: "/pengajuan" }}
         secondaryAction={{ label: "Lihat Layanan", to: "/dokumen" }}
       >
-        <div className="rounded-lg bg-surface p-6 shadow-lift">
-          <h3 className="mb-4 text-sm font-bold uppercase tracking-wider text-navy-800">
+        <div className="rounded-3xl bg-surface p-6 shadow-xl border border-line">
+          <h3 className="mb-4 text-xs font-bold uppercase tracking-wider text-orange-600">
             Quick Access Portal
           </h3>
-          <div className="grid grid-cols-2 gap-3">
-            <QuickAccessCard title="Portal Penelitian" link="/penelitian" />
-            <QuickAccessCard title="Portal PKM" link="/pengabdian" />
-            <QuickAccessCard title="Pengajuan Jurnal" link="/publikasi" />
-            <QuickAccessCard title="Sentra HKI" link="/hki" />
+          <div className="grid grid-cols-1 gap-3">
+            <QuickAccessCard title="Data Penelitian" description="Program dan dokumen riset" link="/layanan/penelitian" />
+            <QuickAccessCard title="Pengabdian kepada Masyarakat" description="Program PKM dan desa binaan" link="/layanan/pengabdian" />
+            <QuickAccessCard title="Luaran & Publikasi" description="Artikel, jurnal, HKI, buku" link="/layanan/luaran" />
+            <QuickAccessCard title="Sentra HKI" description="Hak cipta, paten & merek" link="/layanan/luaran/hki" />
           </div>
         </div>
       </HeroSection>
