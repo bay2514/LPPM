@@ -6,8 +6,8 @@
 - [x] TAHAP 2: Modal Login Admin
 - [x] TAHAP 3: Beranda (Hero, KPI, Pulse, Layanan, Berita)
 - [x] TAHAP 4: Layanan LPPM (Penelitian, Pengabdian, Luaran, KKN, e-Jurnal)
-- [ ] TAHAP 5: Profil & Info LPPM (Tentang, Visi Misi, Struktur, Kontak, Agenda, Dokumen, Form)
-- [ ] TAHAP 6: Dashboard, Admin Sync & QA
+- [x] TAHAP 5: Profil & Info LPPM (Tentang, Visi Misi, Struktur, Kontak, Agenda, Dokumen, Form)
+- [x] TAHAP 6: Dashboard, Admin Sync & QA
 
 ## Detail TAHAP 0 - Audit
 - [x] `git status` bersih
