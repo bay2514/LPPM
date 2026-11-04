@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Comprehensive Information Architecture - LPPM TSU</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #081d33; color: #1e293b; }
+        .node-card { background: #ffffff; border-radius: 12px; border: 1px solid #e2e8f0; padding: 12px 16px; margin-bottom: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .sub-node { background: #f8fafc; border-left: 3px solid #ff6b35; padding: 8px 12px; border-radius: 6px; margin-top: 6px; font-size: 13px; }
+    </style>
+</head>
+<body class="p-8 min-h-screen">
+    <div class="max-w-7xl mx-auto bg-slate-50 rounded-3xl shadow-2xl p-10">
+        <!-- Header -->
+        <div class="text-center mb-10 border-b border-slate-200 pb-6">
+            <div class="flex justify-center items-center gap-3 mb-2">
+                <span class="bg-orange-500 text-white font-bold px-3 py-1 rounded-full text-xs">Versi B - Desain V2</span>
+                <span class="bg-blue-900 text-white font-bold px-3 py-1 rounded-full text-xs">Full IA Spec</span>
+            </div>
+            <h1 class="text-3xl font-bold text-slate-900">Comprehensive Information Architecture (IA)</h1>
+            <p class="text-slate-600 mt-1">Struktur Navigasi Menyeluruh Website & Sistem LPPM Universitas Tiga Serangkai (TSU)</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+            
+            <!-- 1. DASHBOARD & UTAMA -->
+            <div class="space-y-4">
+                <div class="bg-blue-900 text-white p-4 rounded-2xl shadow-md">
+                    <h2 class="font-bold text-lg">1. Utama & Dashboard</h2>
+                    <p class="text-xs text-blue-200">Akses ringkasan & landing page</p>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🏠 Beranda (Home)</div>
+                    <div class="text-xs text-slate-500 mt-1">/</div>
+                    <div class="sub-node">Hero Section & Quick Portal</div>
+                    <div class="sub-node">Statistik Kinerja (114+, 74+, 311+)</div>
+                    <div class="sub-node">Layanan Utama Grid</div>
+                    <div class="sub-node">Berita, Pengumuman & Agenda</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">📊 Dashboard Publik</div>
+                    <div class="text-xs text-slate-500 mt-1">/dashboard</div>
+                    <div class="sub-node">Grafik Tren Kinerja (2023-2026)</div>
+                    <div class="sub-node">Ringkasan Capaian Tridharma</div>
+                </div>
+            </div>
+
+            <!-- 2. PROFIL & TENTANG -->
+            <div class="space-y-4">
+                <div class="bg-teal-700 text-white p-4 rounded-2xl shadow-md">
+                    <h2 class="font-bold text-lg">2. Profil Lembaga</h2>
+                    <p class="text-xs text-teal-100">Informasi institusi & pimpinan</p>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">ℹ️ Tentang LPPM</div>
+                    <div class="text-xs text-slate-500 mt-1">/profil/tentang</div>
+                    <div class="sub-node">Sejarah & Profil Singkat</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🎯 Visi & Misi</div>
+                    <div class="text-xs text-slate-500 mt-1">/profil/visi-misi</div>
+                    <div class="sub-node">Fokus Strategis & Sasaran</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">👥 Struktur Organisasi</div>
+                    <div class="text-xs text-slate-500 mt-1">/profil/struktur</div>
+                    <div class="sub-node">Pimpinan, Kepala Pusat, & Staff</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">📞 Kontak Kami</div>
+                    <div class="text-xs text-slate-500 mt-1">/profil/kontak</div>
+                    <div class="sub-node">Alamat, Email, No. Telp, Peta</div>
+                </div>
+            </div>
+
+            <!-- 3. LAYANAN & TRIDHARMA -->
+            <div class="space-y-4">
+                <div class="bg-orange-600 text-white p-4 rounded-2xl shadow-md">
+                    <h2 class="font-bold text-lg">3. Layanan Tridharma</h2>
+                    <p class="text-xs orange-100">Penelitian, PkM, & Luaran</p>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🔬 Penelitian</div>
+                    <div class="text-xs text-slate-500 mt-1">/layanan/penelitian</div>
+                    <div class="sub-node">Hibah Dosen Pemula & Kolaborasi</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🤝 Pengabdian (PkM)</div>
+                    <div class="text-xs text-slate-500 mt-1">/layanan/pengabdian</div>
+                    <div class="sub-node">Desa Binaan & Pemberdayaan</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">📚 Luaran & Publikasi</div>
+                    <div class="text-xs text-slate-500 mt-1">/layanan/luaran</div>
+                    <div class="sub-node">Publikasi Ilmiah (/publikasi)</div>
+                    <div class="sub-node">HKI / Paten (/hki)</div>
+                    <div class="sub-node">Buku & Monograf (/buku, /monograf)</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🌐 KKN & E-Jurnal</div>
+                    <div class="text-xs text-slate-500 mt-1">/layanan/kkn & e-jurnal</div>
+                    <div class="sub-node">Portal KKN & OJS Universitas</div>
+                </div>
+            </div>
+
+            <!-- 4. INFO & ADMIN -->
+            <div class="space-y-4">
+                <div class="bg-slate-800 text-white p-4 rounded-2xl shadow-md">
+                    <h2 class="font-bold text-lg">4. Info & Admin CMS</h2>
+                    <p class="text-xs text-slate-300">Agenda, dokumen & back-office</p>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">📢 Info LPPM</div>
+                    <div class="text-xs text-slate-500 mt-1">/info/...</div>
+                    <div class="sub-node">Agenda Kegiatan (/agenda)</div>
+                    <div class="sub-node">Pengumuman Resmi (/pengumuman)</div>
+                    <div class="sub-node">Pusat Dokumen (/dokumen)</div>
+                    <div class="sub-node">Surat Penugasan (/surat-penugasan)</div>
+                </div>
+
+                <div class="node-card">
+                    <div class="font-bold text-slate-800 text-sm">🔒 Admin Panel</div>
+                    <div class="text-xs text-slate-500 mt-1">/admin/...</div>
+                    <div class="sub-node">Login & Auth (/admin/login)</div>
+                    <div class="sub-node">Dashboard Admin (/admin/dashboard)</div>
+                    <div class="sub-node">Content Manager (/admin/content)</div>
+                    <div class="sub-node">Settings & Profil (/admin/settings)</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer Info -->
+        <div class="mt-8 bg-blue-50 border border-blue-200 rounded-2xl p-4 text-center text-sm text-blue-900 font-medium">
+            ✅ Sesuai dengan spesifikasi 24 Mockup Figma, struktur route React/Vite, dan siap untuk diimplementasikan oleh tim developer backend/frontend.
+        </div>
+    </div>
+</body>
+</html>

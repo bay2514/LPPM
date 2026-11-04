@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Information Architecture - LPPM TSU</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #0B2C4D; color: #1e293b; }
+    </style>
+</head>
+<body class="p-8 min-h-screen">
+    <div class="max-w-6xl mx-auto bg-white rounded-3xl shadow-2xl p-8 overflow-hidden">
+        <div class="text-center mb-10 border-b border-slate-100 pb-6">
+            <span class="bg-orange-100 text-orange-600 font-semibold px-4 py-1.5 rounded-full text-sm inline-block mb-3">Versi B - Desain V2</span>
+            <h1 class="text-3xl font-bold text-slate-900">Information Architecture (IA) LPPM TSU</h1>
+            <p class="text-slate-500 mt-2">Struktur Navigasi & Halaman Website Resmi LPPM Universitas Tiga Serangkai</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Col 1: Public Main -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-blue-900 text-white flex items-center justify-center font-bold text-lg">🌐</div>
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-lg">1. Portal Publik</h2>
+                        <span class="text-xs text-slate-500">Akses utama pengunjung & dosen</span>
+                    </div>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>📊 Dashboard</span> <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded">/dashboard</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>🏠 Beranda</span> <span class="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded">/</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium">
+                        <span class="font-bold block mb-1">👤 Profil Lembaga</span>
+                        <ul class="pl-3 space-y-1.5 text-xs text-slate-600 border-l-2 border-orange-400 mt-2">
+                            <li>• Tentang LPPM <span class="text-slate-400">(/profil/tentang)</span></li>
+                            <li>• Visi & Misi <span class="text-slate-400">(/profil/visi-misi)</span></li>
+                            <li>• Struktur Organisasi <span class="text-slate-400">(/profil/struktur)</span></li>
+                            <li>• Kontak Kami <span class="text-slate-400">(/profil/kontak)</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Col 2: Services & Info -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-orange-500 text-white flex items-center justify-center font-bold text-lg">⚙️</div>
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-lg">2. Layanan & Info</h2>
+                        <span class="text-xs text-slate-500">Core Tridharma & Dokumen</span>
+                    </div>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium">
+                        <span class="font-bold block mb-1">🛠️ Layanan LPPM</span>
+                        <ul class="pl-3 space-y-1.5 text-xs text-slate-600 border-l-2 border-blue-500 mt-2">
+                            <li>• Penelitian <span class="text-slate-400">(/layanan/penelitian)</span></li>
+                            <li>• Pengabdian <span class="text-slate-400">(/layanan/pengabdian)</span></li>
+                            <li>• Luaran (Publikasi, HKI, Buku, Monograf)</li>
+                            <li>• KKN & E-Jurnal</li>
+                            <li>• Kerjasama & Desa Binaan</li>
+                        </ul>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium">
+                        <span class="font-bold block mb-1">📢 Info LPPM</span>
+                        <ul class="pl-3 space-y-1.5 text-xs text-slate-600 border-l-2 border-teal-500 mt-2">
+                            <li>• Agenda <span class="text-slate-400">(/info/agenda)</span></li>
+                            <li>• Pengumuman <span class="text-slate-400">(/info/pengumuman)</span></li>
+                            <li>• Pusat Dokumen <span class="text-slate-400">(/info/dokumen)</span></li>
+                            <li>• Surat Penugasan <span class="text-slate-400">(/info/surat-penugasan)</span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Admin & Backoffice -->
+            <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div class="flex items-center space-x-3 mb-4">
+                    <div class="w-10 h-10 rounded-xl bg-teal-700 text-white flex items-center justify-center font-bold text-lg">🔒</div>
+                    <div>
+                        <h2 class="font-bold text-slate-900 text-lg">3. Admin & CMS</h2>
+                        <span class="text-xs text-slate-500">Back-office pengelola</span>
+                    </div>
+                </div>
+                <ul class="space-y-3 text-sm text-slate-700">
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>🔑 Login Admin</span> <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded">/admin/login</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>📈 Dashboard Admin</span> <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded">/admin/dashboard</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>⚙️ Pengaturan Statistik</span> <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded">/settings</span>
+                    </li>
+                    <li class="bg-white p-3 rounded-xl border border-slate-100 shadow-xs font-medium flex justify-between items-center">
+                        <span>📝 Manajemen Konten</span> <span class="text-xs bg-teal-50 text-teal-700 px-2 py-0.5 rounded">/content</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="mt-8 bg-blue-50 border border-blue-100 rounded-2xl p-4 text-center text-sm text-blue-900">
+            ✨ Palet Warna Resmi: <span class="font-bold">Navy (#0B2C4D)</span> • <span class="font-bold text-orange-600">Orange (#ff6b35)</span> • <span class="font-bold text-teal-700">Teal (#2B7C8C)</span> • Background bersih dan responsif.
+        </div>
+    </div>
+</body>
+</html>
