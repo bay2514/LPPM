@@ -1,0 +1,129 @@
+import { lazy, Suspense } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
+
+// Import lazy public pages
+const Home = lazy(() => import("@public/pages/Home.jsx"));
+const Documents = lazy(() => import("@public/pages/Documents.jsx"));
+const DocumentDetail = lazy(() => import("@public/pages/DocumentDetail.jsx"));
+const Dashboard = lazy(() => import("@public/pages/Dashboard.jsx"));
+const Luaran = lazy(() => import("@public/pages/Luaran.jsx"));
+const Pengajuan = lazy(() => import("@public/pages/Pengajuan.jsx"));
+const Berita = lazy(() => import("@public/pages/Berita.jsx"));
+const Kegiatan = lazy(() => import("@public/pages/Kegiatan.jsx"));
+const Kerjasama = lazy(() => import("@public/pages/Kerjasama.jsx"));
+const Penelitian = lazy(() => import("@public/pages/Penelitian.jsx"));
+const Pengabdian = lazy(() => import("@public/pages/Pengabdian.jsx"));
+const KKN = lazy(() => import("@public/pages/KKN.jsx"));
+const Publikasi = lazy(() => import("@public/pages/Publikasi.jsx"));
+const HKI = lazy(() => import("@public/pages/HKI.jsx"));
+const Buku = lazy(() => import("@public/pages/Buku.jsx"));
+const Monograf = lazy(() => import("@public/pages/Monograf.jsx"));
+const SuratPenugasan = lazy(() => import("@public/pages/SuratPenugasan.jsx"));
+const PlaceholderPage = lazy(() => import("@public/pages/PlaceholderPage.jsx"));
+const NotFound = lazy(() => import("@public/pages/NotFound.jsx"));
+const Layout = lazy(() => import("@public/layouts/Layout.jsx"));
+
+const Loading = () => (
+  <div className="min-h-screen flex items-center justify-center bg-canvas">
+    <div className="w-8 h-8 border-4 border-orange-500 border-t-transparent rounded-full animate-spin" />
+  </div>
+);
+
+export default function PublicRoutes() {
+  return (
+    <Suspense fallback={<Loading />}>
+      <Routes>
+        <Route element={<Layout />}>
+          {/* Main Routes */}
+          <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+
+          {/* Profil Routes */}
+          <Route 
+            path="/profil/tentang" 
+            element={
+              <PlaceholderPage 
+                title="Tentang LPPM TSU" 
+                description="Mengenal lebih dekat Lembaga Penelitian dan Pengabdian kepada Masyarakat Universitas Tiga Serangkai."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/visi-misi" 
+            element={
+              <PlaceholderPage 
+                title="Visi dan Misi LPPM" 
+                description="Landasan strategis, visi, misi, dan tujuan pengembangan riset serta pengabdian TSU."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/struktur" 
+            element={
+              <PlaceholderPage 
+                title="Struktur Organisasi" 
+                description="Susunan pimpinan, pengurus, dan unit pelaksana teknis di lingkungan LPPM TSU."
+              />
+            } 
+          />
+          <Route 
+            path="/profil/kontak" 
+            element={
+              <PlaceholderPage 
+                title="Kontak Kami" 
+                description="Hubungi sekretariat dan layanan terpadu LPPM Universitas Tiga Serangkai."
+              />
+            } 
+          />
+
+          {/* Layanan LPPM Routes */}
+          <Route path="/layanan/penelitian" element={<Penelitian />} />
+          <Route path="/layanan/pengabdian" element={<Pengabdian />} />
+          <Route path="/layanan/luaran" element={<Luaran />} />
+          <Route path="/layanan/luaran/publikasi" element={<Publikasi />} />
+          <Route path="/layanan/luaran/hki" element={<HKI />} />
+          <Route path="/layanan/luaran/buku" element={<Buku />} />
+          <Route path="/layanan/luaran/monograf" element={<Monograf />} />
+          <Route path="/layanan/kkn" element={<KKN />} />
+          <Route 
+            path="/layanan/e-jurnal" 
+            element={
+              <PlaceholderPage 
+                title="e-Jurnal Universitas Tiga Serangkai" 
+                description="Portal publikasi jurnal ilmiah terakreditasi di bawah pengelolaan LPPM TSU Press."
+              />
+            } 
+          />
+          <Route path="/layanan/kerjasama" element={<Kerjasama />} />
+
+          {/* Info LPPM Routes */}
+          <Route path="/info/agenda" element={<Kegiatan />} />
+          <Route path="/info/pengumuman" element={<Berita />} />
+          <Route path="/info/dokumen" element={<Documents />} />
+          <Route path="/dokumen/:slug" element={<DocumentDetail />} />
+          <Route path="/info/surat-penugasan" element={<SuratPenugasan />} />
+
+          {/* Unlisted active routes */}
+          <Route path="/pengajuan" element={<Pengajuan />} />
+
+          {/* Old Route Redirects (Navigate replace to prevent 404) */}
+          <Route path="/profil" element={<Navigate to="/profil/tentang" replace />} />
+          <Route path="/dokumen" element={<Navigate to="/info/dokumen" replace />} />
+          <Route path="/kegiatan" element={<Navigate to="/info/agenda" replace />} />
+          <Route path="/berita" element={<Navigate to="/info/pengumuman" replace />} />
+          <Route path="/luaran" element={<Navigate to="/layanan/luaran" replace />} />
+          <Route path="/penelitian" element={<Navigate to="/layanan/penelitian" replace />} />
+          <Route path="/pengabdian" element={<Navigate to="/layanan/pengabdian" replace />} />
+          <Route path="/surat-penugasan" element={<Navigate to="/info/surat-penugasan" replace />} />
+          <Route path="/agenda" element={<Navigate to="/info/agenda" replace />} />
+          <Route path="/pengumuman" element={<Navigate to="/info/pengumuman" replace />} />
+          <Route path="/kkn" element={<Navigate to="/layanan/kkn" replace />} />
+          <Route path="/capaian" element={<Navigate to="/dashboard" replace />} />
+          <Route path="/kerjasama" element={<Navigate to="/layanan/kerjasama" replace />} />
+
+          <Route path="*" element={<NotFound />} />
+        </Route>
+      </Routes>
+    </Suspense>
+  );
+}
