@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>IA Diagram - LPPM TSU</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #081d33; color: #1e293b; }
+        .node { background: #ffffff; border-radius: 12px; border: 2px solid #cbd5e1; padding: 12px 16px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05); font-weight: 700; font-size: 14px; color: #0f172a; }
+        .node-root { background: #0B2C4D; color: #ffffff; border-color: #1e3a8a; font-size: 16px; }
+        .node-public { background: #eff6ff; border-color: #3b82f6; color: #1e40af; }
+        .node-admin { background: #f0fdf4; border-color: #22c55e; color: #166534; }
+        .connector { width: 2px; background: #94a3b8; margin: 0 auto; }
+    </style>
+</head>
+<body class="p-10 min-h-screen flex items-center justify-center">
+    <div class="max-w-7xl w-full bg-slate-50 rounded-3xl shadow-2xl p-10">
+        
+        <!-- Title -->
+        <div class="text-center mb-10">
+            <span class="bg-orange-600 text-white font-bold px-4 py-1.5 rounded-full text-xs uppercase tracking-wider">Desain Versi B</span>
+            <h1 class="text-3xl font-extrabold text-slate-900 mt-2">Diagram Arsitektur Informasi (IA) LPPM TSU</h1>
+            <p class="text-slate-500 text-sm mt-1">Hierarki Fungsional Portal Publik & Panel Admin (Tanpa Route)</p>
+        </div>
+
+        <!-- Tree Diagram -->
+        <div class="flex flex-col items-center">
+            
+            <!-- Root -->
+            <div class="node node-root px-8 py-4 rounded-2xl shadow-xl mb-8">
+                🌐 Website & Sistem LPPM TSU
+            </div>
+            
+            <!-- Vertical Line down from root -->
+            <div class="connector h-8"></div>
+            
+            <!-- Horizontal connector bar -->
+            <div class="w-3/4 h-2 bg-slate-400 rounded-full mb-8 relative">
+                <!-- Drop lines to columns -->
+                <div class="absolute left-0 w-2 h-8 bg-slate-400 -bottom-8"></div>
+                <div class="absolute right-0 w-2 h-8 bg-slate-400 -bottom-8"></div>
+            </div>
+
+            <!-- Two Main Branches -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 w-full max-w-6xl mt-2">
+                
+                <!-- BRANCH 1: PORTAL PUBLIK -->
+                <div class="flex flex-col items-center">
+                    <div class="node node-public w-full py-4 rounded-2xl shadow-md text-lg mb-6 border-2 border-blue-500 font-extrabold">
+                        1. PORTAL PUBLIK (Visitor & Dosen)
+                    </div>
+                    
+                    <div class="space-y-4 w-full px-4">
+                        <div class="node text-left bg-white border-l-4 border-blue-600">
+                            🏠 Halaman Utama
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Beranda (Hero, Akses Cepat, Layanan)<br>
+                                • Dashboard (Grafik Tren & Kinerja Tridharma)
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-blue-600">
+                            👤 Profil & Organisasi
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Tentang LPPM & Identitas<br>
+                                • Visi, Misi, & Tujuan<br>
+                                • Struktur Organisasi & Personel<br>
+                                • Kontak Resmi & Lokasi
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-blue-600">
+                            🛠️ Layanan Tridharma
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Penelitian (Hibah & Kolaborasi)<br>
+                                • Pengabdian kepada Masyarakat (PkM)<br>
+                                • Pusat Luaran (Publikasi, HKI, Buku, Monograf)<br>
+                                • Kerjasama Instansi & Desa Binaan<br>
+                                • KKN & Portal E-Jurnal
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-blue-600">
+                            📢 Informasi & Media
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Agenda & Kegiatan<br>
+                                • Pengumuman & Berita<br>
+                                • Pusat Unduhan Dokumen<br>
+                                • Verifikasi Surat Penugasan
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BRANCH 2: PANEL ADMIN -->
+                <div class="flex flex-col items-center">
+                    <div class="node node-admin w-full py-4 rounded-2xl shadow-md text-lg mb-6 border-2 border-green-500 font-extrabold">
+                        2. PANEL ADMIN (CMS & Back-Office)
+                    </div>
+                    
+                    <div class="space-y-4 w-full px-4">
+                        <div class="node text-left bg-white border-l-4 border-green-600">
+                            🔑 Akses & Keamanan
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Sistem Login & Sesi Admin<br>
+                                • Dashboard Ringkasan Aktivitas Sistem
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-green-600">
+                            📝 Content Manager (CMS)
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Manajemen Berita & Pengumuman<br>
+                                • Manajemen Agenda & Kegiatan<br>
+                                • Manajemen Repositori Dokumen<br>
+                                • Pengelolaan Data Mitra & Kerjasama
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-green-600">
+                            ⚙️ Konfigurasi Sistem
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Update Angka Statistik Publik (Counter)<br>
+                                • Manajemen Grafik Tren Capaian Tahunan<br>
+                                • Pengaturan Akun & Log Pengelola
+                            </div>
+                        </div>
+
+                        <div class="node text-left bg-white border-l-4 border-green-600">
+                            📄 Manajemen Surat & Penugasan
+                            <div class="text-xs font-normal text-slate-500 mt-1 pl-2 border-l border-slate-200">
+                                • Arsip & Validasi Surat Penugasan<br>
+                                • Database Penugasan Terverifikasi
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</body>
+</html>
