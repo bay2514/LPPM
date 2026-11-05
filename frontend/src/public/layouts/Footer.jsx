@@ -167,14 +167,6 @@ export default function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <p className="text-xs text-ink-600">Developed by IT Div TSU</p>
-            <a
-              href="#"
-              className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-bold text-white hover:bg-blue-700 transition-colors"
-              title="Masuk Portal Admin"
-              onClick={(e) => e.preventDefault()}
-            >
-              Masuk Admin
-            </a>
           </div>
         </div>
       </div>

@@ -251,6 +251,40 @@ export const performanceDataSchema = {
   ],
 };
 
+export const organizationSchema = {
+  key: "organization",
+  label: { singular: "Struktur Organisasi", plural: "Struktur Organisasi" },
+  icon: "Users",
+  group: "settings",
+  type: "collection",
+  publicRoute: "/tentang/struktur",
+  listColumns: [
+    { key: "photo", label: "Foto" },
+    { key: "name", label: "Nama & Gelar" },
+    { key: "position", label: "Jabatan" },
+    { key: "department", label: "Unit / Bidang" },
+  ],
+  searchableFields: ["name", "position", "department"],
+  fields: [
+    { name: "name", label: "Nama Lengkap & Gelar", type: "text", required: true },
+    { name: "position", label: "Jabatan", type: "text", required: true },
+    { name: "department", label: "Unit / Bidang / Divisi", type: "select", required: true, options: [
+      { label: "Pimpinan", value: "Pimpinan" },
+      { label: "Bidang Penelitian", value: "Bidang Penelitian" },
+      { label: "Bidang Pengabdian", value: "Bidang Pengabdian" },
+      { label: "Bidang Publikasi & HKI", value: "Bidang Publikasi & HKI" },
+      { label: "Administrasi & Sekretariat", value: "Administrasi & Sekretariat" },
+    ]},
+    { name: "nip", label: "NIP / NIDN", type: "text", required: false },
+    { name: "photo", label: "Foto Profil", type: "image", required: false },
+    { name: "order", label: "Urutan Tampil", type: "number", defaultValue: 0 },
+    { name: "status", label: "Status", type: "select", required: true, options: [
+      { label: "Aktif", value: "active" },
+      { label: "Nonaktif", value: "inactive" },
+    ], defaultValue: "active" },
+  ],
+};
+
 export const dashboardConfigSchema = {
   key: "dashboard_config",
   label: { singular: "Tampilan Dashboard", plural: "Pengaturan Dashboard" },
@@ -337,6 +371,7 @@ export const contentRegistry = {
   programs: programsSchema,
   performance_data: performanceDataSchema,
   dashboard_config: dashboardConfigSchema,
+  organization: organizationSchema,
 };
 
 export const collaboratorSchema = collaboratorsSchema;

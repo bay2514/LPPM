@@ -17,6 +17,7 @@ import {
   Search,
   User,
   FileEdit,
+  Users,
 } from "@shared/components/ui/Icons.jsx";
 
 const navItems = [
@@ -26,6 +27,7 @@ const navItems = [
   { path: "/admin/dokumen", label: "Dokumen", icon: FolderOpen },
   { path: "/admin/mitra", label: "Mitra", icon: Building2 },
   { path: "/admin/profil", label: "Profil & Kontak", icon: Settings },
+  { path: "/admin/struktur", label: "Struktur Organisasi", icon: Users },
   { path: "/admin/dashboard-config", label: "Pengaturan Dashboard", icon: FileEdit, exact: true },
 ];
 
@@ -50,10 +52,10 @@ function NavList({ onNavigate }) {
             className={`group flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-all duration-200 min-h-[44px] ${
               active
                 ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
-                : "text-ink-500 hover:bg-navy-800 hover:text-white"
+                : "text-slate-200 hover:bg-navy-800 hover:text-white"
             }`}
           >
-            <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-white" : "text-ink-700 group-hover:text-white"}`} />
+            <Icon className={`w-5 h-5 flex-shrink-0 transition-colors ${active ? "text-white" : "text-slate-300 group-hover:text-white"}`} />
             <span className="whitespace-nowrap">{item.label}</span>
             {active && (
               <div className="ml-auto w-1.5 h-1.5 rounded-full bg-white animate-pulse" />

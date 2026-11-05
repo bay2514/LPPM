@@ -9,6 +9,7 @@ import {
   programsSchema,
   performanceDataSchema,
   dashboardConfigSchema,
+  organizationSchema,
 } from "@admin/content/schema.js";
 import { useAdminContent } from "@admin/hooks/useAdminContent.js";
 import ContentList from "@admin/components/content/ContentList.jsx";
@@ -23,6 +24,7 @@ const schemaMap = {
   programs: programsSchema,
   performanceData: performanceDataSchema,
   dashboardConfig: dashboardConfigSchema,
+  organization: organizationSchema,
 };
 
 const pathToKey = {
@@ -34,6 +36,7 @@ const pathToKey = {
   prodi: "programs",
   "data-kinerja": "performanceData",
   "dashboard-config": "dashboardConfig",
+  struktur: "organization",
 };
 
 export default function ContentManagerPage() {

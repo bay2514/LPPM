@@ -50,6 +50,7 @@ export default function AdminRoutes() {
           <Route path="kegiatan" element={<ContentManagerPage />} />
           <Route path="dokumen" element={<ContentManagerPage />} />
           <Route path="profil" element={<ContentManagerPage />} />
+          <Route path="struktur" element={<ContentManagerPage />} />
           <Route path="prodi" element={<ContentManagerPage />} />
           <Route path="data-kinerja" element={<ContentManagerPage />} />
           <Route path="dashboard-config" element={<ContentManagerPage />} />
