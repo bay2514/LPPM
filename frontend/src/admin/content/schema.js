@@ -379,3 +379,93 @@ export const collaboratorSchema = collaboratorsSchema;
 export function getSchema(type) {
   return contentRegistry[type] || null;
 }
+
+
+export const journalsSchema = {
+  key: "journals",
+  label: { singular: "Jurnal", plural: "Daftar Jurnal e-Jurnal" },
+  icon: "BookOpen",
+  group: "content",
+  type: "collection",
+  publicRoute: "/layanan/e-jurnal",
+  listColumns: [
+    { key: "nama", label: "Nama Jurnal" },
+    { key: "bidang", label: "Bidang Ilmu" },
+    { key: "url", label: "URL Jurnal" },
+    { key: "aktif", label: "Aktif" },
+  ],
+  searchableFields: ["nama", "bidang", "nomorSK"],
+  fields: [
+    { name: "nama", label: "Nama Jurnal", type: "text", required: true },
+    { name: "bidang", label: "Bidang Ilmu", type: "text", required: true },
+    { name: "nomorSK", label: "Nomor SK / Akreditasi", type: "text", required: true },
+    { name: "periodePengelola", label: "Periode Pengelola", type: "text", required: true },
+    { name: "chip", label: "Label Chip", type: "text", defaultValue: "Resmi TSU" },
+    {
+      name: "url",
+      label: "URL Situs Jurnal (Wajib https://)",
+      type: "text",
+      required: false,
+      placeholder: "https://ejurnal.tsu.ac.id/index.php/jis",
+      help: "Gunakan alamat yang diawali https://. Pastikan alamat ini benar.",
+    },
+    {
+      name: "archiveUrl",
+      label: "URL Arsip / Edisi (Opsional)",
+      type: "text",
+      required: false,
+      placeholder: "https://ejurnal.tsu.ac.id/index.php/jis/issue/archive",
+    },
+    { name: "aktif", label: "Status Aktif", type: "boolean", defaultValue: true },
+  ],
+};
+
+export const ejurnalConfigSchema = {
+  key: "ejurnalConfig",
+  label: { singular: "Pengaturan e-Jurnal", plural: "Pengaturan e-Jurnal" },
+  icon: "Settings",
+  group: "settings",
+  type: "singleton",
+  publicRoute: "/layanan/e-jurnal",
+  fields: [
+    {
+      name: "main",
+      label: "Portal Utama e-Jurnal",
+      type: "text",
+      placeholder: "https://ejurnal.tsu.ac.id",
+      help: "Alamat portal utama e-Jurnal TSU (diawali https://).",
+    },
+    {
+      name: "register",
+      label: "Pendaftaran Akun Penulis",
+      type: "text",
+      placeholder: "https://ejurnal.tsu.ac.id/index.php/index/user/register",
+      help: "Link registrasi OJS untuk penulis.",
+    },
+    {
+      name: "submit",
+      label: "Pengiriman Naskah (Submit)",
+      type: "text",
+      placeholder: "https://ejurnal.tsu.ac.id/index.php/index/about/submissions",
+      help: "Link halaman submission naskah.",
+    },
+    {
+      name: "guide",
+      label: "Panduan Penulis",
+      type: "text",
+      placeholder: "https://ejurnal.tsu.ac.id/index.php/index/about/submissions#authorGuidelines",
+      help: "Link panduan author.",
+    },
+    {
+      name: "mode",
+      label: "Mode Navigasi e-Jurnal",
+      type: "select",
+      options: [
+        { label: "Tampilkan halaman e-Jurnal (page)", value: "page" },
+        { label: "Langsung buka website jurnal (redirect)", value: "redirect" },
+      ],
+      defaultValue: "page",
+      help: "Pilih apakah menu e-Jurnal membuka halaman internal atau langsung meredirect ke portal utama.",
+    },
+  ],
+};

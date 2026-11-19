@@ -10,6 +10,8 @@ import {
   performanceDataSchema,
   dashboardConfigSchema,
   organizationSchema,
+  journalsSchema,
+  ejurnalConfigSchema,
 } from "@admin/content/schema.js";
 import { useAdminContent } from "@admin/hooks/useAdminContent.js";
 import ContentList from "@admin/components/content/ContentList.jsx";
@@ -25,6 +27,8 @@ const schemaMap = {
   performanceData: performanceDataSchema,
   dashboardConfig: dashboardConfigSchema,
   organization: organizationSchema,
+  journals: journalsSchema,
+  ejurnalConfig: ejurnalConfigSchema,
 };
 
 const pathToKey = {
@@ -37,6 +41,8 @@ const pathToKey = {
   "data-kinerja": "performanceData",
   "dashboard-config": "dashboardConfig",
   struktur: "organization",
+  jurnal: "journals",
+  "e-jurnal-config": "ejurnalConfig",
 };
 
 export default function ContentManagerPage() {

@@ -25,6 +25,8 @@ const navItems = [
   { path: "/admin/berita", label: "Berita", icon: Newspaper },
   { path: "/admin/kegiatan", label: "Kegiatan", icon: Calendar },
   { path: "/admin/dokumen", label: "Dokumen", icon: FolderOpen },
+  { path: "/admin/jurnal", label: "Daftar Jurnal", icon: FolderOpen },
+  { path: "/admin/e-jurnal-config", label: "Pengaturan e-Jurnal", icon: Settings },
   { path: "/admin/mitra", label: "Mitra", icon: Building2 },
   { path: "/admin/profil", label: "Profil & Kontak", icon: Settings },
   { path: "/admin/struktur", label: "Struktur Organisasi", icon: Users },
