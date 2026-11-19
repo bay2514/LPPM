@@ -5,7 +5,7 @@ import Card from "@shared/components/ui/Card.jsx";
 import { ExternalLink } from "@shared/components/ui/ExternalLink.jsx";
 import { externalLinksConfig } from "@shared/config/externalLinks.js";
 import { initialJournalsData } from "@shared/config/journalsData.js";
-import { Icon } from "@shared/components/ui/Icons.jsx";
+
 import { contentStore } from "@shared/lib/contentStore.js";
 
 export default function Ejurnal() {
