@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import PageHero from "@shared/components/ui/PageHero.jsx";
 import Container from "@shared/components/ui/Container.jsx";
 import { contentStore } from "@shared/lib/contentStore.js";
-import { Icon } from "@shared/components/ui/Icons.jsx";
 
 export default function Profil() {
   const location = useLocation();
