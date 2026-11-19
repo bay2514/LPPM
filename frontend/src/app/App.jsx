@@ -49,6 +49,15 @@ export default function App() {
             <Route path="/dokumen/:slug" element={<DocumentDetail />} />
             <Route path="/info/surat-penugasan" element={<SuratPenugasan />} />
 
+            {/* Profil sub-routes */}
+            <Route path="/profil/tentang" element={<Home />} />
+            <Route path="/profil/visi-misi" element={<Home />} />
+            <Route path="/profil/struktur" element={<Home />} />
+            <Route path="/profil/kontak" element={<Home />} />
+
+            {/* Layanan sub-routes */}
+            <Route path="/layanan/e-jurnal" element={<Navigate to="/layanan/penelitian" replace />} />
+
             {/* Legacy & flat routes redirect or map directly */}
             <Route path="/penelitian" element={<Navigate to="/layanan/penelitian" replace />} />
             <Route path="/pengabdian" element={<Navigate to="/layanan/pengabdian" replace />} />
