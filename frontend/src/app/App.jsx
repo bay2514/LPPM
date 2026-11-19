@@ -3,6 +3,7 @@ import { lazy } from "react";
 import Layout from "@public/layouts/Layout.jsx";
 import Ejurnal from "@public/pages/Ejurnal.jsx";
 import Home from "@public/pages/Home.jsx";
+import Profil from "@public/pages/Profil.jsx";
 import Documents from "@public/pages/Documents.jsx";
 import DocumentDetail from "@public/pages/DocumentDetail.jsx";
 import Dashboard from "@public/pages/Dashboard.jsx";
@@ -51,10 +52,11 @@ export default function App() {
             <Route path="/info/surat-penugasan" element={<SuratPenugasan />} />
 
             {/* Profil sub-routes */}
-            <Route path="/profil/tentang" element={<Home />} />
-            <Route path="/profil/visi-misi" element={<Home />} />
-            <Route path="/profil/struktur" element={<Home />} />
-            <Route path="/profil/kontak" element={<Home />} />
+            <Route path="/profil" element={<Navigate to="/profil/tentang" replace />} />
+            <Route path="/profil/tentang" element={<Profil />} />
+            <Route path="/profil/visi-misi" element={<Profil />} />
+            <Route path="/profil/struktur" element={<Profil />} />
+            <Route path="/profil/kontak" element={<Profil />} />
 
             {/* Layanan sub-routes */}
             <Route path="/layanan/e-jurnal" element={<Ejurnal />} />

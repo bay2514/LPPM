@@ -3,6 +3,7 @@ import path from 'path';
 
 // Simulasi daftar rute dan tautan
 const routes = [
+  '/profil', '/profil/tentang', '/profil/visi-misi', '/profil/struktur', '/profil/kontak',
   '/', '/profil', '/layanan/penelitian', '/layanan/pengabdian',
   '/layanan/luaran', '/layanan/luaran/publikasi', '/layanan/luaran/hki',
   '/layanan/luaran/buku', '/layanan/luaran/monograf', '/layanan/kkn',
