@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { lazy } from "react";
 import Layout from "@public/layouts/Layout.jsx";
+import Ejurnal from "@public/pages/Ejurnal.jsx";
 import Home from "@public/pages/Home.jsx";
 import Documents from "@public/pages/Documents.jsx";
 import DocumentDetail from "@public/pages/DocumentDetail.jsx";
@@ -56,7 +57,7 @@ export default function App() {
             <Route path="/profil/kontak" element={<Home />} />
 
             {/* Layanan sub-routes */}
-            <Route path="/layanan/e-jurnal" element={<Navigate to="/layanan/penelitian" replace />} />
+            <Route path="/layanan/e-jurnal" element={<Ejurnal />} />
 
             {/* Legacy & flat routes redirect or map directly */}
             <Route path="/penelitian" element={<Navigate to="/layanan/penelitian" replace />} />
