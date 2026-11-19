@@ -10,7 +10,7 @@ import Luaran from "@public/pages/Luaran.jsx";
 import Pengajuan from "@public/pages/Pengajuan.jsx";
 import Berita from "@public/pages/Berita.jsx";
 import Kegiatan from "@public/pages/Kegiatan.jsx";
-import Kerjasama from "@public/pages/Kerjasama.jsx";
+const Kerjasama = lazy(() => import("@public/pages/Kerjasama.jsx"));
 import NotFound from "@public/pages/NotFound.jsx";
 import Penelitian from "@public/pages/Penelitian.jsx";
 import Pengabdian from "@public/pages/Pengabdian.jsx";
@@ -70,7 +70,9 @@ export default function App() {
             <Route path="/pengajuan" element={<Pengajuan />} />
             <Route path="/berita" element={<Navigate to="/info/pengumuman" replace />} />
             <Route path="/kegiatan" element={<Navigate to="/info/agenda" replace />} />
-            <Route path="/kerjasama" element={<Kerjasama />} />
+            <Route path="/layanan/kerjasama" element={<Kerjasama />} />
+            <Route path="/kerjasama" element={<Navigate to="/layanan/kerjasama" replace />} />
+            <Route path="/kerja-sama" element={<Navigate to="/layanan/kerjasama" replace />} />
             <Route path="/agenda" element={<Navigate to="/info/agenda" replace />} />
             <Route path="/pengumuman" element={<Navigate to="/info/pengumuman" replace />} />
             <Route path="/kkn" element={<Navigate to="/layanan/kkn" replace />} />
