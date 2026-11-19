@@ -110,7 +110,7 @@ export default function Profil() {
             <div className="p-8 rounded-2xl bg-surface border border-line shadow-lg">
               <h2 className="text-2xl font-extrabold text-navy-900 mb-4">Misi LPPM TSU</h2>
               <ul className="space-y-4">
-                {profileData.mission.map((misi, idx) => (
+                {Array.isArray(profileData.mission) && profileData.mission.map((misi, idx) => (
                   <li key={idx} className="flex items-start gap-4 p-4 rounded-xl bg-canvas border border-line">
                     <span className="w-8 h-8 rounded-full bg-orange-600 text-white font-bold flex items-center justify-center flex-shrink-0">
                       {idx + 1}
